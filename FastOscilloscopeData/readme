@@ -1,0 +1,15 @@
+De her målinger blev taget med mit SiPM board med MicroFC J-series 60035 med basalt
+set ingenting på boardet, bare direkte forbindelse fra fast output til et MCX, ind 
+i det hurtige 4GHz LeCroy oscilloskop. Scintillatoren er en BC420, og kilden der 
+blev brugt er en væsentligt nasty Na22, som primært giver 511KeV, men vist nok
+også noget omkring 1200 fra en kernetilstand.
+
+Resultatet var risetimes omkring 2ns og FWHMs på 10ns.
+Det er længere end jeg havde håbet på :(
+Jeg tænker lige nu at skylden kunne være på det kabel som går mellem
+SiPM'en og oscilloskopet. Jeg målte og det havde cirka en 1.2ohm DC modstand,
+som SiPM'ens kapacitans jo også skal aflade over.
+Det passer også cirka med at de boards som har 50ohm har en længde på et 
+par hundreder ns.
+"50 ohm air spaced cable has a capacitance of 66.7pF/m,", så der er nok
+desuden også proppet en 40pF på, hvor fast outputtet har 160pF selv.

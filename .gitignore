@@ -1,0 +1,9 @@
+
+# Ignoring the data files
+*.header
+*.phsp
+*.csv
+
+# Ignoring plots
+*.svg
+*.gif

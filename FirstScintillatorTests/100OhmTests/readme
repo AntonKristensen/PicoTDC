@@ -1,0 +1,4 @@
+these tests were done on a siglent sds1202 oscilloscope with 200MHz and 1GS/s,
+shooting a cs137 signal onto a bc420 scintillator coupled to my SiPM.
+The board had a power supply noise filtering circuit with 2x50ohm
+resistors for these tests

@@ -1,0 +1,212 @@
+# Include beam information
+
+i:Ts/Seed = 1342111 #The random seed
+#i:Ts/ShowHistoryCountAtInterval = 1000 #This prints out progress while running
+i:Ts/NumberOfThreads = 4 # Multithreading
+
+
+s:Ge/World/Type            = "TsBox"
+s:Ge/World/Material        = "Vacuum"
+d:Ge/World/HLX             = 16. cm
+d:Ge/World/HLY             = 16. cm
+d:Ge/World/HLZ             = 100. cm
+
+
+########################################
+# Beam & Geometry
+########################################
+
+s:So/Beam/Type = "Beam" # Beam, Isotropic, Emittance or PhaseSpace
+s:So/Beam/Component = "BeamPosition"
+s:So/Beam/BeamParticle = "proton"
+d:So/Beam/BeamEnergy = 230 MeV
+u:So/Beam/BeamEnergySpread = 0.00504
+#s:So/Beam/BeamPositionDistribution = "Flat" # None, Flat or Gaussian
+s:So/Beam/BeamPositionDistribution = "Gaussian" # None, Flat or Gaussian
+d:So/Beam/BeamPositionSpreadX = 0.1 cm # 
+d:So/Beam/BeamPositionSpreadY = 0.1 cm # 
+s:So/Beam/BeamPositionCutoffShape = "Rectangle" # Rectangle or Ellipse (if Flat or Gaussian)
+d:So/Beam/BeamPositionCutoffX = 10. cm # X extent of position (if Flat or Gaussian)
+d:So/Beam/BeamPositionCutoffY = 10. cm # Y extent of position (if Flat or Gaussian)
+s:So/Beam/BeamAngularDistribution = "None" # None, Flat or Gaussian
+i:So/Beam/NumberOfHistoriesInRun = 100
+
+s:Ge/BeamPosition/Parent="World"
+s:Ge/BeamPosition/Type="Group"
+d:Ge/BeamPosition/TransX=0. m
+d:Ge/BeamPosition/TransY=0. m
+d:Ge/BeamPosition/TransZ= 90 cm
+d:Ge/BeamPosition/RotX=180. deg
+d:Ge/BeamPosition/RotY=0. deg
+d:Ge/BeamPosition/RotZ=0. deg
+
+########################################
+# Materials
+########################################
+
+# B10 Material##########################
+sv:Ma/MyB10/Components  = 1 "B10El"
+uv:Ma/MyB10/Fractions   = 1 1.0
+d:Ma/MyB10/Density      = 2.34 g/cm3
+
+s:El/B10El/Symbol             = "B10El"
+sv:El/B10El/IsotopeNames      = 1 "B10"
+uv:El/B10El/IsotopeAbundances = 1 100.
+
+i:Is/B10/Z = 5
+i:Is/B10/N = 10
+d:Is/B10/A = 10.81100 g/mole
+
+sv:Ma/PMMA/Components = 3 "Carbon" "Hydrogen" "Oxygen"
+uv:Ma/PMMA/Fractions = 3  0.599848  0.080538  0.319614
+d:Ma/PMMA/Density = 1.190 g/cm3  #1.190 g/cm3
+
+# # Compound B10
+b:Ma/B10Compund/BuildFromMaterials = "True"
+sv:Ma/B10Compund/Components  = 2 "MyB10" "G4_WATER"
+uv:Ma/B10Compund/Fractions   = 2 0.0003744 0.9996256 # nat 160 ppm
+d:Ma/B10Compund/Density      = 1.000877  g/cm3
+
+sv:Ma/Solid_Water/Components  = 6 "Hydrogen" "Carbon" "Nitrogen" "Oxygen" "Chlorine" "Calcium"
+uv:Ma/Solid_Water/Fractions   = 6 0.081 0.672 0.024 0.199 0.001 0.023 
+d:Ma/Solid_Water/Density      = 1.039 g/cm3
+
+sv:Ma/Tungsten/Components = 1 "Tungsten"
+uv:Ma/Tungsten/Fractions = 1 1.0
+d:Ma/Tungsten/Density = 19.25 g/cm3
+s:Ma/Tungsten/DefaultColor = "silver"
+
+
+
+
+
+
+
+
+
+s:Ge/ExperimentSetup/Type       ="Group"
+s:Ge/ExperimentSetup/Parent     = "World"
+d:Ge/ExperimentSetup/TransX     = 0. cm
+d:Ge/ExperimentSetup/TransY     = 0. cm
+d:Ge/ExperimentSetup/TransZ     = 25. cm
+
+s:Ge/SolidWater_Block/Parent 		= "ExperimentSetup"
+s:Ge/SolidWater_Block/Type   		= "TsBox"
+s:Ge/SolidWater_Block/Material	= "Solid_Water"
+d:Ge/SolidWater_Block/HLX 		= 15 cm
+d:Ge/SolidWater_Block/HLZ 		= 1.5 cm
+d:Ge/SolidWater_Block/MinusHLZ  = -1 * Ge/SolidWater_Block/HLZ cm
+d:Ge/SolidWater_Block/HLY 		= 15.0 cm
+s:Ge/SolidWater_Block/Color       = "blue"
+
+s:Ge/TungstenPlate/Parent 		= "ExperimentSetup"
+s:Ge/TungstenPlate/Type   		= "TsBox"
+s:Ge/TungstenPlate/Material	    = "Tungsten"
+d:Ge/TungstenPlate/HLX 		    = 15 cm
+d:Ge/TungstenPlate/HLZ 		    = 3.5 mm
+d:Ge/TungstenPlate/HLY 		    = 15 cm
+d:Ge/TungstenPlate/TransX		= 0 cm
+d:Ge/TungstenPlate/TransY		= 0 cm
+d:Ge/TungstenPlate/TransToSurface	= Ge/SolidWater_Block/HLZ + Ge/TungstenPlate/HLZ  cm
+d:Ge/TungstenPlate/TransZ		= Ge/TungstenPlate/TransToSurface + 2  cm
+s:Ge/TungstenPlate/Color       = "yellow"
+
+s:Ge/PMMA_HOLDER/Parent 		= "ExperimentSetup"
+s:Ge/PMMA_HOLDER/Type   		= "TsBox"
+s:Ge/PMMA_HOLDER/Material	    = "PMMA"
+d:Ge/PMMA_HOLDER/HLX 		    = 15 cm
+d:Ge/PMMA_HOLDER/HLY 		    = 15 cm
+d:Ge/PMMA_HOLDER/HLZ 		    = 16 mm
+d:Ge/PMMA_HOLDER/TransX		    = 0 cm
+d:Ge/PMMA_HOLDER/TransY		    = 0 cm
+d:Ge/PMMA_HOLDER/MinusHLZ       = -1 * Ge/PMMA_HOLDER/HLZ cm
+d:Ge/PMMA_HOLDER/TransZ		    = Ge/SolidWater_Block/MinusHLZ   - Ge/PMMA_HOLDER/HLZ cm
+s:Ge/PMMA_HOLDER/Color          = "grey"
+
+
+s:Ge/PMMA_Stopper/Parent 		= "ExperimentSetup"
+s:Ge/PMMA_Stopper/Type   		= "TsBox"
+s:Ge/PMMA_Stopper/Material	    = "PMMA"
+d:Ge/PMMA_Stopper/HLX 		    = 15 cm
+d:Ge/PMMA_Stopper/HLY 		    = 15 cm
+d:Ge/PMMA_Stopper/HLZ 		    = 10 cm
+d:Ge/PMMA_Stopper/TransX		= 0 cm
+d:Ge/PMMA_Stopper/TransY		= 0 cm
+d:Ge/PMMA_Stopper/MinusHLZ      = -1 * Ge/PMMA_Stopper/HLZ cm
+d:Ge/PMMA_Stopper/StopperMinusHolder  = Ge/PMMA_Stopper/MinusHLZ + Ge/PMMA_HOLDER/MinusHLZ cm
+d:Ge/PMMA_Stopper/TransZ		= Ge/PMMA_HOLDER/TransZ + Ge/PMMA_Stopper/StopperMinusHolder cm
+s:Ge/PMMA_Stopper/Color         = "grey"
+
+s:Ge/Scorer/Parent 		= "World"
+s:Ge/Scorer/Type   		= "TsBox"
+s:Ge/Scorer/Material	    = "PMMA"
+d:Ge/Scorer/HLX 		    = 15 cm
+d:Ge/Scorer/HLY 		    = 15 cm
+d:Ge/Scorer/HLZ 		    = 0.01 mm
+d:Ge/Scorer/TransX		    = 0 cm
+d:Ge/Scorer/TransY		    = 0 cm
+d:Ge/Scorer/TransZ		    =  -99  cm
+s:Ge/Scorer/Color          = "white"
+
+
+
+
+
+s:outdir = "Results/"
+########################################
+# Physics
+########################################
+
+# sv:Ph/Default/Modules = 9 "g4em-extra", "g4em-standard_opt4", "g4ion-binarycascade", "g4h-elastic_HP", "g4decay", "g4h-phy_QGSP_BIC_AllHP", "g4radioactivedecay", "g4stopping", "g4ion"
+
+########################################
+# Sequence control
+########################################
+b:Ts/PauseBeforeSequence = "F"
+i:Ts/ShowHistoryCountAtInterval = 10000 # how often to print history count to the console
+# If set to 0, history count will never be printed
+b:Ts/ShowHistoryCountOnSingleLine = "FALSE" # Make count reuse a single line of console
+i:Tf/Verbosity = 0
+
+########################################
+# Graphics
+########################################
+
+s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
+Ts/UseQt = "True" #This one makes user interface
+b:Ts/PauseBeforeQuit = "True"
+
+# Colouring neutrons the way I like it
+s:Gr/ViewA/ColorBy = "ParticleType"
+sv:Gr/ViewA/ColorByParticleTypeNames = 4 "e-" "gamma" "proton" "neutron"
+sv:Gr/ViewA/ColorByParticleTypeColors = 4 "blue" "green" "red" "gray"
+
+# Just setting standard view
+d:Gr/ViewA/Theta            = 55 deg
+d:Gr/ViewA/Phi              = 20 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 30 deg
+
+#b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
+
+b:Ge/QuitIfOverlapDetected = "True"
+
+########################################
+# Scoring
+########################################
+
+# TungstenPlate Phase space
+s:Sc/SWMinus_PhaseSpace/Quantity                   = "PhaseSpace"
+s:Sc/SWMinus_PhaseSpace/Surface                    = "Scorer/ZMinusSurface"
+s:Sc/SWMinus_PhaseSpace/OutputType                 = "ASCII"
+s:Sc/SWMinus_PhaseSpace/IfOutputFileAlreadyExists  = "Overwrite"
+#sv:Sc/SWMinus_PhaseSpace/OnlyIncludeParticlesNamed = 1 "neutron"
+
+
+
+
+
+
+
+
+

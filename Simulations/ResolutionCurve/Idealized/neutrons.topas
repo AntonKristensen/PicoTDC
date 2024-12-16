@@ -1,0 +1,149 @@
+
+
+#i:Ts/Seed = 1342111 #The random seed
+i:Ts/ShowHistoryCountAtInterval = 1000000 #This prints out progress while running
+i:Ts/NumberOfThreads = 4 # Multithreading
+
+d:Ge/World/HLX = 10. cm
+d:Ge/World/HLY = 10. cm
+d:Ge/World/HLZ = 26. cm
+s:Ge/World/Material = "Vacuum"
+
+
+# Trying to define silicon detector material
+sv:Ma/Substrate/Components = 1 "Silicon"
+uv:Ma/Substrate/Fractions = 1 1.0
+d:Ma/Substrate/Density = 2.33 g/cm3
+d:Ma/Substrate/MeanExcitationEnergy = 173 eV
+s:Ma/Substrate/DefaultColor = "green"
+
+# Plastic material
+sv:Ma/Plastic/Components= 2 "Carbon" "Hydrogen"
+uv:Ma/Plastic/Fractions= 2 0.48 0.52
+d:Ma/Plastic/Density=1.023 g/cm3
+#d:Ma/Plastic/MeanExcitationEnergy= 64.7 # For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
+s:Ma/Plastic/DefaultColor="white"
+
+# GAGG:Ce scintillator (in Radiacode 103 for example
+sv:Ma/GAGG/Components= 4 "Gadolinium" "Aluminum" "Gallium" "Oxygen"
+b:Ma/GAGG/NormalizeFractions = "True"
+uv:Ma/GAGG/Fractions= 4 471.0 81.0 210.0 192.0 # Atomic masses of the elements multiplied by their amount in the chemical formula
+d:Ma/GAGG/Density= 6.63 g/cm3
+#d:Ma/GAGG/MeanExcitationEnergy= 57.400000 eV # Pure guess
+s:Ma/GAGG/DefaultColor="white"
+
+
+# Volume
+s:Ge/Primary/Type     = "TsBox"
+s:Ge/Primary/Material = "Plastic"
+s:Ge/Primary/Parent   = "World"
+d:Ge/Primary/HLX      = 0.5 cm
+d:Ge/Primary/HLY      = 0.5 cm
+d:Ge/Primary/HLZ      = 0.5 cm
+#d:Ge/Primary/HLX      = 0.3 cm
+#d:Ge/Primary/HLY      = 0.3 cm
+#d:Ge/Primary/HLZ      = 0.3 cm
+i:Ge/Primary/zbins    = 1
+d:Ge/Primary/TransX   = 0. cm
+d:Ge/Primary/TransY   = 0. m
+d:Ge/Primary/TransZ   = 25. cm
+d:Ge/Primary/RotX     = 0. deg
+d:Ge/Primary/RotY     = 0. deg
+d:Ge/Primary/RotZ     = 0. deg
+
+
+s:Ge/Secondary/Type     = "TsBox"
+s:Ge/Secondary/Material = "Plastic"
+s:Ge/Secondary/Parent   = "World"
+d:Ge/Secondary/HLX      = 0.5 cm
+d:Ge/Secondary/HLY      = 0.5 cm
+d:Ge/Secondary/HLZ      = 0.5 cm
+#d:Ge/Secondary/HLX      = 0.3 cm
+#d:Ge/Secondary/HLY      = 0.3 cm
+#d:Ge/Secondary/HLZ      = 0.3 cm
+i:Ge/Secondary/zbins    = 1
+d:Ge/Secondary/TransX   = 5. cm
+d:Ge/Secondary/TransY   = 0. m
+d:Ge/Secondary/TransZ   = -25. cm
+d:Ge/Secondary/RotX     = 0. deg
+d:Ge/Secondary/RotY     = 5.7 deg
+d:Ge/Secondary/RotZ     = 0. deg
+
+
+
+
+
+# Beam
+s:So/Beam/Type                     = "Beam"
+sc:So/Beam/Component                = "BeamPosition"
+sc:So/Beam/BeamParticle             = "neutron"
+#dc:So/Beam/BeamEnergy               = 100 MeV
+uc:So/Beam/BeamEnergySpread         = 0
+sc:So/Beam/BeamPositionDistribution = "Gaussian"
+sc:So/Beam/BeamPositionCutoffShape  = "Ellipse"
+dc:So/Beam/BeamPositionCutoffX      = 10. cm
+dc:So/Beam/BeamPositionCutoffY      = 10. cm
+dc:So/Beam/BeamPositionSpreadX      = 1 mm
+dc:So/Beam/BeamPositionSpreadY      = 1 mm
+sc:So/Beam/BeamAngularDistribution  = "Gaussian"
+dc:So/Beam/BeamAngularCutoffX       = 90. deg
+dc:So/Beam/BeamAngularCutoffY       = 90. deg
+dc:So/Beam/BeamAngularSpreadX       = 0.0001 rad
+dc:So/Beam/BeamAngularSpreadY       = 0.0001 rad
+#ic:So/Beam/NumberOfHistoriesInRun   = 100000000
+
+
+
+
+# Scorer
+s:Sc/First/Quantity                  = "rindom"
+s:Sc/First/Component                 = "Primary"
+s:Sc/First/OutputType 		     = "ASCII"
+b:Sc/First/OutputToConsole           = "TRUE"
+s:Sc/First/IfOutputFileAlreadyExists = "Overwrite" # "Exit", "Overwrite" or "Increment"
+
+
+#s:Sc/created/Quantity                  = "ppka"
+#s:Sc/created/Component                 = "Primary"
+#s:Sc/created/OutputType 		     = "ASCII"
+#b:Sc/created/OutputToConsole           = "TRUE"
+#s:Sc/created/IfOutputFileAlreadyExists = "Overwrite" # "Exit", "Overwrite" or "Increment"
+
+
+
+s:Sc/Second/Quantity                  = "rindom"
+s:Sc/Second/Component                 = "Secondary"
+s:Sc/Second/OutputType 		     = "ASCII"
+b:Sc/Second/OutputToConsole           = "TRUE"
+s:Sc/Second/IfOutputFileAlreadyExists = "Overwrite" # "Exit", "Overwrite" or "Increment"
+
+
+# Physics packages
+#sv:Ph/Default/Modules = 1 "g4em-standard_opt0"
+Ph/Default/Modules = 7 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" "g4h-phy_FTFP_BERT_HP"
+#s:Ph/Default/Type = "QGSP_BERT_HP"
+#s:Ph/Defaul/Type = "FTFP_BERT_HP" # High energy nuclear scatterings > 3GeV 
+
+
+
+#s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
+#Ts/UseQt = "True" #This one makes user interface
+#b:Ts/PauseBeforeQuit = "True"
+
+# Colouring neutrons the way I like it
+s:Gr/ViewA/ColorBy = "ParticleType"
+sv:Gr/ViewA/ColorByParticleTypeNames = 4 "e-" "gamma" "proton" "neutron"
+sv:Gr/ViewA/ColorByParticleTypeColors = 4 "blue" "green" "red" "gray"
+
+# Just setting standard view
+d:Gr/ViewA/Theta            = 55 deg
+d:Gr/ViewA/Phi              = 20 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 30 deg
+
+#b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
+
+
+i:Ts/Seed = 772004971
+ic:So/Beam/NumberOfHistoriesInRun   = 10000000
+dc:So/Beam/BeamEnergy               = 250 MeV 

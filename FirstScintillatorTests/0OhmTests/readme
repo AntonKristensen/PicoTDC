@@ -1,0 +1,5 @@
+Same as with the 100OhmTests, but I desoldered the 2 50Ohm resistors,
+so that it is only the internal quench resistor from the SiPM that is 
+decharged over. This should improve timing performance, but I might
+not be able to see it in these two data sets as the oscilloscope is only
+at 200MHz bandwidth.
