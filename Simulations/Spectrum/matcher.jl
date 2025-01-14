@@ -111,102 +111,59 @@ incidentframe = DataFrame(FrontIndex = Vector{Int}(), BackIndex = Vector{Int}(),
 # Adding time, some nanoseconds between each beam neutron
 addedtime = 1e-9
 
-for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
-    # Collecting the results into detector hits instead of separate particles
-    first = collector("output/front"*string(i)*".phsp")
-    first[!,"Column10"] = first[:,3]*addedtime + first[:,end]
-    sort!(first, [:Column10])
-    for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
-        ############## Kinetmatics calculations
-        displacementvector = [front[i,1] - back[j,1], front[i,2] - back[j,2] ,front[i,3] - back[j,3]]
-        distance = sqrt(sum(displacementvector.^2))
-        sizecorrection = back[j,4]/4 # The proton produces signal immediately when it hits the back scintillator
-        angle = acos(sum(displacementvector .* [0,0,1]) / distance) # Calculating the angle respective to the z direction
-        minimumtime = distance / 299792458 # Calculating the time it would take light to travel between the scintillators
-        
-        minimumenergy = 1 # Choosing a minimum energy of the travelling protons (so the lowest energy the method can see is "minimum energy + deposited energy")
-        maximumtime = distance / (299792458 * sqrt(1 - (1 / (minimumenergy/938.27 +1))^2)) # Calculating the maximum time from the minimum energy
-        
-        ############## Reading the data files and making
+
+Threads.@threads for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
+    if filesize("output/front"*string(i)*".phsp") != 0 # Don't do it if the file is empty
+    
         # Collecting the results into detector hits instead of separate particles
+        first = collector("output/front"*string(i)*".phsp")
+        first[!,"Column10"] = first[:,3]*addedtime + first[:,end]
+        sort!(first, [:Column10])
+        for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
+            if filesize("output/back"*string(j)*".phsp") != 0 # Don't do it if the file is empty   
+            
+                ############## Kinetmatics calculations
+                displacementvector = [front[i,1] - back[j,1], front[i,2] - back[j,2] ,front[i,3] - back[j,3]]
+                distance = sqrt(sum(displacementvector.^2))
+                sizecorrection = back[j,4]/4 # The proton produces signal immediately when it hits the back scintillator
+                angle = acos(sum(displacementvector .* [0,0,1]) / distance) # Calculating the angle respective to the z direction
+                minimumtime = distance / 299792458 # Calculating the time it would take light to travel between the scintillators
+                
+                minimumenergy = 1 # Choosing a minimum energy of the travelling protons (so the lowest energy the method can see is "minimum energy + deposited energy")
+                maximumtime = distance / (299792458 * sqrt(1 - (1 / (minimumenergy/938.27 +1))^2)) # Calculating the maximum time from the minimum energy
+                
+                ############## Reading the data files and making
+                # Collecting the results into detector hits instead of separate particles
 
-        second = collector("output/back"*string(j)*".phsp")
-        second[!,"Column10"] = second[:,3]*addedtime + second[:,end]
-        sort!(second, [:Column10])
+                second = collector("output/back"*string(j)*".phsp")
+                second[!,"Column10"] = second[:,3]*addedtime + second[:,end]
+                sort!(second, [:Column10])
 
-        ############## Doing the time matching and energy calculation
-        matchings = matcher(first, second, minimumtime, maximumtime)
-        incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
-        push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
-        
+                ############## Doing the time matching and energy calculation
+                matchings = matcher(first, second, minimumtime, maximumtime)
+                incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
+                push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
+            end
+        end
     end
 end
 
 #print(incidentframe)
 
-###############
-# Collecting results from all individual pairs into one big list
-incidents = zeros(0)
-firsts = zeros(0)
-seconds = zeros(0)
-for i in 1:length(incidentframe[:,3])
-    append!(incidents, incidentframe[i,3])
-    append!(firsts, incidentframe[i,4])
-    append!(seconds, incidentframe[i,5])
+# Writing the matches into a file
+matchfile = open("output/matches.csv", "a")
+if filesize("output/matches.csv") == 0 # Checks if the file is empty, and writes a header if it is
+    write(matchfile, "Incident energy, first deposit (MeV), second deposit (MeV), front detector, back detector \n")
 end
-
-
-# Doing a slight bit of statistics
-medi = median(incidents) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
-lower = medi - quantile(incidents, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
-upper = quantile(incidents, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
-
-# ML fit, cutting data 20% below and above the calculated mean
-fitdata = incidents[(incidents .> medi - lower*3) .& (incidents .< medi + upper*3)] # Cutting a roughly 3sigma region around the peak
-gaussfit = fit_mle(Normal, fitdata)
-print(params(gaussfit), (upper + lower)/2, "\n")
-
-fig1 = plot()
-for i in 1:length(incidentframe[:,3])
-    if length(incidentframe[i,3]) > 0 # It breaks if it there weren't any matches
-        stephist!(incidentframe[i,3], label="Front"*string(incidentframe[i,1])*", Back"*string(incidentframe[i,2]))
-        #print(length(incidentframe[i,3]),"\n")
+for i in 1:length(incidentframe[:,1])
+    for j in 1:length(incidentframe[i,3])
+        write(matchfile, string(incidentframe[i,3][j]) * ", " * string(incidentframe[i,4][j]) * ", " * string(incidentframe[i,5][j]) * ", " * string(incidentframe[i,1]) *  ", " * string(incidentframe[i,2]) * "\n")   
     end
 end
-
-xlims!(0,medi*2)
-savefig("output/plots/SeparateEnergies.svg")
-title!("Energies from detector pairs")
-xlabel!("Energy (MeV)")
-ylabel!("Counts")
-savefig("plots/SeparateEnergies.svg")
-display(fig1)
-
-fig2 = histogram(incidents[incidents .< medi*2], bins = 100)
-title!("Total energy spectrum")
-xlabel!("Energy (MeV)")
-ylabel!("Counts")
-savefig("NeutronHeatmap.svg")
-savefig("plots/TotalEnergies.svg")
-display(fig2)
+close(matchfile)
 
 
-fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
-title!("Incident energy and first detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.svg")
-display(fig3)
 
-fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(50, 50))
-title!("Incident energy and second detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.svg")
-display(fig4)
 
-# Writing into results file
-file = open("output/results.csv", "a")
-write(file, string(params(gaussfit)[1]) * ", " * string(params(gaussfit)[2]))
-close(file)
+
 

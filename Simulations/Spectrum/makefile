@@ -18,9 +18,18 @@ files :
 
 run :
 	make files
-	topas output/neutrons.topas >> log.txt
+	topas output/neutrons.topas #>> log.txt
 	touch output/results.csv
 	julia matcher.jl #>> log.txt
+	
+many :
+	for i in $(shell seq 1 1 $(repeats)) ; do \
+		make files ; \
+		echo "run $$i / $(repeats)" ; \
+		topas output/neutrons.topas >> log.txt ; \
+		julia matcher.jl >> log.txt ; \
+	done ; \
+	julia plotter.jl
 	
 curve :
 	make clean
@@ -41,5 +50,6 @@ curve :
 clean :
 	rm -f log.txt
 	rm -f output/*
+	rm -f plots/*
 	
 
