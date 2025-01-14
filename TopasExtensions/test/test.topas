@@ -1,0 +1,93 @@
+
+
+#i:Ts/Seed = 132112 #The random seed
+i:Ts/ShowHistoryCountAtInterval = 1000 #This prints out progress while running
+i:Ts/NumberOfThreads = 4 # Multithreading
+
+d:Ge/World/HLX = 1. mm
+d:Ge/World/HLY = 1. mm
+d:Ge/World/HLZ = 1. mm
+s:Ge/World/Material = "Vacuum"
+
+# Trying to define silicon detector material
+sv:Ma/Substrate/Components = 1 "Silicon"
+uv:Ma/Substrate/Fractions = 1 1.0
+d:Ma/Substrate/Density = 2.33 g/cm3
+d:Ma/Substrate/MeanExcitationEnergy = 173 eV
+s:Ma/Substrate/DefaultColor = "green"
+
+
+
+# Volume
+s:Ge/MyBox/Type     = "TsBox"
+s:Ge/MyBox/Material = "Substrate"
+s:Ge/MyBox/Parent   = "World"
+d:Ge/MyBox/HLX      = 0.5 mm
+d:Ge/MyBox/HLY      = 0.5 mm
+d:Ge/MyBox/HLZ      = 0.05 mm
+#i:Ge/MyBox/zbins    = 10
+d:Ge/MyBox/TransX   = 0. cm
+d:Ge/MyBox/TransY   = 0. m
+d:Ge/MyBox/TransZ   = 0. m
+d:Ge/MyBox/RotX     = 0. deg
+d:Ge/MyBox/RotY     = 0. deg
+d:Ge/MyBox/RotZ     = 0. deg
+
+
+
+# Beam
+s:So/Beam/Type                     = "Beam"
+sc:So/Beam/Component                = "BeamPosition"
+sc:So/Beam/BeamParticle             = "proton"
+dc:So/Beam/BeamEnergy               = 200 MeV
+uc:So/Beam/BeamEnergySpread         = 0
+sc:So/Beam/BeamPositionDistribution = "Gaussian"
+sc:So/Beam/BeamPositionCutoffShape  = "Ellipse"
+dc:So/Beam/BeamPositionCutoffX      = 10. cm
+dc:So/Beam/BeamPositionCutoffY      = 10. cm
+dc:So/Beam/BeamPositionSpreadX      = 0.01 mm
+dc:So/Beam/BeamPositionSpreadY      = 0.01 mm
+sc:So/Beam/BeamAngularDistribution  = "Gaussian"
+dc:So/Beam/BeamAngularCutoffX       = 90. deg
+dc:So/Beam/BeamAngularCutoffY       = 90. deg
+dc:So/Beam/BeamAngularSpreadX       = 0.0001 rad
+dc:So/Beam/BeamAngularSpreadY       = 0.0001 rad
+ic:So/Beam/NumberOfHistoriesInRun   = 100000
+
+# Scorer
+s:Sc/Score/Quantity                  = "DisplacementDamage"
+s:Sc/Score/Component                 = "MyBox"
+b:Sc/Score/OutputToConsole           = "TRUE"
+s:Sc/Score/IfOutputFileAlreadyExists = "Overwrite"
+#s:Sc/MyScorer/IfOutputFileAlreadyExists = "Increment"
+#i:Sc/Score/EBins                     = 5
+#d:Sc/Score/EBinMin                   = 0. MeV
+#d:Sc/Score/EBinMax                   = 1. MeV
+#sc:Sc/Score/EBinEnergy               = "DepositedInStep"
+#i:Sc/Score/XBins = 1
+#i:Sc/Score/YBins = 1
+#i:Sc/Score/ZBins = 3
+#sv:Sc/Score/Report = 1 "Sum" 
+#s:Sc/Score/OnlyIncludeParticlesOfGeneration = "Primary"
+	
+
+# Physics packages
+Ph/Default/Modules = 6 "g4em-standard_SS" "g4decay" "g4h-elastic_HP" "g4h-phy_FTFP_BERT_HP" "g4stopping" "g4ion-binarycascade"  # This first package here removes multiple scattering for all charged particles. Bad for performance, but gives me every single particle that is coulomb scattered!
+d:Ph/Default/CutForProton = 0.0001 mm # This value makes coulomb recoils happen at a threshold that is decently lower than 27eV, which is where silicon atoms get displaced.
+
+
+#s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
+#b:Ts/PauseBeforeQuit = "True"
+
+# Just setting standard view
+d:Gr/ViewA/Theta            = 55 deg
+d:Gr/ViewA/Phi              = 20 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 30 deg
+
+#Ts/UseQt = "True" #This one makes user interface
+
+
+#b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
+
+

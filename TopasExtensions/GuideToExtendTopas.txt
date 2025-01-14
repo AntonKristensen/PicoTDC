@@ -1,0 +1,16 @@
+
+Write both a .cc and a .hh file and put them into some folder.
+Make sure that the first line of the .cc file is a comment that tells what kind of quantity it is, like "// Scorer for speed"
+
+
+
+####### Compiling after you have written your extensions:
+Go into the build folder of topas (like OpenTOPAS-build), then run this command:
+
+cmake ../OpenTOPAS -DCMAKE_INSTALL_PREFIX=../OpenTOPAS-install -DTOPAS_EXTENSIONS_DIR=/home/anton/Desktop/gitrepos/CERN/Simulations/topasextensions
+
+and then run 
+
+make
+
+

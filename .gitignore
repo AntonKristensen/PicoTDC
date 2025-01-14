@@ -1,3 +1,5 @@
+# Ignoring specific folders
+Electronics
 
 # Ignoring the data files
 *.header
