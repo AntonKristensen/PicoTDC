@@ -1,6 +1,8 @@
+MAKEFLAGS += --no-print-directory
+
 particles = 10000000
 energy = 100
-start = 50
+start = 10
 stop = 250
 interval = 10
 repeats = 10
@@ -30,28 +32,25 @@ many :
 		echo "run $$i / $(repeats)" ; \
 		topas output/neutrons.topas >> log.txt ; \
 		julia matcher.jl >> log.txt ; \
-	done ; \
+	done
 	julia plotter.jl
 	
 curve :
 	make clean
-	rm -f output/results.csv
-	touch output/results.csv
-	echo -n "Energy, Mean, STD \n" >> output/results.csv
 	for E in $(shell seq $(start) $(interval) $(stop)) ; do \
-		for i in $(shell seq 1 $(repeats)) ; do \
-			echo -n "$$E, " >> output/results.csv ; \
+		for i in $(shell seq 1 1 $(repeats)) ; do \
 			echo "Energy: $$E / $(stop) MeV, particles= $(particles), measurement $$i / $(repeats)." ; \
-			make -s run energy=$$E ; \
-			echo -n "\n" >> output/results.csv ; \
+			make files energy=$$E ; \
+			topas output/neutrons.topas >> log.txt ; \
+			julia matcher.jl >> log.txt ; \
 		done ; \
+		julia plotter.jl ; \
 	done
-	julia plotter.jl >> log.txt
-	
 	
 clean :
 	rm -f log.txt
 	rm -f output/*
 	rm -f plots/*
+	rm -f results.csv
 	
 

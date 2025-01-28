@@ -8,7 +8,7 @@ using Distributions
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-print(data)
+#print(data)
 
 ###############
 # Collecting results from all individual pairs into one big list
