@@ -38,10 +38,12 @@ function statisticing(data)
 
     #print(medi, ", ", lower, ", ", upper, "\n")
 
+    bound = min(lower,upper)
+
     # ML fit, cutting data 2 sigma below and above the calculated mean
-    fitdata = data[(data .> medi - lower*2) .& (data .< medi + upper*2)] # Cutting a roughly 3sigma region around the peak
+    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
     gaussfit = fit_mle(Normal, fitdata)
-    print(params(gaussfit))
+    print(medi, " ", bound, " ", params(gaussfit), "\n")
     return params(gaussfit)
 end
 
@@ -77,7 +79,7 @@ title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
-display(fig2)
+#display(fig2)
 
 
 fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
@@ -85,14 +87,14 @@ title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
-display(fig3)
+#display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(50, 50))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
 savefig("plots/SecondHeatmap.svg")
-display(fig4)
+#display(fig4)
 
 # Writing into results file
 resultfile = open("results.csv", "a")

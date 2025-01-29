@@ -2,7 +2,7 @@
 
 #i:Ts/Seed = 1342111 #The random seed
 i:Ts/ShowHistoryCountAtInterval = 100000 #This prints out progress while running
-i:Ts/NumberOfThreads = 4 # Multithreading
+i:Ts/NumberOfThreads = 64 # Multithreading
 
 #d:Ge/World/HLX = 10. cm
 #d:Ge/World/HLY = 10. cm
