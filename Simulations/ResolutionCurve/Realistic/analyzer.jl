@@ -36,7 +36,7 @@ plot!(energies,100 * treespread ./ energies, c=:magenta, label="350ps")
 #plot!(energies, energies - tree, c=:magenta, label="Syst 350ps")
 title!("Energy uncertainty")
 xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Uncertainty in energy measurement (%)")
+ylabel!("Uncertainty in energy measurement (percentage)")
 savefig("plots/uncertainty.png")
 #display(fig1)
 
