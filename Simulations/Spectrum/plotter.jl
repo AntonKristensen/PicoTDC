@@ -8,7 +8,18 @@ using Distributions
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-#print(data)
+fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+fiddiincidents = fiddidata[:,1]
+
+hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+hunniincidents = hunnidata[:,1]
+
+twohunnidata = CSV.read("output/twohunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+twohunniincidents = twohunnidata[:,1]
+
+treefiddidata = CSV.read("output/treefiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+treefiddiincidents = treefiddidata[:,1]
+
 
 ###############
 # Collecting results from all individual pairs into one big list
@@ -19,15 +30,28 @@ fronts = data[:,4]
 backs = data[:,5]
 
 
-# Doing a slight bit of statistics
-medi = median(incidents) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
-lower = medi - quantile(incidents, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
-upper = quantile(incidents, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
+function statisticing(data)
+    # Doing a slight bit of statistics
+    medi = median(data) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
+    lower = medi - quantile(data, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
+    upper = quantile(data, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
 
-# ML fit, cutting data 20% below and above the calculated mean
-fitdata = incidents[(incidents .> medi - lower*3) .& (incidents .< medi + upper*3)] # Cutting a roughly 3sigma region around the peak
-gaussfit = fit_mle(Normal, fitdata)
-print(params(gaussfit), (upper + lower)/2, "\n")
+    #print(medi, ", ", lower, ", ", upper, "\n")
+
+    bound = min(lower,upper)
+
+    # ML fit, cutting data 2 sigma below and above the calculated mean
+    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
+    gaussfit = fit_mle(Normal, fitdata)
+    print(medi, " ", bound, " ", params(gaussfit), "\n")
+    return params(gaussfit)
+end
+
+medi, spread = statisticing(incidents)
+fiddimedi, fiddispread = statisticing(fiddiincidents)
+hunnimedi, hunnispread = statisticing(hunniincidents)
+twohunnimedi, twohunnispread = statisticing(twohunniincidents)
+treefiddimedi, treefiddispread = statisticing(treefiddiincidents)
 
 #fig1 = plot()
 #for i in 1:length(incidentframe[:,3])
@@ -45,12 +69,17 @@ print(params(gaussfit), (upper + lower)/2, "\n")
 #savefig("plots/SeparateEnergies.svg")
 #display(fig1)
 
-fig2 = histogram(incidents[incidents .< medi*2], bins = 100)
+fig2 = histogram(treefiddiincidents[treefiddiincidents .< medi*2], bins = 100, label="350ps", alpha=0.3)
+histogram!(twohunniincidents[twohunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
+histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
+histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 100, label="50ps", alpha=0.3)
+histogram!(incidents[incidents .< medi*2], bins = 100, label="No uncertainty", alpha=0.3)
+
 title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
-savefig("plots/TotalEnergies.svg")
-display(fig2)
+savefig("plots/TotalEnergies.png")
+#display(fig2)
 
 
 fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
@@ -58,16 +87,19 @@ title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
-display(fig3)
+#display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(50, 50))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.svg")
-display(fig4)
+savefig("plots/SecondHeatmap.png")
+#display(fig4)
 
 # Writing into results file
-file = open("output/results.csv", "a")
-write(file, string(params(gaussfit)[1]) * ", " * string(params(gaussfit)[2]))
-close(file)
+resultfile = open("results.csv", "a")
+if filesize("results.csv") == 0 # Checks if the file is empty, and writes a header if it is
+    write(resultfile, "Median, spread, 50ps median, 50ps spread, 100ps median, 100ps spread, 200ps median, 200ps spread, 350ps median, 350ps spread \n")
+end
+write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread),", ", string(twohunnimedi),", ", string(twohunnispread),", ", string(treefiddimedi),", ", string(treefiddispread), "\n")
+close(resultfile)
