@@ -69,11 +69,11 @@ treefiddimedi, treefiddispread = statisticing(treefiddiincidents)
 #savefig("plots/SeparateEnergies.svg")
 #display(fig1)
 
-fig2 = histogram(treefiddiincidents[treefiddiincidents .< 300], bins = 100, label="350ps", alpha=0.3)
+fig2 = stephist(treefiddiincidents[treefiddiincidents .< 300], bins = 100, label="350ps", alpha=0.3)
 stephist!(twohunniincidents[twohunniincidents .< 300], bins = 100, label="100ps", alpha=0.3)
 stephist!(hunniincidents[hunniincidents .< 300], bins = 100, label="100ps", alpha=0.3)
 stephist!(fiddiincidents[fiddiincidents .< 300], bins = 100, label="50ps", alpha=0.3)
-stephist!(incidents[incidents .< 300], bins = 100, label="No uncertainty", alpha=0.3)
+histogram!(incidents[incidents .< 300], bins = 100, label="No uncertainty", alpha=0.3)
 
 title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
