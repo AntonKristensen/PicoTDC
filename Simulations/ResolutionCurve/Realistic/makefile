@@ -3,9 +3,9 @@ SHELL := /bin/bash
 
 particles = 10000000
 energy = 100
-start = 10
+start = 25
 stop = 250
-interval = 10
+interval = 25
 repeats = 10
 vis = 0
 
@@ -48,7 +48,7 @@ curve :
 		done ; \
 		julia -t auto plotter.jl ; \
 	done
-	julia -t auto analyzer.jl
+	
 	
 clean :
 	rm -f log.txt

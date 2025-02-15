@@ -33,7 +33,6 @@ function matcher(a, b, mindif, maxdif) #Has time uncertainty as keyword argument
     for bindex in 1:length(b[:, end])
 
         # Finding the first index where the time difference is more than the minimum
-	println(length(a[:,end]))
 	while (b[bindex, end] - a[aindex, end] > maxdif) && (aindex < length(a[:,end]) -1 ) 
             aindex += 1
         end        
