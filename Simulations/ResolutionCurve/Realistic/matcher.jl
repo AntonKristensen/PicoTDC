@@ -33,13 +33,14 @@ function matcher(a, b, mindif, maxdif) #Has time uncertainty as keyword argument
     for bindex in 1:length(b[:, end])
 
         # Finding the first index where the time difference is more than the minimum
-        while (b[bindex, end] - a[aindex, end] > maxdif) #&& (aindex < length(a[:,end]))
+	println(length(a[:,end]))
+	while (b[bindex, end] - a[aindex, end] > maxdif) && (aindex < length(a[:,end]) -1 ) 
             aindex += 1
         end        
 
         
         upperindex = aindex 
-        while (b[bindex, end] - a[upperindex, end] > mindif) #&& (upperindex < length(a[:,end]))
+        while (b[bindex, end] - a[upperindex, end] > mindif) && (upperindex < length(a[:,end]) -1)
             push!(matches, [upperindex, bindex])
             upperindex += 1
         end
