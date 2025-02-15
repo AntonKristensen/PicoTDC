@@ -8,7 +8,7 @@ using Distributions
 filepath = "results.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-energies = collect(10:10:250)
+energies = collect(10:50:250)
 
 ##############
 medi=data[:,1]
