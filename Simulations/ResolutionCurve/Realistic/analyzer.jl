@@ -12,7 +12,9 @@ start = ARGS[1]
 interval = ARGS[2]
 stop = ARGS[3]
 
-energies = collect(25:25:250)
+println(start, ", ", interval, ", ", stop)
+
+energies = collect(start:interval:stop)
 
 ##############
 medi=data[:,1]
