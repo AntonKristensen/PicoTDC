@@ -29,7 +29,7 @@ plot!(energies,100 * hunnispread ./ energies, c=:red, label="100ps")
 
 title!("Energy uncertainty")
 xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Uncertainty in energy measurement (percentage)")
+ylabel!("Energy uncertainty (%)")
 savefig("plots/uncertainty.png")
 #display(fig1)
 
