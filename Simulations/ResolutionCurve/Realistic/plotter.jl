@@ -14,12 +14,6 @@ fiddiincidents = fiddidata[:,1]
 hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
 hunniincidents = hunnidata[:,1]
 
-twohunnidata = CSV.read("output/twohunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
-twohunniincidents = twohunnidata[:,1]
-
-treefiddidata = CSV.read("output/treefiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
-treefiddiincidents = treefiddidata[:,1]
-
 
 ###############
 # Collecting results from all individual pairs into one big list
@@ -50,35 +44,18 @@ end
 medi, spread = statisticing(incidents)
 fiddimedi, fiddispread = statisticing(fiddiincidents)
 hunnimedi, hunnispread = statisticing(hunniincidents)
-twohunnimedi, twohunnispread = statisticing(twohunniincidents)
-treefiddimedi, treefiddispread = statisticing(treefiddiincidents)
 
-#fig1 = plot()
-#for i in 1:length(incidentframe[:,3])
-#    if length(incidentframe[i,3]) > 0 # It breaks if it there weren't any matches
-#        stephist!(incidentframe[i,3], label="Front"*string(incidentframe[i,1])*", Back"*string(incidentframe[i,2]))
-#        #print(length(incidentframe[i,3]),"\n")
-#    end
-#end
-#
-#xlims!(0,medi*2)
-#savefig("plots/SeparateEnergies.svg")
-#title!("Energies from detector pairs")
-#xlabel!("Energy (MeV)")
-#ylabel!("Counts")
-#savefig("plots/SeparateEnergies.svg")
-#display(fig1)
 
-fig2 = histogram(treefiddiincidents[treefiddiincidents .< medi*2], bins = 100, label="350ps", alpha=0.3)
-histogram!(twohunniincidents[twohunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
-histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
+
+fig2 = histogram(incidents[incidents .< medi*2], bins = 100, label="0ps", alpha=1)
 histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 100, label="50ps", alpha=0.3)
-histogram!(incidents[incidents .< medi*2], bins = 100, label="No uncertainty", alpha=0.3)
+histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
+
 
 title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
-savefig("plots/TotalEnergies.svg")
+savefig("plots/TotalEnergies.png")
 #display(fig2)
 
 
@@ -86,20 +63,20 @@ fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], 
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.svg")
+savefig("plots/FirstHeatmap.png")
 #display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(50, 50))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.svg")
+savefig("plots/SecondHeatmap.png")
 #display(fig4)
 
 # Writing into results file
 resultfile = open("results.csv", "a")
 if filesize("results.csv") == 0 # Checks if the file is empty, and writes a header if it is
-    write(resultfile, "Median, spread, 50ps median, 50ps spread, 100ps median, 100ps spread, 200ps median, 200ps spread, 350ps median, 350ps spread \n")
+    write(resultfile, "Median, spread, 50ps median, 50ps spread, 100ps median, 100ps spread\n")
 end
-write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread),", ", string(twohunnimedi),", ", string(twohunnispread),", ", string(treefiddimedi),", ", string(treefiddispread), "\n")
+write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
 close(resultfile)

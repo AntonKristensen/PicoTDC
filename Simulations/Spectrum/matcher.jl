@@ -1,4 +1,4 @@
-
+	
 
 using Plots
 using CSV
@@ -161,7 +161,7 @@ end
 function matchwriter(dataframe; file = "output/matches.csv")
     matchfile = open(file, "a")
     if filesize("output/matches.csv") == 0 # Checks if the file is empty, and writes a header if it is
-        write(matchfile, "Incident energy, first deposit (MeV), second deposit (MeV), front detector, back detector \n")
+        write(matchfile, "Incident energy, first deposit (MeV), second deposit (MeV), front detector, back detector, front G4 event ID, back G4 event ID \n")
     end
     for i in 1:length(dataframe[:,1])
         if length(dataframe[i,3]) > 0 # Don't write if there ain't no data

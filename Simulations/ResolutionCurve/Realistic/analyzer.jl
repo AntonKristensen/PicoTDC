@@ -8,7 +8,7 @@ using Distributions
 filepath = "results.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-energies = collect(10:50:250)
+energies = collect(25:25:250)
 
 ##############
 medi=data[:,1]
@@ -17,10 +17,6 @@ fiddi=data[:,3]
 fiddispread=data[:,4]
 hunni=data[:,5]
 hunnispread=data[:,6]
-two=data[:,7]
-twospread=data[:,8]
-tree=data[:,9]
-treespread=data[:,10]
 
 
 
@@ -30,10 +26,7 @@ plot!(energies,100 * fiddispread ./ energies, c=:blue, label="50ps")
 #plot!(energies, energies - fiddi, c=:blue, label="syst 50ps")
 plot!(energies,100 * hunnispread ./ energies, c=:red, label="100ps")
 #plot!(energies, energies - hunni, c=:red, label="Syst 100ps")
-plot!(energies,100 * twospread ./ energies, c=:green, label="200ps")
-#plot!(energies, energies - two, c=:green, label="Syst 200ps")
-plot!(energies,100 * treespread ./ energies, c=:magenta, label="350ps")
-#plot!(energies, energies - tree, c=:magenta, label="Syst 350ps")
+
 title!("Energy uncertainty")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Uncertainty in energy measurement (percentage)")

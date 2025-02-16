@@ -184,13 +184,6 @@ matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
 hunniuncertainframe = detectorlooping(timeuncertainty=1e-10)
 matchwriter(hunniuncertainframe, file="output/hunniuncertainmatches.csv")
 
-twohunniuncertainframe = detectorlooping(timeuncertainty=2e-10)
-matchwriter(twohunniuncertainframe, file="output/twohunniuncertainmatches.csv")
-
-treefiddiuncertainframe = detectorlooping(timeuncertainty=3.5e-10)
-matchwriter(treefiddiuncertainframe, file="output/treefiddiuncertainmatches.csv")
-
-
 
 
 
