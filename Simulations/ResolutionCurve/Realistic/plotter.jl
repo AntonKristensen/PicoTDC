@@ -48,8 +48,8 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 fig2 = histogram(incidents[incidents .< medi*2], bins = 100, color=:black, label="Ideal", alpha=1)
-histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 100, label="50ps", alpha=0.3)
-histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, label="100ps", alpha=0.3)
+histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 100, color=:blue, label="50ps", alpha=0.3)
+histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, color=:red, label="100ps", alpha=0.3)
 
 
 title!("Total energy spectrum")
