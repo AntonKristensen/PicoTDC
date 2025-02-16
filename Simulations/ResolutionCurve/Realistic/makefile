@@ -48,7 +48,7 @@ curve :
 		done ; \
 		julia -t auto plotter.jl ; \
 	done
-	
+	julia -t auto analyzer.jl $(start) $(interval) $(stop)	
 	
 clean :
 	rm -f log.txt

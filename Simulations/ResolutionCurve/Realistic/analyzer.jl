@@ -8,6 +8,10 @@ using Distributions
 filepath = "results.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
+start = ARGS[1]
+interval = ARGS[2]
+stop = ARGS[3]
+
 energies = collect(25:25:250)
 
 ##############
@@ -27,7 +31,7 @@ plot!(energies,100 * fiddispread ./ energies, c=:blue, label="50ps")
 plot!(energies,100 * hunnispread ./ energies, c=:red, label="100ps")
 #plot!(energies, energies - hunni, c=:red, label="Syst 100ps")
 
-title!("Energy uncertainty")
+title!("Uncertainty of energy calculation")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy uncertainty (%)")
 savefig("plots/uncertainty.png")
