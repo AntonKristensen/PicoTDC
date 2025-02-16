@@ -8,9 +8,9 @@ using Distributions
 filepath = "results.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-start = ARGS[1]
-interval = ARGS[2]
-stop = ARGS[3]
+start = parse(Int,ARGS[1])
+interval = parse(Int,ARGS[2])
+stop = parse(Int,ARGS[3])
 
 println(start, ", ", interval, ", ", stop)
 
