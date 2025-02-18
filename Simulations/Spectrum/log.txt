@@ -830,106 +830,106 @@ Store e- internal conversion data                   0
 Correlated gamma emission flag                      0
 Max 2J for sampling of angular correlations         10
 =======================================================================
-G4WT19 > Begin processing for Run: 0, History: 0
-G4WT51 > Begin processing for Run: 0, History: 100000
-G4WT47 > Begin processing for Run: 0, History: 200000
-G4WT61 > Begin processing for Run: 0, History: 300000
-G4WT48 > Begin processing for Run: 0, History: 400000
-G4WT58 > Begin processing for Run: 0, History: 500000
-G4WT5 > Begin processing for Run: 0, History: 600000
-G4WT6 > Begin processing for Run: 0, History: 700000
-G4WT7 > Begin processing for Run: 0, History: 800000
-G4WT4 > Begin processing for Run: 0, History: 900000
-G4WT57 > Begin processing for Run: 0, History: 1000000
-G4WT10 > Begin processing for Run: 0, History: 1100000
-G4WT3 > Begin processing for Run: 0, History: 1200000
-G4WT58 > Begin processing for Run: 0, History: 1300000
-G4WT26 > Begin processing for Run: 0, History: 1400000
-G4WT52 > Begin processing for Run: 0, History: 1500000
-G4WT7 > Begin processing for Run: 0, History: 1600000
-G4WT20 > Begin processing for Run: 0, History: 1700000
-G4WT27 > Begin processing for Run: 0, History: 1800000
-G4WT10 > Begin processing for Run: 0, History: 1900000
-G4WT45 > Begin processing for Run: 0, History: 2000000
-G4WT36 > Begin processing for Run: 0, History: 2100000
-G4WT41 > Begin processing for Run: 0, History: 2200000
-G4WT27 > Begin processing for Run: 0, History: 2300000
-G4WT55 > Begin processing for Run: 0, History: 2400000
-G4WT13 > Begin processing for Run: 0, History: 2500000
-G4WT54 > Begin processing for Run: 0, History: 2600000
-G4WT34 > Begin processing for Run: 0, History: 2700000
-G4WT27 > Begin processing for Run: 0, History: 2800000
-G4WT21 > Begin processing for Run: 0, History: 2900000
-G4WT51 > Begin processing for Run: 0, History: 3000000
-G4WT57 > Begin processing for Run: 0, History: 3100000
-G4WT22 > Begin processing for Run: 0, History: 3200000
-G4WT59 > Begin processing for Run: 0, History: 3300000
-G4WT7 > Begin processing for Run: 0, History: 3400000
-G4WT55 > Begin processing for Run: 0, History: 3500000
-G4WT32 > Begin processing for Run: 0, History: 3600000
-G4WT22 > Begin processing for Run: 0, History: 3700000
-G4WT0 > Begin processing for Run: 0, History: 3800000
-G4WT29 > Begin processing for Run: 0, History: 3900000
-G4WT16 > Begin processing for Run: 0, History: 4000000
-G4WT38 > Begin processing for Run: 0, History: 4100000
-G4WT44 > Begin processing for Run: 0, History: 4200000
-G4WT18 > Begin processing for Run: 0, History: 4300000
-G4WT12 > Begin processing for Run: 0, History: 4400000
-G4WT45 > Begin processing for Run: 0, History: 4500000
-G4WT22 > Begin processing for Run: 0, History: 4600000
-G4WT38 > Begin processing for Run: 0, History: 4700000
-G4WT17 > Begin processing for Run: 0, History: 4800000
-G4WT16 > Begin processing for Run: 0, History: 4900000
-G4WT55 > Begin processing for Run: 0, History: 5000000
-G4WT25 > Begin processing for Run: 0, History: 5100000
-G4WT18 > Begin processing for Run: 0, History: 5200000
-G4WT53 > Begin processing for Run: 0, History: 5300000
-G4WT60 > Begin processing for Run: 0, History: 5400000
-G4WT36 > Begin processing for Run: 0, History: 5500000
-G4WT55 > Begin processing for Run: 0, History: 5600000
-G4WT47 > Begin processing for Run: 0, History: 5700000
-G4WT7 > Begin processing for Run: 0, History: 5800000
-G4WT54 > Begin processing for Run: 0, History: 5900000
-G4WT28 > Begin processing for Run: 0, History: 6000000
-G4WT40 > Begin processing for Run: 0, History: 6100000
-G4WT27 > Begin processing for Run: 0, History: 6200000
-G4WT40 > Begin processing for Run: 0, History: 6300000
-G4WT13 > Begin processing for Run: 0, History: 6400000
-G4WT17 > Begin processing for Run: 0, History: 6500000
-G4WT26 > Begin processing for Run: 0, History: 6600000
-G4WT16 > Begin processing for Run: 0, History: 6700000
-G4WT25 > Begin processing for Run: 0, History: 6800000
-G4WT38 > Begin processing for Run: 0, History: 6900000
-G4WT2 > Begin processing for Run: 0, History: 7000000
-G4WT56 > Begin processing for Run: 0, History: 7100000
-G4WT41 > Begin processing for Run: 0, History: 7200000
-G4WT55 > Begin processing for Run: 0, History: 7300000
-G4WT58 > Begin processing for Run: 0, History: 7400000
-G4WT5 > Begin processing for Run: 0, History: 7500000
-G4WT7 > Begin processing for Run: 0, History: 7600000
-G4WT8 > Begin processing for Run: 0, History: 7700000
-G4WT38 > Begin processing for Run: 0, History: 7800000
-G4WT32 > Begin processing for Run: 0, History: 7900000
-G4WT59 > Begin processing for Run: 0, History: 8000000
-G4WT43 > Begin processing for Run: 0, History: 8100000
-G4WT49 > Begin processing for Run: 0, History: 8200000
-G4WT24 > Begin processing for Run: 0, History: 8300000
-G4WT23 > Begin processing for Run: 0, History: 8400000
-G4WT39 > Begin processing for Run: 0, History: 8500000
-G4WT10 > Begin processing for Run: 0, History: 8600000
-G4WT1 > Begin processing for Run: 0, History: 8700000
-G4WT13 > Begin processing for Run: 0, History: 8800000
-G4WT51 > Begin processing for Run: 0, History: 8900000
-G4WT17 > Begin processing for Run: 0, History: 9000000
-G4WT4 > Begin processing for Run: 0, History: 9100000
-G4WT58 > Begin processing for Run: 0, History: 9200000
-G4WT10 > Begin processing for Run: 0, History: 9300000
-G4WT10 > Begin processing for Run: 0, History: 9400000
-G4WT44 > Begin processing for Run: 0, History: 9500000
-G4WT29 > Begin processing for Run: 0, History: 9600000
-G4WT47 > Begin processing for Run: 0, History: 9700000
-G4WT0 > Begin processing for Run: 0, History: 9800000
-G4WT15 > Begin processing for Run: 0, History: 9900000
+G4WT54 > Begin processing for Run: 0, History: 0
+G4WT8 > Begin processing for Run: 0, History: 100000
+G4WT16 > Begin processing for Run: 0, History: 200000
+G4WT16 > Begin processing for Run: 0, History: 300000
+G4WT50 > Begin processing for Run: 0, History: 400000
+G4WT25 > Begin processing for Run: 0, History: 500000
+G4WT8 > Begin processing for Run: 0, History: 600000
+G4WT5 > Begin processing for Run: 0, History: 700000
+G4WT33 > Begin processing for Run: 0, History: 800000
+G4WT17 > Begin processing for Run: 0, History: 900000
+G4WT5 > Begin processing for Run: 0, History: 1000000
+G4WT7 > Begin processing for Run: 0, History: 1100000
+G4WT43 > Begin processing for Run: 0, History: 1200000
+G4WT56 > Begin processing for Run: 0, History: 1300000
+G4WT58 > Begin processing for Run: 0, History: 1400000
+G4WT63 > Begin processing for Run: 0, History: 1500000
+G4WT49 > Begin processing for Run: 0, History: 1600000
+G4WT22 > Begin processing for Run: 0, History: 1700000
+G4WT58 > Begin processing for Run: 0, History: 1800000
+G4WT59 > Begin processing for Run: 0, History: 1900000
+G4WT41 > Begin processing for Run: 0, History: 2000000
+G4WT20 > Begin processing for Run: 0, History: 2100000
+G4WT9 > Begin processing for Run: 0, History: 2200000
+G4WT26 > Begin processing for Run: 0, History: 2300000
+G4WT46 > Begin processing for Run: 0, History: 2400000
+G4WT61 > Begin processing for Run: 0, History: 2500000
+G4WT33 > Begin processing for Run: 0, History: 2600000
+G4WT45 > Begin processing for Run: 0, History: 2700000
+G4WT18 > Begin processing for Run: 0, History: 2800000
+G4WT47 > Begin processing for Run: 0, History: 2900000
+G4WT38 > Begin processing for Run: 0, History: 3000000
+G4WT56 > Begin processing for Run: 0, History: 3100000
+G4WT30 > Begin processing for Run: 0, History: 3200000
+G4WT38 > Begin processing for Run: 0, History: 3300000
+G4WT43 > Begin processing for Run: 0, History: 3400000
+G4WT26 > Begin processing for Run: 0, History: 3500000
+G4WT34 > Begin processing for Run: 0, History: 3600000
+G4WT14 > Begin processing for Run: 0, History: 3700000
+G4WT22 > Begin processing for Run: 0, History: 3800000
+G4WT50 > Begin processing for Run: 0, History: 3900000
+G4WT62 > Begin processing for Run: 0, History: 4000000
+G4WT58 > Begin processing for Run: 0, History: 4100000
+G4WT61 > Begin processing for Run: 0, History: 4200000
+G4WT44 > Begin processing for Run: 0, History: 4300000
+G4WT37 > Begin processing for Run: 0, History: 4400000
+G4WT10 > Begin processing for Run: 0, History: 4500000
+G4WT63 > Begin processing for Run: 0, History: 4600000
+G4WT15 > Begin processing for Run: 0, History: 4700000
+G4WT18 > Begin processing for Run: 0, History: 4800000
+G4WT40 > Begin processing for Run: 0, History: 4900000
+G4WT45 > Begin processing for Run: 0, History: 5000000
+G4WT2 > Begin processing for Run: 0, History: 5100000
+G4WT63 > Begin processing for Run: 0, History: 5200000
+G4WT2 > Begin processing for Run: 0, History: 5300000
+G4WT44 > Begin processing for Run: 0, History: 5400000
+G4WT21 > Begin processing for Run: 0, History: 5500000
+G4WT8 > Begin processing for Run: 0, History: 5600000
+G4WT29 > Begin processing for Run: 0, History: 5700000
+G4WT44 > Begin processing for Run: 0, History: 5800000
+G4WT42 > Begin processing for Run: 0, History: 5900000
+G4WT5 > Begin processing for Run: 0, History: 6000000
+G4WT24 > Begin processing for Run: 0, History: 6100000
+G4WT21 > Begin processing for Run: 0, History: 6200000
+G4WT35 > Begin processing for Run: 0, History: 6300000
+G4WT54 > Begin processing for Run: 0, History: 6400000
+G4WT61 > Begin processing for Run: 0, History: 6500000
+G4WT61 > Begin processing for Run: 0, History: 6600000
+G4WT6 > Begin processing for Run: 0, History: 6700000
+G4WT49 > Begin processing for Run: 0, History: 6800000
+G4WT27 > Begin processing for Run: 0, History: 6900000
+G4WT62 > Begin processing for Run: 0, History: 7000000
+G4WT50 > Begin processing for Run: 0, History: 7100000
+G4WT48 > Begin processing for Run: 0, History: 7200000
+G4WT58 > Begin processing for Run: 0, History: 7300000
+G4WT3 > Begin processing for Run: 0, History: 7400000
+G4WT1 > Begin processing for Run: 0, History: 7500000
+G4WT27 > Begin processing for Run: 0, History: 7600000
+G4WT45 > Begin processing for Run: 0, History: 7700000
+G4WT52 > Begin processing for Run: 0, History: 7800000
+G4WT39 > Begin processing for Run: 0, History: 7900000
+G4WT19 > Begin processing for Run: 0, History: 8000000
+G4WT5 > Begin processing for Run: 0, History: 8100000
+G4WT13 > Begin processing for Run: 0, History: 8200000
+G4WT13 > Begin processing for Run: 0, History: 8300000
+G4WT1 > Begin processing for Run: 0, History: 8400000
+G4WT34 > Begin processing for Run: 0, History: 8500000
+G4WT16 > Begin processing for Run: 0, History: 8600000
+G4WT49 > Begin processing for Run: 0, History: 8700000
+G4WT34 > Begin processing for Run: 0, History: 8800000
+G4WT56 > Begin processing for Run: 0, History: 8900000
+G4WT62 > Begin processing for Run: 0, History: 9000000
+G4WT40 > Begin processing for Run: 0, History: 9100000
+G4WT47 > Begin processing for Run: 0, History: 9200000
+G4WT9 > Begin processing for Run: 0, History: 9300000
+G4WT27 > Begin processing for Run: 0, History: 9400000
+G4WT33 > Begin processing for Run: 0, History: 9500000
+G4WT62 > Begin processing for Run: 0, History: 9600000
+G4WT8 > Begin processing for Run: 0, History: 9700000
+G4WT16 > Begin processing for Run: 0, History: 9800000
+G4WT7 > Begin processing for Run: 0, History: 9900000
 
 TOPAS run sequence complete.
 Particle source Beam: Total number of histories: 10000000
@@ -945,9 +945,9 @@ rindom-scorer has now written output!
 
 Reading: output/front1.phsp
 
-Reading: output/front2.phsp
-
 Reading: output/front3.phsp
+
+Reading: output/front2.phsp
 
 Reading: output/front4.phsp
 
@@ -1814,106 +1814,106 @@ Store e- internal conversion data                   0
 Correlated gamma emission flag                      0
 Max 2J for sampling of angular correlations         10
 =======================================================================
-G4WT51 > Begin processing for Run: 0, History: 0
-G4WT2 > Begin processing for Run: 0, History: 100000
-G4WT44 > Begin processing for Run: 0, History: 200000
-G4WT53 > Begin processing for Run: 0, History: 300000
-G4WT4 > Begin processing for Run: 0, History: 400000
-G4WT30 > Begin processing for Run: 0, History: 500000
-G4WT37 > Begin processing for Run: 0, History: 600000
-G4WT32 > Begin processing for Run: 0, History: 700000
-G4WT28 > Begin processing for Run: 0, History: 800000
-G4WT53 > Begin processing for Run: 0, History: 900000
-G4WT12 > Begin processing for Run: 0, History: 1000000
-G4WT62 > Begin processing for Run: 0, History: 1100000
-G4WT52 > Begin processing for Run: 0, History: 1200000
-G4WT7 > Begin processing for Run: 0, History: 1300000
-G4WT58 > Begin processing for Run: 0, History: 1400000
-G4WT33 > Begin processing for Run: 0, History: 1500000
-G4WT27 > Begin processing for Run: 0, History: 1600000
-G4WT45 > Begin processing for Run: 0, History: 1700000
-G4WT23 > Begin processing for Run: 0, History: 1800000
-G4WT6 > Begin processing for Run: 0, History: 1900000
-G4WT0 > Begin processing for Run: 0, History: 2000000
-G4WT54 > Begin processing for Run: 0, History: 2100000
-G4WT10 > Begin processing for Run: 0, History: 2200000
-G4WT44 > Begin processing for Run: 0, History: 2300000
-G4WT47 > Begin processing for Run: 0, History: 2400000
-G4WT15 > Begin processing for Run: 0, History: 2500000
-G4WT31 > Begin processing for Run: 0, History: 2600000
-G4WT2 > Begin processing for Run: 0, History: 2700000
-G4WT28 > Begin processing for Run: 0, History: 2800000
-G4WT6 > Begin processing for Run: 0, History: 2900000
-G4WT22 > Begin processing for Run: 0, History: 3000000
-G4WT43 > Begin processing for Run: 0, History: 3100000
-G4WT36 > Begin processing for Run: 0, History: 3200000
-G4WT60 > Begin processing for Run: 0, History: 3300000
+G4WT58 > Begin processing for Run: 0, History: 0
+G4WT17 > Begin processing for Run: 0, History: 100000
+G4WT8 > Begin processing for Run: 0, History: 200000
+G4WT33 > Begin processing for Run: 0, History: 300000
+G4WT8 > Begin processing for Run: 0, History: 400000
+G4WT7 > Begin processing for Run: 0, History: 500000
+G4WT7 > Begin processing for Run: 0, History: 600000
+G4WT0 > Begin processing for Run: 0, History: 700000
+G4WT23 > Begin processing for Run: 0, History: 800000
+G4WT20 > Begin processing for Run: 0, History: 900000
+G4WT54 > Begin processing for Run: 0, History: 1000000
+G4WT13 > Begin processing for Run: 0, History: 1100000
+G4WT43 > Begin processing for Run: 0, History: 1200000
+G4WT57 > Begin processing for Run: 0, History: 1300000
+G4WT29 > Begin processing for Run: 0, History: 1400000
+G4WT45 > Begin processing for Run: 0, History: 1500000
+G4WT31 > Begin processing for Run: 0, History: 1600000
+G4WT1 > Begin processing for Run: 0, History: 1700000
+G4WT51 > Begin processing for Run: 0, History: 1800000
+G4WT36 > Begin processing for Run: 0, History: 1900000
+G4WT21 > Begin processing for Run: 0, History: 2000000
+G4WT0 > Begin processing for Run: 0, History: 2100000
+G4WT41 > Begin processing for Run: 0, History: 2200000
+G4WT43 > Begin processing for Run: 0, History: 2300000
+G4WT1 > Begin processing for Run: 0, History: 2400000
+G4WT39 > Begin processing for Run: 0, History: 2500000
+G4WT22 > Begin processing for Run: 0, History: 2600000
+G4WT24 > Begin processing for Run: 0, History: 2700000
+G4WT51 > Begin processing for Run: 0, History: 2800000
+G4WT5 > Begin processing for Run: 0, History: 2900000
+G4WT16 > Begin processing for Run: 0, History: 3000000
+G4WT23 > Begin processing for Run: 0, History: 3100000
+G4WT33 > Begin processing for Run: 0, History: 3200000
+G4WT50 > Begin processing for Run: 0, History: 3300000
 G4WT27 > Begin processing for Run: 0, History: 3400000
-G4WT31 > Begin processing for Run: 0, History: 3500000
-G4WT19 > Begin processing for Run: 0, History: 3600000
-G4WT57 > Begin processing for Run: 0, History: 3700000
-G4WT9 > Begin processing for Run: 0, History: 3800000
-G4WT0 > Begin processing for Run: 0, History: 3900000
-G4WT43 > Begin processing for Run: 0, History: 4000000
-G4WT55 > Begin processing for Run: 0, History: 4100000
-G4WT41 > Begin processing for Run: 0, History: 4200000
-G4WT41 > Begin processing for Run: 0, History: 4300000
-G4WT47 > Begin processing for Run: 0, History: 4400000
-G4WT34 > Begin processing for Run: 0, History: 4500000
-G4WT3 > Begin processing for Run: 0, History: 4600000
-G4WT49 > Begin processing for Run: 0, History: 4700000
-G4WT31 > Begin processing for Run: 0, History: 4800000
-G4WT6 > Begin processing for Run: 0, History: 4900000
-G4WT5 > Begin processing for Run: 0, History: 5000000
-G4WT55 > Begin processing for Run: 0, History: 5100000
-G4WT0 > Begin processing for Run: 0, History: 5200000
-G4WT39 > Begin processing for Run: 0, History: 5300000
-G4WT33 > Begin processing for Run: 0, History: 5400000
-G4WT9 > Begin processing for Run: 0, History: 5500000
-G4WT24 > Begin processing for Run: 0, History: 5600000
-G4WT8 > Begin processing for Run: 0, History: 5700000
-G4WT40 > Begin processing for Run: 0, History: 5800000
-G4WT45 > Begin processing for Run: 0, History: 5900000
-G4WT3 > Begin processing for Run: 0, History: 6000000
-G4WT22 > Begin processing for Run: 0, History: 6100000
-G4WT19 > Begin processing for Run: 0, History: 6200000
-G4WT52 > Begin processing for Run: 0, History: 6300000
-G4WT6 > Begin processing for Run: 0, History: 6400000
-G4WT25 > Begin processing for Run: 0, History: 6500000
-G4WT33 > Begin processing for Run: 0, History: 6600000
-G4WT62 > Begin processing for Run: 0, History: 6700000
-G4WT29 > Begin processing for Run: 0, History: 6800000
-G4WT33 > Begin processing for Run: 0, History: 6900000
-G4WT63 > Begin processing for Run: 0, History: 7000000
-G4WT9 > Begin processing for Run: 0, History: 7100000
-G4WT58 > Begin processing for Run: 0, History: 7200000
-G4WT23 > Begin processing for Run: 0, History: 7300000
-G4WT22 > Begin processing for Run: 0, History: 7400000
-G4WT3 > Begin processing for Run: 0, History: 7500000
-G4WT63 > Begin processing for Run: 0, History: 7600000
-G4WT15 > Begin processing for Run: 0, History: 7700000
-G4WT5 > Begin processing for Run: 0, History: 7800000
-G4WT62 > Begin processing for Run: 0, History: 7900000
-G4WT45 > Begin processing for Run: 0, History: 8000000
-G4WT31 > Begin processing for Run: 0, History: 8100000
-G4WT8 > Begin processing for Run: 0, History: 8200000
-G4WT13 > Begin processing for Run: 0, History: 8300000
-G4WT51 > Begin processing for Run: 0, History: 8400000
-G4WT20 > Begin processing for Run: 0, History: 8500000
-G4WT22 > Begin processing for Run: 0, History: 8600000
-G4WT36 > Begin processing for Run: 0, History: 8700000
-G4WT55 > Begin processing for Run: 0, History: 8800000
-G4WT49 > Begin processing for Run: 0, History: 8900000
-G4WT17 > Begin processing for Run: 0, History: 9000000
-G4WT46 > Begin processing for Run: 0, History: 9100000
-G4WT17 > Begin processing for Run: 0, History: 9200000
-G4WT22 > Begin processing for Run: 0, History: 9300000
-G4WT41 > Begin processing for Run: 0, History: 9400000
-G4WT39 > Begin processing for Run: 0, History: 9500000
-G4WT39 > Begin processing for Run: 0, History: 9600000
-G4WT29 > Begin processing for Run: 0, History: 9700000
-G4WT29 > Begin processing for Run: 0, History: 9800000
-G4WT51 > Begin processing for Run: 0, History: 9900000
+G4WT51 > Begin processing for Run: 0, History: 3500000
+G4WT24 > Begin processing for Run: 0, History: 3600000
+G4WT3 > Begin processing for Run: 0, History: 3700000
+G4WT44 > Begin processing for Run: 0, History: 3800000
+G4WT54 > Begin processing for Run: 0, History: 3900000
+G4WT34 > Begin processing for Run: 0, History: 4000000
+G4WT7 > Begin processing for Run: 0, History: 4100000
+G4WT63 > Begin processing for Run: 0, History: 4200000
+G4WT63 > Begin processing for Run: 0, History: 4300000
+G4WT54 > Begin processing for Run: 0, History: 4400000
+G4WT23 > Begin processing for Run: 0, History: 4500000
+G4WT49 > Begin processing for Run: 0, History: 4600000
+G4WT29 > Begin processing for Run: 0, History: 4700000
+G4WT44 > Begin processing for Run: 0, History: 4800000
+G4WT26 > Begin processing for Run: 0, History: 4900000
+G4WT10 > Begin processing for Run: 0, History: 5000000
+G4WT46 > Begin processing for Run: 0, History: 5100000
+G4WT9 > Begin processing for Run: 0, History: 5200000
+G4WT12 > Begin processing for Run: 0, History: 5300000
+G4WT63 > Begin processing for Run: 0, History: 5400000
+G4WT18 > Begin processing for Run: 0, History: 5500000
+G4WT41 > Begin processing for Run: 0, History: 5600000
+G4WT0 > Begin processing for Run: 0, History: 5700000
+G4WT48 > Begin processing for Run: 0, History: 5800000
+G4WT8 > Begin processing for Run: 0, History: 5900000
+G4WT50 > Begin processing for Run: 0, History: 6000000
+G4WT0 > Begin processing for Run: 0, History: 6100000
+G4WT38 > Begin processing for Run: 0, History: 6200000
+G4WT61 > Begin processing for Run: 0, History: 6300000
+G4WT7 > Begin processing for Run: 0, History: 6400000
+G4WT50 > Begin processing for Run: 0, History: 6500000
+G4WT32 > Begin processing for Run: 0, History: 6600000
+G4WT13 > Begin processing for Run: 0, History: 6700000
+G4WT50 > Begin processing for Run: 0, History: 6800000
+G4WT22 > Begin processing for Run: 0, History: 6900000
+G4WT58 > Begin processing for Run: 0, History: 7000000
+G4WT20 > Begin processing for Run: 0, History: 7100000
+G4WT28 > Begin processing for Run: 0, History: 7200000
+G4WT28 > Begin processing for Run: 0, History: 7300000
+G4WT15 > Begin processing for Run: 0, History: 7400000
+G4WT52 > Begin processing for Run: 0, History: 7500000
+G4WT47 > Begin processing for Run: 0, History: 7600000
+G4WT57 > Begin processing for Run: 0, History: 7700000
+G4WT48 > Begin processing for Run: 0, History: 7800000
+G4WT26 > Begin processing for Run: 0, History: 7900000
+G4WT62 > Begin processing for Run: 0, History: 8000000
+G4WT21 > Begin processing for Run: 0, History: 8100000
+G4WT12 > Begin processing for Run: 0, History: 8200000
+G4WT35 > Begin processing for Run: 0, History: 8300000
+G4WT54 > Begin processing for Run: 0, History: 8400000
+G4WT14 > Begin processing for Run: 0, History: 8500000
+G4WT9 > Begin processing for Run: 0, History: 8600000
+G4WT29 > Begin processing for Run: 0, History: 8700000
+G4WT30 > Begin processing for Run: 0, History: 8800000
+G4WT29 > Begin processing for Run: 0, History: 8900000
+G4WT43 > Begin processing for Run: 0, History: 9000000
+G4WT39 > Begin processing for Run: 0, History: 9100000
+G4WT49 > Begin processing for Run: 0, History: 9200000
+G4WT4 > Begin processing for Run: 0, History: 9300000
+G4WT17 > Begin processing for Run: 0, History: 9400000
+G4WT30 > Begin processing for Run: 0, History: 9500000
+G4WT51 > Begin processing for Run: 0, History: 9600000
+G4WT12 > Begin processing for Run: 0, History: 9700000
+G4WT26 > Begin processing for Run: 0, History: 9800000
+G4WT40 > Begin processing for Run: 0, History: 9900000
 
 TOPAS run sequence complete.
 Particle source Beam: Total number of histories: 10000000
@@ -1931,11 +1931,9 @@ Reading: output/front1.phsp
 
 Reading: output/front3.phsp
 
-Reading: output/front2.phsp
-
 Reading: output/front4.phsp
 
-Reading: output/back1.phsp
+Reading: output/front2.phsp
 
 Reading: output/back1.phsp
 
@@ -1943,13 +1941,15 @@ Reading: output/back1.phsp
 
 Reading: output/back1.phsp
 
+Reading: output/back1.phsp
+
+Reading: 
 Reading: output/back2.phsp
 
 Reading: output/back2.phsp
 
 Reading: output/back2.phsp
-
-Reading: output/back2.phsp
+output/back2.phsp
 
 Reading: output/back3.phsp
 
@@ -2799,105 +2799,105 @@ Correlated gamma emission flag                      0
 Max 2J for sampling of angular correlations         10
 =======================================================================
 G4WT52 > Begin processing for Run: 0, History: 0
-G4WT40 > Begin processing for Run: 0, History: 100000
-G4WT13 > Begin processing for Run: 0, History: 200000
-G4WT55 > Begin processing for Run: 0, History: 300000
-G4WT16 > Begin processing for Run: 0, History: 400000
-G4WT59 > Begin processing for Run: 0, History: 500000
-G4WT0 > Begin processing for Run: 0, History: 600000
-G4WT44 > Begin processing for Run: 0, History: 700000
-G4WT44 > Begin processing for Run: 0, History: 800000
-G4WT51 > Begin processing for Run: 0, History: 900000
-G4WT1 > Begin processing for Run: 0, History: 1000000
-G4WT43 > Begin processing for Run: 0, History: 1100000
-G4WT31 > Begin processing for Run: 0, History: 1200000
+G4WT7 > Begin processing for Run: 0, History: 100000
+G4WT3 > Begin processing for Run: 0, History: 200000
+G4WT17 > Begin processing for Run: 0, History: 300000
+G4WT32 > Begin processing for Run: 0, History: 400000
+G4WT16 > Begin processing for Run: 0, History: 500000
+G4WT34 > Begin processing for Run: 0, History: 600000
+G4WT41 > Begin processing for Run: 0, History: 700000
+G4WT49 > Begin processing for Run: 0, History: 800000
+G4WT26 > Begin processing for Run: 0, History: 900000
+G4WT24 > Begin processing for Run: 0, History: 1000000
+G4WT25 > Begin processing for Run: 0, History: 1100000
+G4WT21 > Begin processing for Run: 0, History: 1200000
 G4WT12 > Begin processing for Run: 0, History: 1300000
-G4WT31 > Begin processing for Run: 0, History: 1400000
-G4WT12 > Begin processing for Run: 0, History: 1500000
-G4WT46 > Begin processing for Run: 0, History: 1600000
-G4WT55 > Begin processing for Run: 0, History: 1700000
-G4WT23 > Begin processing for Run: 0, History: 1800000
-G4WT55 > Begin processing for Run: 0, History: 1900000
-G4WT0 > Begin processing for Run: 0, History: 2000000
-G4WT10 > Begin processing for Run: 0, History: 2100000
-G4WT39 > Begin processing for Run: 0, History: 2200000
-G4WT32 > Begin processing for Run: 0, History: 2300000
-G4WT4 > Begin processing for Run: 0, History: 2400000
-G4WT28 > Begin processing for Run: 0, History: 2500000
-G4WT41 > Begin processing for Run: 0, History: 2600000
-G4WT46 > Begin processing for Run: 0, History: 2700000
-G4WT49 > Begin processing for Run: 0, History: 2800000
-G4WT53 > Begin processing for Run: 0, History: 2900000
-G4WT55 > Begin processing for Run: 0, History: 3000000
-G4WT49 > Begin processing for Run: 0, History: 3100000
-G4WT3 > Begin processing for Run: 0, History: 3200000
-G4WT22 > Begin processing for Run: 0, History: 3300000
-G4WT5 > Begin processing for Run: 0, History: 3400000
-G4WT30 > Begin processing for Run: 0, History: 3500000
-G4WT52 > Begin processing for Run: 0, History: 3600000
-G4WT63 > Begin processing for Run: 0, History: 3700000
-G4WT20 > Begin processing for Run: 0, History: 3800000
-G4WT33 > Begin processing for Run: 0, History: 3900000
-G4WT38 > Begin processing for Run: 0, History: 4000000
-G4WT24 > Begin processing for Run: 0, History: 4100000
-G4WT42 > Begin processing for Run: 0, History: 4200000
-G4WT19 > Begin processing for Run: 0, History: 4300000
-G4WT49 > Begin processing for Run: 0, History: 4400000
-G4WT46 > Begin processing for Run: 0, History: 4500000
-G4WT38 > Begin processing for Run: 0, History: 4600000
-G4WT4 > Begin processing for Run: 0, History: 4700000
-G4WT36 > Begin processing for Run: 0, History: 4800000
-G4WT40 > Begin processing for Run: 0, History: 4900000
-G4WT8 > Begin processing for Run: 0, History: 5000000
-G4WT61 > Begin processing for Run: 0, History: 5100000
-G4WT1 > Begin processing for Run: 0, History: 5200000
-G4WT36 > Begin processing for Run: 0, History: 5300000
-G4WT4 > Begin processing for Run: 0, History: 5400000
-G4WT47 > Begin processing for Run: 0, History: 5500000
-G4WT7 > Begin processing for Run: 0, History: 5600000
-G4WT32 > Begin processing for Run: 0, History: 5700000
-G4WT43 > Begin processing for Run: 0, History: 5800000
-G4WT46 > Begin processing for Run: 0, History: 5900000
-G4WT4 > Begin processing for Run: 0, History: 6000000
-G4WT63 > Begin processing for Run: 0, History: 6100000
-G4WT3 > Begin processing for Run: 0, History: 6200000
-G4WT51 > Begin processing for Run: 0, History: 6300000
-G4WT52 > Begin processing for Run: 0, History: 6400000
-G4WT24 > Begin processing for Run: 0, History: 6500000
-G4WT14 > Begin processing for Run: 0, History: 6600000
-G4WT5 > Begin processing for Run: 0, History: 6700000
-G4WT5 > Begin processing for Run: 0, History: 6800000
-G4WT14 > Begin processing for Run: 0, History: 6900000
-G4WT19 > Begin processing for Run: 0, History: 7000000
-G4WT50 > Begin processing for Run: 0, History: 7100000
-G4WT2 > Begin processing for Run: 0, History: 7200000
-G4WT55 > Begin processing for Run: 0, History: 7300000
-G4WT47 > Begin processing for Run: 0, History: 7400000
-G4WT43 > Begin processing for Run: 0, History: 7500000
-G4WT2 > Begin processing for Run: 0, History: 7600000
-G4WT57 > Begin processing for Run: 0, History: 7700000
-G4WT26 > Begin processing for Run: 0, History: 7800000
-G4WT16 > Begin processing for Run: 0, History: 7900000
-G4WT6 > Begin processing for Run: 0, History: 8000000
-G4WT37 > Begin processing for Run: 0, History: 8100000
-G4WT58 > Begin processing for Run: 0, History: 8200000
-G4WT49 > Begin processing for Run: 0, History: 8300000
-G4WT17 > Begin processing for Run: 0, History: 8400000
+G4WT39 > Begin processing for Run: 0, History: 1400000
+G4WT30 > Begin processing for Run: 0, History: 1500000
+G4WT9 > Begin processing for Run: 0, History: 1600000
+G4WT46 > Begin processing for Run: 0, History: 1700000
+G4WT33 > Begin processing for Run: 0, History: 1800000
+G4WT29 > Begin processing for Run: 0, History: 1900000
+G4WT7 > Begin processing for Run: 0, History: 2000000
+G4WT57 > Begin processing for Run: 0, History: 2100000
+G4WT44 > Begin processing for Run: 0, History: 2200000
+G4WT59 > Begin processing for Run: 0, History: 2300000
+G4WT24 > Begin processing for Run: 0, History: 2400000
+G4WT31 > Begin processing for Run: 0, History: 2500000
+G4WT16 > Begin processing for Run: 0, History: 2600000
+G4WT13 > Begin processing for Run: 0, History: 2700000
+G4WT3 > Begin processing for Run: 0, History: 2800000
+G4WT63 > Begin processing for Run: 0, History: 2900000
+G4WT44 > Begin processing for Run: 0, History: 3000000
+G4WT0 > Begin processing for Run: 0, History: 3100000
+G4WT28 > Begin processing for Run: 0, History: 3200000
+G4WT42 > Begin processing for Run: 0, History: 3300000
+G4WT41 > Begin processing for Run: 0, History: 3400000
+G4WT17 > Begin processing for Run: 0, History: 3500000
+G4WT56 > Begin processing for Run: 0, History: 3600000
+G4WT8 > Begin processing for Run: 0, History: 3700000
+G4WT29 > Begin processing for Run: 0, History: 3800000
+G4WT43 > Begin processing for Run: 0, History: 3900000
+G4WT35 > Begin processing for Run: 0, History: 4000000
+G4WT53 > Begin processing for Run: 0, History: 4100000
+G4WT10 > Begin processing for Run: 0, History: 4200000
+G4WT59 > Begin processing for Run: 0, History: 4300000
+G4WT63 > Begin processing for Run: 0, History: 4400000
+G4WT13 > Begin processing for Run: 0, History: 4500000
+G4WT16 > Begin processing for Run: 0, History: 4600000
+G4WT52 > Begin processing for Run: 0, History: 4700000
+G4WT41 > Begin processing for Run: 0, History: 4800000
+G4WT36 > Begin processing for Run: 0, History: 4900000
+G4WT23 > Begin processing for Run: 0, History: 5000000
+G4WT46 > Begin processing for Run: 0, History: 5100000
+G4WT11 > Begin processing for Run: 0, History: 5200000
+G4WT5 > Begin processing for Run: 0, History: 5300000
+G4WT2 > Begin processing for Run: 0, History: 5400000
+G4WT26 > Begin processing for Run: 0, History: 5500000
+G4WT26 > Begin processing for Run: 0, History: 5600000
+G4WT5 > Begin processing for Run: 0, History: 5700000
+G4WT9 > Begin processing for Run: 0, History: 5800000
+G4WT61 > Begin processing for Run: 0, History: 5900000
+G4WT39 > Begin processing for Run: 0, History: 6000000
+G4WT28 > Begin processing for Run: 0, History: 6100000
+G4WT1 > Begin processing for Run: 0, History: 6200000
+G4WT21 > Begin processing for Run: 0, History: 6300000
+G4WT0 > Begin processing for Run: 0, History: 6400000
+G4WT30 > Begin processing for Run: 0, History: 6500000
+G4WT35 > Begin processing for Run: 0, History: 6600000
+G4WT59 > Begin processing for Run: 0, History: 6700000
+G4WT20 > Begin processing for Run: 0, History: 6800000
+G4WT51 > Begin processing for Run: 0, History: 6900000
+G4WT16 > Begin processing for Run: 0, History: 7000000
+G4WT48 > Begin processing for Run: 0, History: 7100000
+G4WT60 > Begin processing for Run: 0, History: 7200000
+G4WT4 > Begin processing for Run: 0, History: 7300000
+G4WT5 > Begin processing for Run: 0, History: 7400000
+G4WT21 > Begin processing for Run: 0, History: 7500000
+G4WT22 > Begin processing for Run: 0, History: 7600000
+G4WT28 > Begin processing for Run: 0, History: 7700000
+G4WT53 > Begin processing for Run: 0, History: 7800000
+G4WT18 > Begin processing for Run: 0, History: 7900000
+G4WT18 > Begin processing for Run: 0, History: 8000000
+G4WT15 > Begin processing for Run: 0, History: 8100000
+G4WT45 > Begin processing for Run: 0, History: 8200000
+G4WT5 > Begin processing for Run: 0, History: 8300000
+G4WT31 > Begin processing for Run: 0, History: 8400000
 G4WT39 > Begin processing for Run: 0, History: 8500000
-G4WT15 > Begin processing for Run: 0, History: 8600000
-G4WT58 > Begin processing for Run: 0, History: 8700000
-G4WT18 > Begin processing for Run: 0, History: 8800000
-G4WT37 > Begin processing for Run: 0, History: 8900000
-G4WT50 > Begin processing for Run: 0, History: 9000000
-G4WT60 > Begin processing for Run: 0, History: 9100000
-G4WT29 > Begin processing for Run: 0, History: 9200000
-G4WT47 > Begin processing for Run: 0, History: 9300000
-G4WT8 > Begin processing for Run: 0, History: 9400000
-G4WT19 > Begin processing for Run: 0, History: 9500000
-G4WT38 > Begin processing for Run: 0, History: 9600000
-G4WT6 > Begin processing for Run: 0, History: 9700000
-G4WT25 > Begin processing for Run: 0, History: 9800000
-G4WT41 > Begin processing for Run: 0, History: 9900000
+G4WT1 > Begin processing for Run: 0, History: 8600000
+G4WT52 > Begin processing for Run: 0, History: 8700000
+G4WT40 > Begin processing for Run: 0, History: 8800000
+G4WT6 > Begin processing for Run: 0, History: 8900000
+G4WT36 > Begin processing for Run: 0, History: 9000000
+G4WT13 > Begin processing for Run: 0, History: 9100000
+G4WT5 > Begin processing for Run: 0, History: 9200000
+G4WT24 > Begin processing for Run: 0, History: 9300000
+G4WT27 > Begin processing for Run: 0, History: 9400000
+G4WT55 > Begin processing for Run: 0, History: 9500000
+G4WT55 > Begin processing for Run: 0, History: 9600000
+G4WT43 > Begin processing for Run: 0, History: 9700000
+G4WT18 > Begin processing for Run: 0, History: 9800000
+G4WT25 > Begin processing for Run: 0, History: 9900000
 
 TOPAS run sequence complete.
 Particle source Beam: Total number of histories: 10000000
@@ -2911,13 +2911,13 @@ rindom-scorer has now written output!
 rindom-scorer has now written output!
 rindom-scorer has now written output!
 
-Reading: output/front1.phsp
+Reading: 
+Reading: output/front3.phspoutput/front1.phsp
 
-Reading: output/front2.phsp
 
 Reading: output/front4.phsp
 
-Reading: output/front3.phsp
+Reading: output/front2.phsp
 
 Reading: output/back1.phsp
 
