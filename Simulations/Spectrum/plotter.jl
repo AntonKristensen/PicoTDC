@@ -64,3 +64,4 @@ ylabel!("Energy in second detector (MeV)")
 savefig("plots/SecondHeatmap.png")
 #display(fig4)
 
+println("Correct: ", length(incidents[frontevents .== backevents]), ", False: ", length(incidents[frontevents .!= backevents]))
