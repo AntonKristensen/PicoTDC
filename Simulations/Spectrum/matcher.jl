@@ -177,7 +177,7 @@ end
 
 
 
-incidentframe = detectorlooping(minimumenergy=1, addedtime=1e-7)
+incidentframe = detectorlooping(minimumenergy=1, addedtime=1e-8)
 #println(incidentframe)
 matchwriter(incidentframe)
 
