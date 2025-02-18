@@ -45,7 +45,7 @@ medi, spread = statisticing(incidents)
 
 fig2 = histogram(cincidents, bins = 0:1:300, color=:blue, label="Correct events", alpha=0.5)
 histogram!(fincidents, bins = 0:1:300, color=:red, label="False events", alpha=0.5)
-title!("Total energy spectrum, 1.5e6 n/cm²/s")
+title!("Total energy spectrum, 1.5e7 n/cm²/s")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.png")
