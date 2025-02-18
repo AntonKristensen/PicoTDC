@@ -20,6 +20,8 @@ backs = data[:,5]
 frontevents = data[:,6]
 backevents = data[:,7]
 
+cincidents = incidents[frontevents .== backevents]
+fincidents = incidents[frontevents .!= backevents]
 
 function statisticing(data)
     # Doing a slight bit of statistics
@@ -41,8 +43,8 @@ end
 medi, spread = statisticing(incidents)
 
 
-fig2 = histogram(incidents[incidents .< 300], bins = 100, label="No uncertainty", alpha=0.3)
-
+fig2 = histogram(cincidents[cincidents .< 300], bins = 100, color=:blue, label="Correct events", alpha=0.5)
+histogram!(fincidents[fincidents .< 300], bins = 100, color=:red, label="False events", alpha=0.5)
 title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
