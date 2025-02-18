@@ -16,6 +16,8 @@ println(start, ", ", interval, ", ", stop)
 
 energies = collect(start:interval:stop)
 
+println(energies)
+
 ##############
 medi=data[:,1]
 spread=data[:,2]
