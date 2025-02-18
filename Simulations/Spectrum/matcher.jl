@@ -111,10 +111,10 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
     back = geometry[.! geometry[:,end],:]  
 
     # Making a dataframe to store results
-    incidentframe = DataFrame(FrontIndex = Vector{Int}(), BackIndex = Vector{Int}(), Incidents = Vector{Vector{Float64}}(), FrontEnergy = Vector{Vector{Float64}}(), BackEnergy = Vector{Vector{Float64}}())
+    incidentframe = DataFrame(FrontIndex = Vector{Int}(), BackIndex = Vector{Int}(), Incidents = Vector{Vector{Float64}}(), FrontEnergy = Vector{Vector{Float64}}(), BackEnergy = Vector{Vector{Float64}}(), FrontG4Event = FrontEnergy = Vector{Vector{Int}}(), BackG4Event = FrontEnergy = Vector{Vector{Int}}())
     numberofpairs = length(front[:,end]) * length(back[:,end])
     defaultframe = copy(incidentframe)
-    push!(defaultframe, [0, 0, [], [], []])
+    push!(defaultframe, [0, 0, [], [], [], [], []])
     for n in 1:numberofpairs
         append!(incidentframe, defaultframe)
     end
@@ -147,9 +147,11 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     ############## Doing the time matching and energy calculation
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
-                    
+                    firstevents = first[matchings[:,1], 3]
+		    secondevents = second[matchings[:,2],3]
+
                     #push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
-                    incidentframe[(i-1)*4 + j, :] = [i,j, incidents, firsts, seconds]
+                    incidentframe[(i-1)*4 + j, :] = [i,j, incidents, firsts, seconds, firstevents, secondevents]
                 end
             end
         end
@@ -166,7 +168,7 @@ function matchwriter(dataframe; file = "output/matches.csv")
     for i in 1:length(dataframe[:,1])
         if length(dataframe[i,3]) > 0 # Don't write if there ain't no data
             for j in 1:length(dataframe[i,3])
-                write(matchfile, string(dataframe[i,3][j]) * ", " * string(dataframe[i,4][j]) * ", " * string(dataframe[i,5][j]) * ", " * string(dataframe[i,1]) *  ", " * string(dataframe[i,2]) * "\n")   
+                write(matchfile, string(dataframe[i,3][j]) * ", " * string(dataframe[i,4][j]) * ", " * string(dataframe[i,5][j]) * ", " * string(dataframe[i,1]) *  ", " * string(dataframe[i,2]) * ", " * string(dataframe[i,6][j]) * ", " * string(dataframe[i,7][j]) *  "\n")   
             end
         end
     end
@@ -176,21 +178,14 @@ end
 
 
 incidentframe = detectorlooping()
+#println(incidentframe)
 matchwriter(incidentframe)
 
-fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11)
-matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
+#fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11)
+#matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
 
-hunniuncertainframe = detectorlooping(timeuncertainty=1e-10)
-matchwriter(hunniuncertainframe, file="output/hunniuncertainmatches.csv")
-
-twohunniuncertainframe = detectorlooping(timeuncertainty=2e-10)
-matchwriter(twohunniuncertainframe, file="output/twohunniuncertainmatches.csv")
-
-treefiddiuncertainframe = detectorlooping(timeuncertainty=3.5e-10)
-matchwriter(treefiddiuncertainframe, file="output/treefiddiuncertainmatches.csv")
-
-
+#hunniuncertainframe = detectorlooping(timeuncertainty=1e-10)
+#matchwriter(hunniuncertainframe, file="output/hunniuncertainmatches.csv")
 
 
 
