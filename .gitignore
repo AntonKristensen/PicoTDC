@@ -1,5 +1,6 @@
 # Ignoring specific folders
 Electronics
+BeamTimes
 
 # Ignoring the data files
 *.header
