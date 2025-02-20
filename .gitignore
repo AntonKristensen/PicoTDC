@@ -4,6 +4,7 @@ Electronics
 # Ignoring the data files
 *.header
 *.phsp
+*.xml
 
 # Ignoring plots
 *.svg
