@@ -34,10 +34,17 @@ function statisticing(data)
 
     bound = min(lower,upper)
 
+<<<<<<< Updated upstream
     # ML fit, cutting data 2 sigma below and above the calculated mean
     fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
     gaussfit = fit_mle(Normal, fitdata)
     print(medi, " ", bound, " ", params(gaussfit), "\n")
+=======
+    # ML fit, cutting data 1 sigma below and above the calculated mean
+    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
+    gaussfit = fit_mle(Normal, fitdata)
+    print(medi, ", ", lower, ", ", upper, " ", params(gaussfit),"\n")
+>>>>>>> Stashed changes
     return params(gaussfit)
 end
 

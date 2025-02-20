@@ -1,0 +1,32 @@
+
+Efficiency estimates for two scintillators, number is ratio of neutron in to matched neutron event
+
+z diff 50, x diff 5 -> 1.9e-6
+z diff 10, x diff 1 -> 4.3e-5
+z diff 5, x diff 1 -> 1.6e-4
+z diff 2, x diff 2 -> 1.4e-4
+z diff 2, x diff 1 -> 5.6e-4
+
+
+
+
+
+
+Flux rate estimates from Villad's spallation setup, from pencil beam in the middle
+10cm from end: 1.02e-4 neutrons, 0.82e-4 gammas
+25cm from end: 0.32e-4 neutrons, 0.24e-4 gammas
+10cm from end: 0.60e-4 neutrons, 0.52e-4 gammas # 10cm off centerline
+
+
+Flux rate estimates from just putting in a big chunk of brass:
+10cm from end: 0.70e-4 neutrons, 0.34e-4 gammas
+
+
+
+
+
+
+
+
+
+

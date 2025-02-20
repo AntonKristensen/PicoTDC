@@ -33,6 +33,8 @@ ylabel!("Counts in bin")
 savefig("GammaEnergies.svg")
 display(fig1)
 
+others = data[:,8] .== 22 .&& data[:,8] .== 2112
+
 
 # Positions of the neutrons on 15cm x 15cm square at 1m distance roughly
 fig2 = histogram2d(data[neutrons,1], data[neutrons,2], bins=(50,50))
@@ -77,3 +79,11 @@ xlabel!("Energy (MeV)")
 ylabel!("Momentum direction away from center (radians)")
 savefig("DirectionEnergy.svg")
 display(fig5)
+
+
+println(length(data[neutrons,1]), " neutrons, ", length(data[gammas,1]), " gammas.")
+nx = data[neutrons,1]
+ny = data[neutrons,2]
+
+centisquare = abs.(data[neutrons,1]) .< 1 .&& abs.(data[neutrons,2]) .< 1
+println(sum(centisquare))
