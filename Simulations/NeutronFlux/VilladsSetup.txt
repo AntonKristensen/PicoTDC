@@ -29,7 +29,7 @@ s:So/Beam/BeamPositionCutoffShape = "Rectangle" # Rectangle or Ellipse (if Flat 
 d:So/Beam/BeamPositionCutoffX = 10. cm # X extent of position (if Flat or Gaussian)
 d:So/Beam/BeamPositionCutoffY = 10. cm # Y extent of position (if Flat or Gaussian)
 s:So/Beam/BeamAngularDistribution = "None" # None, Flat or Gaussian
-i:So/Beam/NumberOfHistoriesInRun = 100
+i:So/Beam/NumberOfHistoriesInRun = 1000000
 
 s:Ge/BeamPosition/Parent="World"
 s:Ge/BeamPosition/Type="Group"
@@ -98,6 +98,7 @@ d:Ge/SolidWater_Block/HLZ 		= 1.5 cm
 d:Ge/SolidWater_Block/MinusHLZ  = -1 * Ge/SolidWater_Block/HLZ cm
 d:Ge/SolidWater_Block/HLY 		= 15.0 cm
 s:Ge/SolidWater_Block/Color       = "blue"
+b:Ge/SolidWater_Block/Include		= "False" # option to disable the component
 
 s:Ge/TungstenPlate/Parent 		= "ExperimentSetup"
 s:Ge/TungstenPlate/Type   		= "TsBox"
@@ -140,12 +141,12 @@ s:Ge/PMMA_Stopper/Color         = "grey"
 s:Ge/Scorer/Parent 		= "World"
 s:Ge/Scorer/Type   		= "TsBox"
 s:Ge/Scorer/Material	    = "PMMA"
-d:Ge/Scorer/HLX 		    = 15 cm
-d:Ge/Scorer/HLY 		    = 15 cm
+d:Ge/Scorer/HLX 		    = 0.5 cm
+d:Ge/Scorer/HLY 		    = 0.5 cm
 d:Ge/Scorer/HLZ 		    = 0.01 mm
-d:Ge/Scorer/TransX		    = 0 cm
+d:Ge/Scorer/TransX		    = 5 cm
 d:Ge/Scorer/TransY		    = 0 cm
-d:Ge/Scorer/TransZ		    =  -99  cm
+d:Ge/Scorer/TransZ		    = -10  cm
 s:Ge/Scorer/Color          = "white"
 
 
@@ -172,9 +173,9 @@ i:Tf/Verbosity = 0
 # Graphics
 ########################################
 
-s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
-Ts/UseQt = "True" #This one makes user interface
-b:Ts/PauseBeforeQuit = "True"
+#s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
+#Ts/UseQt = "True" #This one makes user interface
+#b:Ts/PauseBeforeQuit = "True"
 
 # Colouring neutrons the way I like it
 s:Gr/ViewA/ColorBy = "ParticleType"
