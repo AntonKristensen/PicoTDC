@@ -175,13 +175,13 @@ end
 
 
 
-incidentframe = detectorlooping(minimumenergy=10, addedtime = 1e-9)
+incidentframe = detectorlooping(minimumenergy=10, addedtime = 1e-6)
 matchwriter(incidentframe)
 
-fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11, minimumenergy=10, addedtime = 1e-9)
+fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11, minimumenergy=10, addedtime = 1e-6)
 matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
 
-hunniuncertainframe = detectorlooping(timeuncertainty=1e-10, minimumenergy=10, addedtime = 1e-9)
+hunniuncertainframe = detectorlooping(timeuncertainty=1e-10, minimumenergy=10, addedtime = 1e-6)
 matchwriter(hunniuncertainframe, file="output/hunniuncertainmatches.csv")
 
 
