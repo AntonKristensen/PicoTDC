@@ -91,16 +91,16 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 759707825
+i:Ts/Seed = 1410478054
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamEnergy               = 100 MeV 
  
-dc:So/Beam/BeamPositionCutoffX      = 0.003 m
-dc:So/Beam/BeamPositionCutoffY      = 0.003 m
+dc:So/Beam/BeamPositionCutoffX      = 0.013000000000000001 m
+dc:So/Beam/BeamPositionCutoffY      = 0.013000000000000001 m
 
-d:Ge/World/HLX = 0.016 m
+d:Ge/World/HLX = 0.026000000000000002 m
 d:Ge/World/HLY = 0.026000000000000002 m
-d:Ge/World/HLZ = 0.026000000000000002 m
+d:Ge/World/HLZ = 0.266 m
 s:Ge/World/Material = "Vacuum"
 
 s:Ge/front1/Type     = "TsBox"
@@ -109,9 +109,9 @@ s:Ge/front1/Parent   = "World"
 d:Ge/front1/HLX      = 0.003 m
 d:Ge/front1/HLY      = 0.003 m
 d:Ge/front1/HLZ      = 0.003 m
-d:Ge/front1/TransX   = 0.0 m
-d:Ge/front1/TransY   = 0.0 m
-d:Ge/front1/TransZ   = 0.01 m
+d:Ge/front1/TransX   = 0.01 m
+d:Ge/front1/TransY   = 0.01 m
+d:Ge/front1/TransZ   = 0.25 m
 s:Sc/front1/Quantity                  = "rindom"
 s:Sc/front1/Component                 = "front1"
 s:Sc/front1/OutputType 		     = "ASCII"
@@ -125,9 +125,9 @@ s:Ge/back1/Parent   = "World"
 d:Ge/back1/HLX      = 0.003 m
 d:Ge/back1/HLY      = 0.003 m
 d:Ge/back1/HLZ      = 0.003 m
-d:Ge/back1/TransX   = 0.0 m
-d:Ge/back1/TransY   = 0.01 m
-d:Ge/back1/TransZ   = -0.01 m
+d:Ge/back1/TransX   = 0.01 m
+d:Ge/back1/TransY   = 0.0 m
+d:Ge/back1/TransZ   = -0.25 m
 s:Sc/back1/Quantity                  = "rindom"
 s:Sc/back1/Component                 = "back1"
 s:Sc/back1/OutputType 		     = "ASCII"
