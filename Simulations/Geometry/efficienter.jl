@@ -40,32 +40,6 @@ function statisticing(data)
     return params(gaussfit)
 end
 
-medi, spread = statisticing(incidents)
-
-
-fig2 = histogram(cincidents, bins = 0:1:300, color=:blue, label="Correct events", alpha=0.5)
-histogram!(fincidents, bins = 0:1:300, color=:red, label="False events", alpha=0.5)
-title!("Total energy spectrum, 1.5e5 n/cm²/s")
-xlabel!("Energy (MeV)")
-ylabel!("Counts")
-savefig("plots/TotalEnergies.png")
-#display(fig2)
-
-
-fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
-title!("Incident energy and first detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.svg")
-#display(fig3)
-
-fig4 = histogram2d(incidents[incidents .< 300], seconds[incidents .< 300], bins=(150, 150))
-title!("Incident energy and second detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.png")
-#display(fig4)
-
 
 println("Correct: ", length(incidents[frontevents .== backevents]), ", False: ", length(incidents[frontevents .!= backevents]))
 
@@ -79,7 +53,11 @@ frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
 correct = length(incidents[frontevents .== backevents])
 fake =  length(incidents[frontevents .!= backevents])
-flux = parse(Float64, ARGS[1]) * parse(Float64, ARGS[2]) / (parse(Float64, frontmaxx) * parse(Float64, frontmaxy))
-println(correct / (flux / 10000), " matches / (neutrons/cm²)")
+neutrons = parse(Float64, ARGS[1]) * parse(Float64, ARGS[2])
+flux = neutrons / (parse(Float64, frontmaxx) * parse(Float64, frontmaxy))
+matchrate = correct / (flux / 10000)
+println(matchrate, " matches / (neutrons/cm²)")
 
-
+writingfile = open("geometryresults.txt", "a")
+write(writingfile, string(matchrate) * "\n")
+close(writingfile)

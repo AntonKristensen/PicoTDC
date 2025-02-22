@@ -40,17 +40,19 @@ curve :
 	make clean
 	rm -f geometryresults.txt
 	touch geometryresults.txt
+	echo "Scintillators, matchrate (match / (neutron/cm²))" >> geometryresults.txt
 
 	for E in $$(seq $(start) $(interval) $(stop)) ; do \
 		rm -f output/* ; \
 		for i in $$(seq 1 1 $(repeats)) ; do \
-			echo "$$E scintillators / $(stop), particles= $(particles), measurement $$i / $(repeats)." ; \
+			echo "Scintillators: $$E / $(stop), particles= $(particles), measurement $$i / $(repeats)." ; \
 			julia geometrywriter.jl $$E ; \
 			make files energy=$(energy) ; \
 			topas output/neutrons.topas >> log.txt ; \
 			julia -t auto matcher.jl >> log.txt ; \
 		done ; \
-		julia -t auto efficienter.jl >> geometryresults.txt; \
+		echo -n "$$E, " >> geometryresults.txt ; \
+		julia -t auto efficienter.jl $(particles) $(repeats) >> log.txt ; \
 	done
 	
 clean :
