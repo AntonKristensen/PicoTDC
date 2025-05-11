@@ -8,7 +8,7 @@ stop = 250
 interval = 25
 repeats = 10
 vis = 0
-
+multi = 5
 
 
 default :
@@ -49,7 +49,14 @@ curve :
 		julia -t auto plotter.jl ; \
 	done
 	julia -t auto analyzer.jl $(start) $(interval) $(stop)	
-	
+
+multicurve :
+	for i in $$(seq 1 1 $(multi)) ; do \
+		make curve
+		mv results.csv results$$i.csv
+	done ; \
+	julia -t auto multianalyzer.jl
+
 clean :
 	rm -f log.txt
 	rm -f output/*
