@@ -104,8 +104,13 @@ function dataanalyzer(datasetnumber; plotting=false)
 
     if plotting
         testtrace = traces[2901]
-        peakindices, foo = findmaxima(testtrace)
-        peakplot = plotpeaks(testtrace; peaks=peakindices, prominences=true, widths=true)
+        peakplot = plot()
+        #peakindices, foo = findmaxima(testtrace)
+        #peakplot = plotpeaks(testtrace; peaks=peakindices, prominences=true, widths=true)
+        plot!(4 * collect(0:length(testtrace)-1), testtrace, color=:blue, alpha=0.5, label="First detector")
+        title!("Proton pulse")
+        xlabel!("Time (ns)")
+        ylabel!("ADC units")
         savefig("plots/traceplot.png")
         display(peakplot)
     end
@@ -242,4 +247,6 @@ chi = sum(((results .- weightedmean)./errors).^2)
 print("Chi = ", chi, ", DoF = ", length(results) -1)
 
 dataanalyzer(6, plotting=true)
+
+
 

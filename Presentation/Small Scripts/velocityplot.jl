@@ -15,3 +15,8 @@ ylabel!("Velocity (c)")
 savefig("Velocityplot.png")
 display(fig)
 
+
+println("20MeV: ", velocity(20),"c. 250MeV: ", velocity(250), "c.")
+
+timedif = 1 / (velocity(20) * 299792458) - 1 / (velocity(250) * 299792458)
+println(timedif)

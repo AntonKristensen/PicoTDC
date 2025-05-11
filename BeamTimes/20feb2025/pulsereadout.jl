@@ -51,12 +51,12 @@ end
 function areafunction(trace, peakindex, threshold=10)
     baseline = mean(trace[1:peakindex]) # Robustly guessing the baseline
     walkindex = peakindex # Start at the peak, then walk back until the pulse starts
-    while trace[walkindex] > baseline + threshold
+    while trace[walkindex] > baseline + threshold && walkindex > 1
         walkindex -= 1
     end
     area = trace[walkindex] - baseline # The first point starts under the threshold, but probably doesn't contribute a lot to the area
     walkindex += 1
-    while trace[walkindex] > baseline + threshold
+    while trace[walkindex] > baseline + threshold && walkindex < length(trace)
         area += trace[walkindex] - baseline
         walkindex += 1
     end
@@ -120,16 +120,18 @@ end
 #coincplot = plot()
 println(files)
 println(length.(channel0))
-filenumber = 1
+filenumber = 5
 for n in 1:length(channel1[filenumber])
     pulses = pulseextractor(channel1[filenumber][n], minprom = 10, minheight=2200)
     if pulses[5] > 2250 # If the maximum value of the trace is high enough, do analysis
-        println(pulses)
         coincplot = plot()
-        plot!(channel0[filenumber][n], color=:blue, alpha=0.5, label="First")
-        plot!(channel1[filenumber][n], color=:red, alpha=0.5, label="Second")
-        title!(files[filenumber])
+        plot!(4 * collect(0:length(channel0[filenumber][n])-1), channel0[filenumber][n], color=:blue, alpha=0.5, label="First")
+        plot!(4 * collect(0:length(channel0[filenumber][n])-1), channel1[filenumber][n], color=:red, alpha=0.5, label="Second")
+        title!(files[filenumber][6:end-4])
+        title!("Neutron Coincidence")
+        xlabel!("Time (ns)")
+        ylabel!("ADC units")
         display(coincplot)
     end
 end
-#display(coincplot)
+savefig("NeutronCoincidence.png")
