@@ -52,9 +52,9 @@ curve :
 
 multicurve :
 	for i in $$(seq 1 1 $(multi)) ; do \
-		make curve
-		mv results.csv results$$i.csv
-	done ; \
+		make curve ; \
+		mv results.csv results$$i.csv ; \
+	done
 	julia -t auto multianalyzer.jl
 
 clean :
