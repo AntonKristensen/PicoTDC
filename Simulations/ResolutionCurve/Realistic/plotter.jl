@@ -53,9 +53,9 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< medi*2], bins = 100, color=:black, label="Ideal", alpha=1)
-histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 100, color=:blue, label="50ps", alpha=0.3)
-histogram!(hunniincidents[hunniincidents .< medi*2], bins = 100, color=:red, label="100ps", alpha=0.3)
+fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label="Ideal", alpha=1)
+histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
+histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 
 
 title!("Total energy spectrum")
@@ -65,14 +65,14 @@ savefig("plots/TotalEnergies.png")
 #display(fig2)
 
 
-fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
+fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
 #display(fig3)
 
-fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(50, 50))
+fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
