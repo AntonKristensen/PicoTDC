@@ -58,7 +58,7 @@ histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, la
 histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 
 
-title!("Spectrum from monoenergetic neutrons")
+title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.png")
