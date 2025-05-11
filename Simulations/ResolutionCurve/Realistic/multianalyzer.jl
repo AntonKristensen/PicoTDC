@@ -54,6 +54,6 @@ plot!(meaner(hunnimedians), 100 * meaner(hunnispreads)./meaner(hunnimedians), ye
 title!("Energy Uncertainties")
 xlabel!("Neutron energy (MeV)")
 ylabel!("Uncertainty (%)")
-savefig("plots/uncertainties.svg")
+savefig("plots/uncertainties.png")
 display(uncertaintyplot)
 
