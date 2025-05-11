@@ -62,6 +62,7 @@ title!("Total energy spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.png")
+savefig("plots/TotalEnergies.pdf")
 #display(fig2)
 
 
