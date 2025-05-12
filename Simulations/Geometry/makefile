@@ -35,6 +35,10 @@ many :
 		julia -t auto matcher.jl >> log.txt ; \
 	done
 	julia -t auto efficienter.jl $(particles) $(repeats)
+
+killerplot : 
+	make many
+	julia -t auto plotter.jl
 	
 curve :
 	make clean

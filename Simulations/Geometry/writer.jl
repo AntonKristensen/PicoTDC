@@ -40,7 +40,8 @@ maxz = string(maximum(abs.(geometry[:,3])) + maximum(abs.(geometry[:,4])) + 0.01
 write(file, "d:Ge/World/HLX = "*maxx*" m
 d:Ge/World/HLY = "*maxy*" m
 d:Ge/World/HLZ = "*maxz*" m
-s:Ge/World/Material = \"Vacuum\"\n\n")
+s:Ge/World/Material = \"Air\"\n\n")
+#s:Ge/World/Material = \"Vacuum\"\n\n")
 
 
 

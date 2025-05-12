@@ -91,7 +91,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 487759367
+i:Ts/Seed = 176624922
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamEnergy               = 100 MeV 
  
@@ -101,7 +101,7 @@ dc:So/Beam/BeamPositionCutoffY      = 0.043000000000000003 m
 d:Ge/World/HLX = 0.056 m
 d:Ge/World/HLY = 0.056 m
 d:Ge/World/HLZ = 0.266 m
-s:Ge/World/Material = "Vacuum"
+s:Ge/World/Material = "Air"
 
 s:Ge/front1/Type     = "TsBox"
 s:Ge/front1/Material = "Plastic"
