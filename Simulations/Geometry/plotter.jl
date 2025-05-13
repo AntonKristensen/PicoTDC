@@ -52,7 +52,7 @@ savefig("plots/TotalEnergies.png")
 #display(fig2)
 
 
-fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(50, 50))
+fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
