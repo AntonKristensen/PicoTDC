@@ -59,7 +59,7 @@ ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
 #display(fig3)
 
-fig4 = histogram2d(incidents[incidents .< 300], seconds[incidents .< 300], bins=(150, 150))
+fig4 = histogram2d(incidents[incidents .< 300], seconds[incidents .< 300], bins=(250, 250))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
