@@ -88,7 +88,7 @@ s:Ge/ExperimentSetup/Type       ="Group"
 s:Ge/ExperimentSetup/Parent     = "World"
 d:Ge/ExperimentSetup/TransX     = 0. cm
 d:Ge/ExperimentSetup/TransY     = 0. cm
-d:Ge/ExperimentSetup/TransZ     = 48. cm
+d:Ge/ExperimentSetup/TransZ     = 46. cm
 
 s:Ge/SolidWater_Block/Parent 		= "ExperimentSetup"
 s:Ge/SolidWater_Block/Type   		= "TsBox"
