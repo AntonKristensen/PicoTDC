@@ -8,7 +8,8 @@ using Distributions
 using LsqFit
 
 # Reading data
-data = data = CSV.read("100milSWMinus_PhaseSpace.phsp", DataFrame; header=false, delim=" ", ignorerepeated=true)
+#data = data = CSV.read("100milSWMinus_PhaseSpace.phsp", DataFrame; header=false, delim=" ", ignorerepeated=true)
+data = data = CSV.read("SWMinus_PhaseSpace.phsp", DataFrame; header=false, delim=" ", ignorerepeated=true)
 
 #print(data)
 
@@ -67,8 +68,8 @@ xlims!(0, 0.3)
 ylims!(0, 22)
 model(x, p) = sin.(x) .* p[1]
 fit = curve_fit(model, ts, ds, [100.])
-plot!(x->sin(x) .* 125, label="sin(θ)⋅125cm", color=:blue)
-plot!(x->sin(x) .* coef(fit)[1], label="fit to sin(θ)⋅A", color=:red)
+plot!(x->sin(x) .* 129, label="sin(θ)⋅129cm", color=:red, linestyle=:dash)
+#plot!(x->sin(x) .* coef(fit)[1], label="fit to sin(θ)⋅A", color=:red)
 savefig("NeutronDirection.svg")
 display(fig4)
 
