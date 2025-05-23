@@ -74,6 +74,12 @@ plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
 savefig("NeutronDirection.svg")
 display(fig4)
 
+slopes = ds[ts .< 0.3] ./ ts[ts .< 0.3]
+es = data[neutrons,6][ts .< 0.3]
+
+fig6 = histogram2d(es, slopes, bins=(200,200))
+savefig("Enertropic.svg") 
+
 
 fig5 = histogram2d(data[neutrons, 6][ts .< 0.3], ts[ts .< 0.3], bins=(200,200))
 title!("Direction and energy of neutrons")
@@ -81,23 +87,6 @@ xlabel!("Energy (MeV)")
 ylabel!("Momentum direction away from center (radians)")
 savefig("DirectionEnergy.svg")
 display(fig5)
-
-fastneutrons = data[:,6] .> 1 .&& neutrons
-
-fastds = sqrt.(data[fastneutrons,1].^2 .+ data[fastneutrons,2].^2)
-fastts = sqrt.(data[fastneutrons,4].^2 .+ data[fastneutrons,5].^2)
-
-fig6 = histogram2d(fastts[fastts .< 0.3], fastds[fastts .< 0.3], bins=(500,500), label="Simulation")
-title!("Angular distribution of fast neutrons")
-ylabel!("Distance from center (cm)")
-xlabel!("Momentum direction away from center (radians)")
-xlims!(0, 0.3)
-ylims!(0, 22)
-model(x, p) = sin.(x) .* p[1]
-fit = curve_fit(model, ts, ds, [100.])
-plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
-#plot!(x->sin(x) .* coef(fit)[1], label="fit to sin(θ)⋅A", color=:red)
-savefig("FastNeutronDirection.svg")
 
 
 
