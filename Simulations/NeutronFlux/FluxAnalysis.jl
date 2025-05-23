@@ -74,7 +74,7 @@ plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
 savefig("NeutronDirection.svg")
 display(fig4)
 
-slopes = ds[ts .< 0.3] ./ sin.(ts[ts .< 0.3])
+slopes =  sin.(ts[ts .< 0.3] * 100 ./ ds[ts .< 0.3] )
 
 es = data[neutrons,6][ts .< 0.3]
 
