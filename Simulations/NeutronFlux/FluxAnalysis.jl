@@ -11,7 +11,7 @@ using LsqFit
 #data = data = CSV.read("100milSWMinus_PhaseSpace.phsp", DataFrame; header=false, delim=" ", ignorerepeated=true)
 data = data = CSV.read("SWMinus_PhaseSpace.phsp", DataFrame; header=false, delim=" ", ignorerepeated=true)
 
-#print(data)
+#println(data)
 
 
 # Filtering for neutrons and finding the energy distribution
@@ -24,6 +24,7 @@ ylabel!("Counts in bin")
 savefig("NeutronEnergies.svg")
 display(fig0)
 
+#println(neutrons)
 # Filtering for gammas and finding the energy distribution
 gammas = data[:,8] .== 22
 bins = range(0, maximum(data[gammas, 6]), length=250)
@@ -57,6 +58,7 @@ display(fig3)
 
 
 # Checking the spatial distribution vs the direction (they should preferably all point back to roughly the same point)
+energindex = data[:,6] .> 1
 ds = sqrt.(data[neutrons,1].^2 .+ data[neutrons,2].^2)
 ts = sqrt.(data[neutrons,4].^2 .+ data[neutrons,5].^2)
 
@@ -80,6 +82,13 @@ xlabel!("Energy (MeV)")
 ylabel!("Momentum direction away from center (radians)")
 savefig("DirectionEnergy.svg")
 display(fig5)
+
+fig6 = histogram(ts ./ ds)
+title!("Non-isotropicness")
+savefig("Enertropic.svg")
+
+
+
 
 
 println(length(data[neutrons,1]), " neutrons, ", length(data[gammas,1]), " gammas.")
