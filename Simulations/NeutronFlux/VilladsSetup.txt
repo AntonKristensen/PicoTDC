@@ -29,7 +29,7 @@ s:So/Beam/BeamPositionCutoffShape = "Rectangle" # Rectangle or Ellipse (if Flat 
 d:So/Beam/BeamPositionCutoffX = 10. cm # X extent of position (if Flat or Gaussian)
 d:So/Beam/BeamPositionCutoffY = 10. cm # Y extent of position (if Flat or Gaussian)
 s:So/Beam/BeamAngularDistribution = "None" # None, Flat or Gaussian
-i:So/Beam/NumberOfHistoriesInRun = 10000000
+i:So/Beam/NumberOfHistoriesInRun = 100000000
 
 s:Ge/BeamPosition/Parent="World"
 s:Ge/BeamPosition/Type="Group"

@@ -74,13 +74,6 @@ plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
 savefig("NeutronDirection.svg")
 display(fig4)
 
-slopes =  sin.(ts[ts .< 0.3] * 100 ./ ds[ts .< 0.3] )
-
-es = data[neutrons,6][ts .< 0.3]
-
-fig6 = histogram2d(es[slopes .> 0.5], slopes[slopes .> 0.5], bins=(200,200))
-savefig("Enertropic.svg") 
-
 
 fig5 = histogram2d(data[neutrons, 6][ts .< 0.3], ts[ts .< 0.3], bins=(200,200))
 title!("Direction and energy of neutrons")
