@@ -58,7 +58,6 @@ display(fig3)
 
 
 # Checking the spatial distribution vs the direction (they should preferably all point back to roughly the same point)
-energindex = data[:,6] .> 1
 ds = sqrt.(data[neutrons,1].^2 .+ data[neutrons,2].^2)
 ts = sqrt.(data[neutrons,4].^2 .+ data[neutrons,5].^2)
 
@@ -83,11 +82,22 @@ ylabel!("Momentum direction away from center (radians)")
 savefig("DirectionEnergy.svg")
 display(fig5)
 
-fastneutrons = data[:,6] .> 0 .&& neutrons
+fastneutrons = data[:,6] .> 1 .&& neutrons
 
-fig6 = histogram(data[fastneutrons,6], bins=200)
-title!("Non-isotropicness")
-savefig("Enertropic.svg")
+fastds = sqrt.(data[fastneutrons,1].^2 .+ data[fastneutrons,2].^2)
+fastts = sqrt.(data[fastneutrons,4].^2 .+ data[fastneutrons,5].^2)
+
+fig6 = histogram2d(fastts[fastts .< 0.3], fastds[fastts .< 0.3], bins=(500,500), label="Simulation")
+title!("Angular distribution of fast neutrons")
+ylabel!("Distance from center (cm)")
+xlabel!("Momentum direction away from center (radians)")
+xlims!(0, 0.3)
+ylims!(0, 22)
+model(x, p) = sin.(x) .* p[1]
+fit = curve_fit(model, ts, ds, [100.])
+plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
+#plot!(x->sin(x) .* coef(fit)[1], label="fit to sin(θ)⋅A", color=:red)
+savefig("FastNeutronDirection.svg")
 
 
 
