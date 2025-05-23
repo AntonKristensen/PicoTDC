@@ -68,13 +68,13 @@ xlims!(0, 0.3)
 ylims!(0, 22)
 model(x, p) = sin.(x) .* p[1]
 fit = curve_fit(model, ts, ds, [100.])
-plot!(x->sin(x) .* 129, label="sin(θ)⋅129cm", color=:red, linestyle=:dash)
+plot!(x->sin(x) .* 100, label="sin(θ)⋅100cm", color=:red, linestyle=:dash)
 #plot!(x->sin(x) .* coef(fit)[1], label="fit to sin(θ)⋅A", color=:red)
 savefig("NeutronDirection.svg")
 display(fig4)
 
 
-fig5 = histogram2d(data[neutrons, 6][ts .< 0.3], ts[ts .< 0.3], bins=(100,100))
+fig5 = histogram2d(data[neutrons, 6][ts .< 0.3], ts[ts .< 0.3], bins=(200,200))
 title!("Direction and energy of neutrons")
 xlabel!("Energy (MeV)")
 ylabel!("Momentum direction away from center (radians)")
