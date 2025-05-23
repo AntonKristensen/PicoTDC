@@ -85,7 +85,7 @@ display(fig5)
 
 fastneutrons = data[:,6] .> 1 .&& neutrons
 
-fig6 = histogram(data[fastneutrons,6])
+fig6 = histogram(data[fastneutrons,6], bins=200)
 title!("Non-isotropicness")
 savefig("Enertropic.svg")
 
