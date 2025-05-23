@@ -8,5 +8,5 @@ Electronics
 *.xml
 
 # Ignoring plots
-*.svg
+#*.svg
 *.gif
