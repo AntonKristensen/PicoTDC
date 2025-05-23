@@ -83,7 +83,9 @@ ylabel!("Momentum direction away from center (radians)")
 savefig("DirectionEnergy.svg")
 display(fig5)
 
-fig6 = histogram2d(data[neutrons,6][ts .< 0.3], ds[ts .< 0.3] ./ ts[ts .< 0.3], bins=(200,200))
+fastneutrons = data[:,6] .> 1 .&& neutrons
+
+fig6 = histogram(data[fastneutrons,6])
 title!("Non-isotropicness")
 savefig("Enertropic.svg")
 
