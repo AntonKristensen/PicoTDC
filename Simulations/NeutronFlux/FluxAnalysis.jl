@@ -76,6 +76,9 @@ display(fig4)
 
 slopes = ds[ts .< 0.3] ./ ts[ts .< 0.3]
 es = data[neutrons,6][ts .< 0.3]
+es = es[slopes .< 100]
+
+slopes = slopes[slopes .< 100]
 
 fig6 = histogram2d(es, slopes, bins=(200,200))
 savefig("Enertropic.svg") 
