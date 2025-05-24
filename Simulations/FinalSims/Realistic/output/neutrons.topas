@@ -19,9 +19,9 @@ s:Ma/Substrate/DefaultColor = "green"
 
 # Plastic material
 sv:Ma/Plastic/Components= 2 "Carbon" "Hydrogen"
-uv:Ma/Plastic/Fractions= 2 0.48 0.52
+uv:Ma/Plastic/Fractions= 2 0.9159 0.0841
 d:Ma/Plastic/Density=1.023 g/cm3
-#d:Ma/Plastic/MeanExcitationEnergy= 64.7 # For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
+d:Ma/Plastic/MeanExcitationEnergy= 64.7 # For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
 s:Ma/Plastic/DefaultColor="white"
 
 # GAGG:Ce scintillator (in Radiacode 103 for example
@@ -66,10 +66,8 @@ dc:So/Beam/BeamAngularSpreadY       = 0.0001 rad
 
 
 # Physics packages
-#sv:Ph/Default/Modules = 1 "g4em-standard_opt0"
-Ph/Default/Modules = 7 "g4em-standard_opt4" "g4h-phy_QGSP_BIC_HP" "g4decay" "g4ion-binarycascade" "g4h-elastic_HP" "g4stopping" "g4h-phy_FTFP_BERT_HP"
-#s:Ph/Default/Type = "QGSP_BERT_HP"
-#s:Ph/Defaul/Type = "FTFP_BERT_HP" # High energy nuclear scatterings > 3GeV 
+Ph/Default/Modules = 9 "g4em-extra", "g4em-standard_opt4", "g4ion-binarycascade", "g4h-elastic_HP", "g4decay", "g4h-phy_QGSP_BIC_AllHP", "g4radioactivedecay", "g4stopping", "g4ion"
+
 
 
 
@@ -91,9 +89,9 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 1797185552
+i:Ts/Seed = 2035478950
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
-dc:So/Beam/BeamEnergy               = 100 MeV 
+dc:So/Beam/BeamEnergy               = 25 MeV 
  
 dc:So/Beam/BeamPositionCutoffX      = 0.003 m
 dc:So/Beam/BeamPositionCutoffY      = 0.003 m
