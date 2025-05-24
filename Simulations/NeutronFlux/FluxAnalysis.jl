@@ -17,7 +17,7 @@ data = data = CSV.read("SWMinus_PhaseSpace.phsp", DataFrame; header=false, delim
 # Filtering for neutrons and finding the energy distribution
 neutrons = data[:,8] .== 2112
 bins = range(0, maximum(data[neutrons, 6]), length=250)
-fig0 = histogram(data[neutrons,6], bins=bins)
+fig0 = histogram(data[neutrons,6], bins=bins, legend = false)
 title!("Spallation neutron energies")
 xlabel!("Energy (MeV)")
 ylabel!("Counts in bin")
@@ -28,10 +28,11 @@ display(fig0)
 # Filtering for gammas and finding the energy distribution
 gammas = data[:,8] .== 22
 bins = range(0, maximum(data[gammas, 6]), length=250)
-fig1 = histogram(data[gammas,6], bins=bins)
+fig1 = histogram(data[gammas,6], bins=bins, legend = false)
 title!("Gamma energies")
 xlabel!("Energy (MeV)")
 ylabel!("Counts in bin")
+xlims!(0,10)
 savefig("GammaEnergies.svg")
 display(fig1)
 
