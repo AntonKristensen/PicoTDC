@@ -27,8 +27,9 @@ display(fig0)
 #println(neutrons)
 # Filtering for gammas and finding the energy distribution
 gammas = data[:,8] .== 22
-bins = range(0, maximum(data[gammas, 6]), length=250)
-fig1 = histogram((data[gammas,6])[data[gammas,6] .< 10], bins=bins, legend = false)
+#bins = range(0, maximum(data[gammas, 6]), length=250)
+bins = range(0, 15, length=250)
+fig1 = histogram(data[gammas,6], bins=bins, legend = false)
 title!("Gamma energies")
 xlabel!("Energy (MeV)")
 ylabel!("Counts in bin")
