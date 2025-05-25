@@ -124,7 +124,9 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
         
             # Collecting the results into detector hits instead of separate particles
             first = collector("output/front"*string(i)*".phsp")
-            first[!,"Column10"] = first[:,3]*addedtime + first[:,end] + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
+            #first[!,"Column10"] = (first[:,3]*addedtime + ((rand(length(first[:,3])) .-0.5) * 2 * addedtime) + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
+            
+            first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] )          + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             sort!(first, [:Column10])
             for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
                 if filesize("output/back"*string(j)*".phsp") != 0 # Don't do it if the file is empty   
@@ -147,7 +149,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     ############## Doing the time matching and energy calculation
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
-                    
+
                     #push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
                     incidentframe[(i-1)*4 + j, :] = [i,j, incidents, firsts, seconds]
                 end
@@ -175,13 +177,13 @@ end
 
 
 
-incidentframe = detectorlooping(minimumenergy=10, addedtime = 1e-6)
+incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6)
 matchwriter(incidentframe)
 
-fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11, minimumenergy=10, addedtime = 1e-6)
+fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11, minimumenergy=1, addedtime = 1e-6)
 matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
 
-hunniuncertainframe = detectorlooping(timeuncertainty=1e-10, minimumenergy=10, addedtime = 1e-6)
+hunniuncertainframe = detectorlooping(timeuncertainty=1e-10, minimumenergy=1, addedtime = 1e-6)
 matchwriter(hunniuncertainframe, file="output/hunniuncertainmatches.csv")
 
 

@@ -21,7 +21,7 @@ s:Ma/Substrate/DefaultColor = "green"
 sv:Ma/Plastic/Components= 2 "Carbon" "Hydrogen"
 uv:Ma/Plastic/Fractions= 2 0.9159 0.0841
 d:Ma/Plastic/Density=1.023 g/cm3
-d:Ma/Plastic/MeanExcitationEnergy= 64.7 # For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
+d:Ma/Plastic/MeanExcitationEnergy= 64.7 eV# For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
 s:Ma/Plastic/DefaultColor="white"
 
 # GAGG:Ce scintillator (in Radiacode 103 for example
@@ -89,9 +89,9 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 2035478950
+i:Ts/Seed = 1501291405
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
-dc:So/Beam/BeamEnergy               = 25 MeV 
+dc:So/Beam/BeamEnergy               = 100 MeV 
  
 dc:So/Beam/BeamPositionCutoffX      = 0.003 m
 dc:So/Beam/BeamPositionCutoffY      = 0.003 m
