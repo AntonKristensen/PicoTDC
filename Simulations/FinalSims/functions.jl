@@ -125,7 +125,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
             first = collector("output/front"*string(i)*".phsp")
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] )          + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             sort!(first, [:Column10])
-            first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
+            #first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
             Threads.@threads for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
                 if filesize("output/back"*string(j)*".phsp") != 0 # Don't do it if the file is empty   
                 
@@ -143,7 +143,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     # Collecting the results into detector hits instead of separate particles
                     second = collector("output/back"*string(j)*".phsp")
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
-                    second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
+                    #second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
                     ############## Doing the time matching and energy calculation
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
