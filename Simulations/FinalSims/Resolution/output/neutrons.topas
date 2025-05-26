@@ -1,0 +1,139 @@
+
+
+#i:Ts/Seed = 1342111 #The random seed
+i:Ts/ShowHistoryCountAtInterval = 100000 #This prints out progress while running
+i:Ts/NumberOfThreads = 64 # Multithreading
+
+#d:Ge/World/HLX = 10. cm
+#d:Ge/World/HLY = 10. cm
+#d:Ge/World/HLZ = 26. cm
+#s:Ge/World/Material = "Vacuum"
+
+
+# Trying to define silicon detector material
+sv:Ma/Substrate/Components = 1 "Silicon"
+uv:Ma/Substrate/Fractions = 1 1.0
+d:Ma/Substrate/Density = 2.33 g/cm3
+d:Ma/Substrate/MeanExcitationEnergy = 173 eV
+s:Ma/Substrate/DefaultColor = "green"
+
+# Plastic material
+sv:Ma/Plastic/Components= 2 "Carbon" "Hydrogen"
+uv:Ma/Plastic/Fractions= 2 0.9159 0.0841
+d:Ma/Plastic/Density=1.023 g/cm3
+d:Ma/Plastic/MeanExcitationEnergy= 64.7 eV# For VINYLTOLUENE BASED according to https://physics.nist.gov/cgi-bin/Star/compos.pl?refer=ap&matno=216
+s:Ma/Plastic/DefaultColor="white"
+
+# GAGG:Ce scintillator (in Radiacode 103 for example
+sv:Ma/GAGG/Components= 4 "Gadolinium" "Aluminum" "Gallium" "Oxygen"
+b:Ma/GAGG/NormalizeFractions = "True"
+uv:Ma/GAGG/Fractions= 4 471.0 81.0 210.0 192.0 # Atomic masses of the elements multiplied by their amount in the chemical formula
+d:Ma/GAGG/Density= 6.63 g/cm3
+#d:Ma/GAGG/MeanExcitationEnergy= 57.400000 eV # Pure guess
+s:Ma/GAGG/DefaultColor="white"
+
+
+
+
+
+
+# Beam
+s:So/Beam/Type                     = "Beam"
+sc:So/Beam/Component                = "BeamPosition"
+sc:So/Beam/BeamParticle             = "neutron"
+#dc:So/Beam/BeamEnergy               = 100 MeV
+
+#s:So/Beam/BeamEnergySpectrumType       = "Continuous"
+#dv:So/Beam/BeamEnergySpectrumValues    = 3 50. 100. 150. MeV
+#uv:So/Beam/BeamEnergySpectrumWeights   = 3 .20 .60 .20
+
+uc:So/Beam/BeamEnergySpread         = 0
+sc:So/Beam/BeamPositionDistribution = "Flat" #"Gaussian"
+sc:So/Beam/BeamPositionCutoffShape  = "Rectangle"
+#dc:So/Beam/BeamPositionCutoffX      = 10. cm
+#dc:So/Beam/BeamPositionCutoffY      = 10. cm
+#dc:So/Beam/BeamPositionSpreadX      = 1 mm
+#dc:So/Beam/BeamPositionSpreadY      = 1 mm
+sc:So/Beam/BeamAngularDistribution  = "Gaussian"
+dc:So/Beam/BeamAngularCutoffX       = 90. deg
+dc:So/Beam/BeamAngularCutoffY       = 90. deg
+dc:So/Beam/BeamAngularSpreadX       = 0.0001 rad
+dc:So/Beam/BeamAngularSpreadY       = 0.0001 rad
+#ic:So/Beam/NumberOfHistoriesInRun   = 100000000
+
+
+
+
+
+# Physics packages
+Ph/Default/Modules = 9 "g4em-extra", "g4em-standard_opt4", "g4ion-binarycascade", "g4h-elastic_HP", "g4decay", "g4h-phy_QGSP_BIC_AllHP", "g4radioactivedecay", "g4stopping", "g4ion"
+
+
+
+
+#s:Gr/ViewA/Type              = "OpenGL" #This shows neat graphics
+#Ts/UseQt = "True" #This one makes user interface
+#b:Ts/PauseBeforeQuit = "True"
+
+# Colouring neutrons the way I like it
+s:Gr/ViewA/ColorBy = "ParticleType"
+sv:Gr/ViewA/ColorByParticleTypeNames = 4 "e-" "gamma" "proton" "neutron"
+sv:Gr/ViewA/ColorByParticleTypeColors = 4 "blue" "green" "red" "gray"
+
+# Just setting standard view
+d:Gr/ViewA/Theta            = 55 deg
+d:Gr/ViewA/Phi              = 20 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 30 deg
+
+#b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
+
+
+i:Ts/Seed = 692325461
+ic:So/Beam/NumberOfHistoriesInRun   = 50000000
+dc:So/Beam/BeamEnergy               = 100 MeV 
+ 
+dc:So/Beam/BeamPositionCutoffX      = 0.003 m
+dc:So/Beam/BeamPositionCutoffY      = 0.003 m
+
+d:Ge/World/HLX = 0.026000000000000002 m
+d:Ge/World/HLY = 0.026000000000000002 m
+d:Ge/World/HLZ = 0.266 m
+s:Ge/World/Material = "Air"
+
+)
+
+#s:Ge/World/Material = "Vacuum"
+
+s:Ge/front1/Type     = "TsBox"
+s:Ge/front1/Material = "Plastic"
+s:Ge/front1/Parent   = "World"
+d:Ge/front1/HLX      = 0.003 m
+d:Ge/front1/HLY      = 0.003 m
+d:Ge/front1/HLZ      = 0.003 m
+d:Ge/front1/TransX   = 0.0 m
+d:Ge/front1/TransY   = 0.0 m
+d:Ge/front1/TransZ   = 0.25 m
+s:Sc/front1/Quantity                  = "rindom"
+s:Sc/front1/Component                 = "front1"
+s:Sc/front1/OutputType 		     = "ASCII"
+b:Sc/front1/OutputToConsole           = "TRUE"
+s:Sc/front1/OutputFile = "output/front1"
+s:Sc/front1/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/back1/Type     = "TsBox"
+s:Ge/back1/Material = "Plastic"
+s:Ge/back1/Parent   = "World"
+d:Ge/back1/HLX      = 0.003 m
+d:Ge/back1/HLY      = 0.003 m
+d:Ge/back1/HLZ      = 0.003 m
+d:Ge/back1/TransX   = 0.01 m
+d:Ge/back1/TransY   = 0.01 m
+d:Ge/back1/TransZ   = -0.25 m
+s:Sc/back1/Quantity                  = "rindom"
+s:Sc/back1/Component                 = "back1"
+s:Sc/back1/OutputType 		     = "ASCII"
+b:Sc/back1/OutputToConsole           = "TRUE"
+s:Sc/back1/OutputFile = "output/back1"
+s:Sc/back1/IfOutputFileAlreadyExists = "Overwrite"
+

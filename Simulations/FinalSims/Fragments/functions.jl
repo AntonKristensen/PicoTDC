@@ -5,7 +5,9 @@ using DataFrames
 using Statistics
 using Distributions
 
-
+function reader(filepath)
+    return CSV.read(filepath, DataFrame; header=false, delim=" ", ignorerepeated=true)
+end
 
 # Making a function to collect energy deposit from same event but different particles (such as electron secondaries or inelastic products)
 function collector(filepath)
