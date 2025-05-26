@@ -11,7 +11,7 @@ include("../functions.jl")
 
 println("Tråde: ", Threads.nthreads())
 
-@time incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6, threshold=0.5)
+@time incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6, threshold=0.1)
 matchwriter(incidentframe)
 
 
