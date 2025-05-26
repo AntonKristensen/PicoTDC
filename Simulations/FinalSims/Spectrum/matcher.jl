@@ -7,10 +7,11 @@ using Statistics
 using Distributions
 
 
-include("functions.jl")
+include("../functions.jl")
 
+println("Tråde: ", Threads.nthreads())
 
-incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6)
+@time incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6, threshold=0.5)
 matchwriter(incidentframe)
 
 

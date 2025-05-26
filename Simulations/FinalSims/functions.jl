@@ -29,13 +29,13 @@ function collector(filepath)
 end
 
 # Function that matches hits within some time difference
-function matcher(a, b, mindif, maxdif) #Has time uncertainty as keyword argument, with default being 0
+function matcher(a, b, mindif, maxdif) #Has time cutoff energy as keyword argument, with default being 0
     aindex = 1
     matches = []
     for bindex in 1:length(b[:, end])
 
         # Finding the first index where the time difference is more than the minimum
-	while (b[bindex, end] - a[aindex, end] > maxdif) && (aindex < length(a[:,end]) -1 ) 
+	    while (b[bindex, end] - a[aindex, end] > maxdif) && (aindex < length(a[:,end]) -1 ) 
             aindex += 1
         end        
 
@@ -46,10 +46,7 @@ function matcher(a, b, mindif, maxdif) #Has time uncertainty as keyword argument
             upperindex += 1
         end
 
-        #print(aindex, "\n")
-        #print(b[bindex, end])
     end
-
 
     matcharray = ones(Int, length(matches),2)
         for i in 1:length(matches)
@@ -105,7 +102,7 @@ end
 
 
 
-function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimumenergy = 1., timeuncertainty = 0.) # Function for looping through all the detector outputs and matching events 
+function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimumenergy = 1., timeuncertainty = 0., threshold=0) # Function for looping through all the detector outputs and matching events 
     # Reading geometry file
     geometry = CSV.read(geofile, DataFrame; delim=",", ignorerepeated=true)
 
@@ -126,11 +123,10 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
         
             # Collecting the results into detector hits instead of separate particles
             first = collector("output/front"*string(i)*".phsp")
-            #first[!,"Column10"] = (first[:,3]*addedtime + ((rand(length(first[:,3])) .-0.5) * 2 * addedtime) + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
-            
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] )          + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             sort!(first, [:Column10])
-            for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
+            first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
+            Threads.@threads for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
                 if filesize("output/back"*string(j)*".phsp") != 0 # Don't do it if the file is empty   
                 
                     ############## Kinetmatics calculations
@@ -147,7 +143,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     # Collecting the results into detector hits instead of separate particles
                     second = collector("output/back"*string(j)*".phsp")
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
-                    sort!(second, [:Column10])
+                    second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
                     ############## Doing the time matching and energy calculation
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
@@ -160,6 +156,8 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
     end
     return incidentframe
 end
+
+
 
 # Writing the matches into a file
 function matchwriter(dataframe; file = "output/matches.csv")
