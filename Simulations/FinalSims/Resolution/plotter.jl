@@ -53,7 +53,7 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000, legend=false)
 #histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
 #histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 
