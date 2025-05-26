@@ -91,7 +91,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 
 i:Ts/Seed = 692325461
 ic:So/Beam/NumberOfHistoriesInRun   = 50000000
-dc:So/Beam/BeamEnergy               = 100 MeV 
+dc:So/Beam/BeamEnergy               = 150 MeV 
  
 dc:So/Beam/BeamPositionCutoffX      = 0.003 m
 dc:So/Beam/BeamPositionCutoffY      = 0.003 m
