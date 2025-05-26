@@ -90,9 +90,13 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 
 
 i:Ts/Seed = 692325461
-ic:So/Beam/NumberOfHistoriesInRun   = 50000000
-dc:So/Beam/BeamEnergy               = 200 MeV 
+ic:So/Beam/NumberOfHistoriesInRun   = 500000000
+#dc:So/Beam/BeamEnergy               = 25 MeV 
  
+s:So/Beam/BeamEnergySpectrumType       = "Continuous"
+dv:So/Beam/BeamEnergySpectrumValues    = 10 0. 25. 50. 75. 100. 125. 150. 175. 200. 225. MeV
+uv:So/Beam/BeamEnergySpectrumWeights   = 10 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1
+
 dc:So/Beam/BeamPositionCutoffX      = 0.003 m
 dc:So/Beam/BeamPositionCutoffY      = 0.003 m
 
