@@ -29,7 +29,7 @@ stephist!(readed[inelast .&& exits .&& prot, 8], bins=100, label="Proton fragmen
 stephist!(readed[inelast .&& exits .&& neut, 8], bins=100, label="Neutron fragments", alpha=0.75, linecolor=:blue, linewidth=2)
 stephist!(readed[inelast .&& exits .&& deut, 8], bins=100, label="Deuteron & triton fragments", alpha=0.75, linecolor=:magenta, linewidth=2)
 stephist!(readed[inelast .&& exits .&& .!neut .&& .!prot .&& .!deut, 8], bins=100, label="Nuclear fragments", alpha=0.75, linecolor=:orange, linewidth=2)
-title!("Particle exit energies 100 MeV")
+title!("Particle exit energies 200 MeV")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/InelasticExitEnergies.svg")
