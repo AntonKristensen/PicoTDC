@@ -53,8 +53,8 @@ fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
-savefig("plots/TotalEnergies.png")
-savefig("plots/TotalEnergies.pdf")
+savefig("plots/TotalEnergies.svg")
+#savefig("plots/TotalEnergies.pdf")
 #display(fig2)
 
 
@@ -62,13 +62,13 @@ fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], 
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.png")
+savefig("plots/FirstHeatmap.svg")
 #display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.png")
+savefig("plots/SecondHeatmap.svg")
 #display(fig4)
 
