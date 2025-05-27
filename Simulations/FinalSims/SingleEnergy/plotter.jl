@@ -65,8 +65,10 @@ cutread = CSV.read("../cutparams.csv", DataFrame; header=false, delim=",", ignor
 cutparams = collect(cutread[1,:])
 
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-cutindices = cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.
-extracutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5 .&&  seconds .< cut(incidents, cutparams) .+ 1
+cutlee = 2 # The cut isn't perfect, so add a bit of extra leeway
+lowert = 0.5 # Set a lower threshold for detection. Usefull for cutting out crosstalk also
+cutindices = cutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> 0.
+extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert .&&  seconds .< cut(incidents, cutparams) .+ cutlee
 cutincidents = incidents[cutindices]
 extracutincidents = incidents[extracutindices]
 histogram!(cutincidents[cutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:red, label="Cut")
@@ -107,6 +109,15 @@ close(resultfile)
 
 
 
-println(data[incidents .< 90 .&& cutindices,:])
+function signalnoise(inci, signalstart, signalstop)
+	indices = inci .> signalstart .&& inci .< signalstop
+	
+	return [sum(indices), sum(.! indices), sum(indices)/ sum(.! indices) ]
+end
 
 
+println("No cut: #",length(incidents),", S,N,S/N: ", signalnoise(incidents, 95,105))
+
+println("Cut: #",length(cutincidents),", S,N,S/N: ", signalnoise(cutincidents, 95,105))
+
+println("Extra cut: #",length(extracutincidents),", S,N,S/N: ", signalnoise(extracutincidents, 95,105))
