@@ -107,12 +107,16 @@ savefig("plots/TotalEnergiesCut.svg")
 function savecut(cutparams)
 	file = open("../cutparams.csv", "w")
 	for n in 1:length(cutparams)
-		write(file, string(cutparams[n]) * ", ")
+		if n == length(cutparams)
+			write(file, string(cutparams[n]))
+		else
+			write(file, string(cutparams[n]) * ", ")
+		end
 	end
 	close(file)
 end
 
-#savecut(expfit.param)
+savecut(expfit.param)
 
 
 
