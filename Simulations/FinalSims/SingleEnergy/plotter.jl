@@ -60,7 +60,7 @@ range = 1.1
 i = cutdata[:,1] .< medi*range
 
 fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
-histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:gren, label="30ps", alpha=0.5)
+histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.5)
 histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
 histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.5)
 title!("Monoenergetic Neutron Spectrum")
