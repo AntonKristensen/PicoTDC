@@ -78,6 +78,12 @@ title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
+
+fitpoints = collect(1:250)
+plot!(fitpoints, cut(fitpoints, cutparams) .+ 1, label="Upper cut")
+hline!([0.5], label="Lower cut")
+savefig("plots/FirstHeatmapCut.svg")
+
 #display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
