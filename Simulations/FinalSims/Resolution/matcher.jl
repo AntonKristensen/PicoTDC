@@ -7,7 +7,7 @@ using Statistics
 using Distributions
 
 
-include("functions.jl")
+include("../functions.jl")
 
 
 incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6)

@@ -144,6 +144,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     second = collector("output/back"*string(j)*".phsp")
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
                     #second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
+                    sort!(second, [:Column10])
                     ############## Doing the time matching and energy calculation
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
