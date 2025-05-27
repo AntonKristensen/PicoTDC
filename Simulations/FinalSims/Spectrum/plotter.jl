@@ -4,6 +4,7 @@ using CSV
 using DataFrames
 using Statistics
 using Distributions
+using LsqFit
 
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
@@ -68,9 +69,16 @@ savefig("plots/FirstHeatmap.svg")
 fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=(150, 150))
 
 x = [28, 38, 50, 75, 100, 125, 150, 175, 200, 225]
-y = [20, 14, 9, 6, 4.7, 4, 3.2, 3, 2.85, 2.75]
+y = [23, 14, 9, 6, 4.7, 4, 3.2, 3, 2.85, 2.75]
+m(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) .* p[4])
+p0 = [1., 1., 1., 1.]
+expfit = curve_fit(m, x, y, p0)
+fitpoints = collect(1:250)
 
 scatter!(x,y, color=:green, alpha=0.9)
+plot!(fitpoints, m(fitpoints, expfit.param)) 
+
+
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
