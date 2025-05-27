@@ -70,15 +70,15 @@ fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=
 
 x = [28, 38, 50, 75, 100, 125, 150, 175, 200, 225]
 y = [23, 14, 9, 6, 4.7, 4, 3.2, 3, 2.85, 2.75]
-m(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) .* p[4])
-p0 = [1., 1., 1., 1.]
+m(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
+p0 = [5.0, 25.0, 1.0, 100.0]
 expfit = curve_fit(m, x, y, p0)
 fitpoints = collect(1:250)
 
 scatter!(x,y, color=:green, alpha=0.9)
-plot!(fitpoints, m(fitpoints, expfit.param)) 
+plot!(fitpoints, m(fitpoints, expfit.param), label="Fit") 
 println("Fit parameters: ", expfit.param)
-plot!(fitpoints, m(fitpoints, [10, 10, 1, 1]))
+plot!(fitpoints, m(fitpoints, p0), label="Guess")
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
