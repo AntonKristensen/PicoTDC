@@ -53,7 +53,7 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000, legend=false)
+fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
 #histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
 #histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 title!("Monoenergetic Neutron Spectrum")
@@ -65,8 +65,7 @@ cutread = CSV.read("../cutparams.csv", DataFrame; header=false, delim=",", ignor
 cutparams = collect(cutread[1,:])
 
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5
-#cutindices = cutindices .&&  seconds .< cut(incidents, cutparams) .+ 1
+cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5 .&&  seconds .< cut(incidents, cutparams) .+ 1
 cutincidents = incidents[cutindices]
 histogram!(cutincidents[cutincidents .< 250], bins=250, color=:red, label="Cut")
 savefig("plots/TotalEnergiesCut.svg")
