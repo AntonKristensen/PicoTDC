@@ -66,9 +66,9 @@ cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
 p0 = [5.0, 25.0, 1.0, 100.0]
 expfit = curve_fit(cut, x, y, p0)
 fitpoints = collect(25:250)
-scatter!(x,y, color=:green, alpha=0.9, label="")
+scatter!(x,y, color=:green, alpha=0.8, label="")
 #plot!(fitpoints, cut(fitpoints, expfit.param), label="Exponential fit", color=:green) 
-plot!(fitpoints, alt(fitpoints, altfit.param), label="Hyperboloid fit", color=:red)
+plot!(fitpoints, alt(fitpoints, altfit.param), label="Hyperboloid fit", color=:green, alpha=0.8, linewidth=2)
 savefig("plots/SecondHeatmapFit.svg")
 display(fig4)
 

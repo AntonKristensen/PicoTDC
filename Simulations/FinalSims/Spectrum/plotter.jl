@@ -50,7 +50,7 @@ title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
 savefig("plots/SecondHeatmap.svg")
-#display(fig4)
+display(fig4)
 
 
 
@@ -60,7 +60,7 @@ title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
-#display(fig3)
+display(fig3)
 
 
 
@@ -69,7 +69,7 @@ title!("Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
-#display(fig2)
+display(fig2)
 
 
 
