@@ -77,8 +77,8 @@ fitpoints = collect(1:250)
 
 scatter!(x,y, color=:green, alpha=0.9)
 plot!(fitpoints, m(fitpoints, expfit.param)) 
-
-
+println("Fit parameters: ", expfit.param)
+plot!(fitpoints, m(fitpoints, [10, 10, 1, 1]))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
