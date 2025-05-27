@@ -47,7 +47,7 @@ medi, spread = statisticing(incidents)
 
 
 
-fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
 
 
 title!("Monoenergetic Neutron Spectrum")
@@ -58,16 +58,19 @@ savefig("plots/TotalEnergies.svg")
 #display(fig2)
 
 
-fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(150, 150))
+fig3 = histogram2d(incidents[incidents .< 250], firsts[incidents .< 250], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
 #display(fig3)
 
-fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
-hline!([5])
+fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=(150, 150))
 
+x = [28, 50, 75, 100, 125, 150]
+y = [15, 9, 6, 5, 4, 3]
+
+scatter!(x,y)
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
