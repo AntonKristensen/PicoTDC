@@ -66,7 +66,7 @@ cutparams = collect(cutread[1,:])
 
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
 cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5
-cutindices = cutindices .&&  seconds .< cut(incidents, cutparams) .+ 1
+#cutindices = cutindices .&&  seconds .< cut(incidents, cutparams) .+ 1
 cutincidents = incidents[cutindices]
 histogram!(cutincidents[cutincidents .< 250], bins=250, color=:red, label="Cut")
 savefig("plots/TotalEnergiesCut.svg")
