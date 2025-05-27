@@ -64,7 +64,8 @@ display(fig3)
 
 
 
-fig2 = histogram(cutdata[i,1], bins = 250, color=:black, label="No cut", legend=false, alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(data[data[:,1] .< 250,1], bins = 100, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+histogram!(cutdata[i,1], bins = 100, color=:blue, label="Cut data", alpha=0.8)
 title!("Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
