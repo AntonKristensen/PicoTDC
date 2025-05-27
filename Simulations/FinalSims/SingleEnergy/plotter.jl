@@ -65,7 +65,9 @@ cutread = CSV.read("../cutparams.csv", DataFrame; header=false, delim=",", ignor
 cutparams = collect(cutread[1,:])
 
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-cutincidents = incidents[firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5]
+cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5
+cutindices = cutindices .&&  seconds .< cut(incidents, cutparams) .+ 1
+cutincidents = incidents[cutindices]
 histogram!(cutincidents[cutincidents .< 250], bins=250, color=:red, label="Cut")
 savefig("plots/TotalEnergiesCut.svg")
 display(fig2)
@@ -100,3 +102,9 @@ if filesize("results.csv") == 0 # Checks if the file is empty, and writes a head
 end
 write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
 close(resultfile)
+
+
+
+println(data[incidents .< 90 .&& cutindices,:])
+
+
