@@ -65,9 +65,12 @@ cutread = CSV.read("../cutparams.csv", DataFrame; header=false, delim=",", ignor
 cutparams = collect(cutread[1,:])
 
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5 .&&  seconds .< cut(incidents, cutparams) .+ 1
+cutindices = cutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.
+extracutindices = firsts .< cut(incidents, cutparams) .+ 1 .&& firsts .> 0.5 .&& seconds .> 0.5 .&&  seconds .< cut(incidents, cutparams) .+ 1
 cutincidents = incidents[cutindices]
+extracutincidents = incidents[extracutindices]
 histogram!(cutincidents[cutincidents .< 250], bins=250, color=:red, label="Cut")
+histogram!(extracutincidents[extracutincidents .< 250], bins=250, color=:blue, label="Extra cut")
 savefig("plots/TotalEnergiesCut.svg")
 display(fig2)
 
