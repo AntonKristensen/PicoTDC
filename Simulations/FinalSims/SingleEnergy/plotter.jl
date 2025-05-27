@@ -67,11 +67,13 @@ cutparams = collect(cutread[1,:])
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
 cutlee = 2 # The cut isn't perfect, so add a bit of extra leeway
 lowert = 0.5 # Set a lower threshold for detection. Usefull for cutting out crosstalk also
+
 cutindices = cutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> 0.
-#extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert .&&  seconds .< cut(incidents, cutparams) .+ cutlee
-extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert
 cutincidents = incidents[cutindices]
+
+extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert .&&  seconds .< cut(incidents, cutparams) .+ cutlee
 extracutincidents = incidents[extracutindices]
+
 histogram!(cutincidents[cutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:red, label="Cut")
 histogram!(extracutincidents[extracutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:blue, label="Extra cut")
 savefig("plots/TotalEnergiesCut.svg")
