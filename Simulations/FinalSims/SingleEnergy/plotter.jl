@@ -67,9 +67,8 @@ cutparams = collect(cutread[1,:])
 cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
 cutincidents = incidents[firsts .< cut(incidents, cutparams) .+ 1]
 histogram!(cutincidents[cutincidents .< 250], color=:red)
-savefig("TotalEnergiesCut.svg")
+savefig("plots/TotalEnergiesCut.svg")
 display(fig2)
-
 
 
 
