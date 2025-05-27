@@ -66,7 +66,7 @@ savefig("plots/FirstHeatmap.svg")
 #display(fig3)
 
 fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
-hline!(5)
+hline!([5])
 
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
