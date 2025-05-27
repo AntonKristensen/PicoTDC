@@ -70,7 +70,7 @@ scatter!(x,y, color=:green, alpha=0.8, label="")
 #plot!(fitpoints, cut(fitpoints, expfit.param), label="Exponential fit", color=:green) 
 plot!(fitpoints, alt(fitpoints, altfit.param), label="Hyperboloid fit", color=:green, alpha=0.8, linewidth=2)
 savefig("plots/SecondHeatmapFit.svg")
-display(fig4)
+#display(fig4)
 
 
 
