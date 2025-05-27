@@ -6,9 +6,12 @@ using Statistics
 using Distributions
 using LsqFit
 
+include("../cutting.jl")
+
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
+cutdata = cut(data)
 
 
 
@@ -103,6 +106,9 @@ savefig("plots/TotalEnergiesCut.svg")
 
 
 
+fig5 = histogram(cutdata[:,1], bins=0:1:250)
+savefig("plots/test.svg")
+
 
 function savecut(cutparams)
 	file = open("../cutparams.csv", "w")
@@ -116,7 +122,7 @@ function savecut(cutparams)
 	close(file)
 end
 
-savecut(expfit.param)
+#savecut(expfit.param)
 
 
 
