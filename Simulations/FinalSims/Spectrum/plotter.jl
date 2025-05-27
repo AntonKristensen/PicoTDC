@@ -59,13 +59,6 @@ savefig("plots/TotalEnergies.svg")
 #display(fig2)
 
 
-fig3 = histogram2d(incidents[incidents .< 250], firsts[incidents .< 250], bins=(150, 150))
-title!("Incident energy and first detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.svg")
-#display(fig3)
-
 fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=(150, 150))
 
 x = [28, 38, 50, 75, 100, 125, 150, 175, 200, 225]
@@ -75,10 +68,8 @@ p0 = [5.0, 25.0, 1.0, 100.0]
 expfit = curve_fit(m, x, y, p0)
 fitpoints = collect(1:250)
 
-scatter!(x,y, color=:green, alpha=0.9)
+scatter!(x,y, color=:green, alpha=0.9, label="")
 plot!(fitpoints, m(fitpoints, expfit.param), label="Fit") 
-println("Fit parameters: ", expfit.param)
-plot!(fitpoints, m(fitpoints, p0), label="Guess")
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
@@ -87,3 +78,11 @@ savefig("plots/SecondHeatmap.svg")
 
 
 
+
+fig3 = histogram2d(incidents[incidents .< 250], firsts[incidents .< 250], bins=(150, 150))
+plot!(fitpoints, m(fitpoints, expfit.param) .+ 1, label="Cut")
+title!("Incident energy and first detector")
+xlabel!("Energy of incident neutron (MeV)")
+ylabel!("Energy in first detector (MeV)")
+savefig("plots/FirstHeatmap.svg")
+#display(fig3)
