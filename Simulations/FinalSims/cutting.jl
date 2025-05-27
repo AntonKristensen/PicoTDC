@@ -2,7 +2,7 @@ using CSV
 using DataFrames
 
 
-function cut(data, cutparameterfile = "..cutparams.csv")
+function cut(data, cutparameterfile = "../cutparams.csv")
     cutread = CSV.read(cutparameterfile, DataFrame; header=false, delim=",", ignorerepeated=false)
     cutparams = collect(cutread[1,:])
 
