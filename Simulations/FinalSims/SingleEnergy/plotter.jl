@@ -4,12 +4,15 @@ using CSV
 using DataFrames
 using Statistics
 using Distributions
-using LsqFit
 
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
+fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+fiddiincidents = fiddidata[:,1]
 
+hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+hunniincidents = hunnidata[:,1]
 
 
 ###############
@@ -45,11 +48,14 @@ function statisticing(data)
 end
 
 medi, spread = statisticing(incidents)
+fiddimedi, fiddispread = statisticing(fiddiincidents)
+hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
-
+fig2 = histogram(incidents[incidents .< medi*2], bins = 250, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000, legend=false)
+#histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
+#histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
@@ -59,33 +65,24 @@ savefig("plots/TotalEnergies.svg")
 #display(fig2)
 
 
-fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=(150, 150))
-title!("Incident energy and second detector")
-xlabel!("Energy of incident neutron (MeV)")
-ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.svg")
-
-x = [28, 38, 50, 75, 100, 125, 150, 175, 200, 225]
-y = [23, 14, 9, 6, 4.7, 4, 3.2, 3, 2.85, 2.75]
-m(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-p0 = [5.0, 25.0, 1.0, 100.0]
-expfit = curve_fit(m, x, y, p0)
-fitpoints = collect(1:250)
-scatter!(x,y, color=:green, alpha=0.9, label="")
-plot!(fitpoints, m(fitpoints, expfit.param), label="Fit") 
-savefig("plots/SecondHeatmapFit.svg")
-#display(fig4)
-
-
-
-
-fig3 = histogram2d(incidents[incidents .< 250], firsts[incidents .< 250], bins=(150, 150))
+fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.svg")
-
-plot!(fitpoints, m(fitpoints, expfit.param) .+ 1, label="Upper cut")
-hline!([0.5], label="Lower cut")
-savefig("plots/FirstHeatmapCut.svg")
+savefig("plots/FirstHeatmap.png")
 #display(fig3)
+
+fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
+title!("Incident energy and second detector")
+xlabel!("Energy of incident neutron (MeV)")
+ylabel!("Energy in second detector (MeV)")
+savefig("plots/SecondHeatmap.png")
+#display(fig4)
+
+# Writing into results file
+resultfile = open("results.csv", "a")
+if filesize("results.csv") == 0 # Checks if the file is empty, and writes a header if it is
+    write(resultfile, "Median, spread, 50ps median, 50ps spread, 100ps median, 100ps spread\n")
+end
+write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
+close(resultfile)
