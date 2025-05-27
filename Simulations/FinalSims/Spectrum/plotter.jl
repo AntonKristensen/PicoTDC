@@ -89,7 +89,7 @@ xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
 
-uppercutindices = firsts .< cut(incidents, expfit.param)
+uppercutindices = firsts .< cut(incidents, expfit.param) .+ 1
 uppercutincidents = incidents[uppercutindices]
 histogram!(uppercutincidents[uppercutincidents .< 250], bins=250, label="Upper cut", color=:red, alpha=0.9)
 
