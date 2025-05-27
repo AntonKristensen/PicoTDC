@@ -93,7 +93,7 @@ uppercutindices = firsts .< cut(incidents, expfit.param)
 uppercutincidents = incidents[uppercutindices]
 histogram!(uppercutincidents[uppercutincidents .< 250], bins=250, label="Upper cut", color=:red, alpha=0.9)
 
-cutindices = uppercutindices .&& incidents .> 0.5
+cutindices = uppercutindices .&& firsts .> 0.5 .&& seconds .> 0.5
 cutincidents = incidents[cutindices]
 histogram!(cutincidents[cutincidents .< 250], bins=250, label="Upper+lower cut", color=:blue, alpha=0.9)
 
