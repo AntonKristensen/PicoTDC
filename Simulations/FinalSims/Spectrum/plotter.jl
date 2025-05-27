@@ -6,22 +6,14 @@ using Statistics
 using Distributions
 using LsqFit
 
-include("../cutting.jl")
 
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
+include("../cutting.jl")
 cutdata = cut(data)
 
 
-
-###############
-# Collecting results from all individual pairs into one big list
-incidents = data[:,1]
-firsts = data[:,2]
-seconds = data[:,3]
-fronts = data[:,4]
-backs = data[:,5]
 
 
 function statisticing(data)
@@ -47,82 +39,39 @@ function statisticing(data)
     return params(gaussfit)
 end
 
-medi, spread = statisticing(incidents)
+medi, spread = statisticing(cutdata[:,1])
 
 
+i = cutdata[:,1] .< 250
 
 
-
-fig4 = histogram2d(incidents[incidents .< 250], seconds[incidents .< 250], bins=(150, 150))
+fig4 = histogram2d(cutdata[i,1], cutdata[i,3], bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
 savefig("plots/SecondHeatmap.svg")
-
-x = [28, 38, 50, 75, 100, 125, 150, 175, 200, 225]
-y = [23, 14, 9, 6, 4.7, 4, 3.2, 3, 2.85, 2.75]
-cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
-p0 = [5.0, 25.0, 1.0, 100.0]
-expfit = curve_fit(cut, x, y, p0)
-fitpoints = collect(1:250)
-scatter!(x,y, color=:green, alpha=0.9, label="")
-plot!(fitpoints, cut(fitpoints, expfit.param), label="Fit") 
-savefig("plots/SecondHeatmapFit.svg")
 #display(fig4)
 
 
 
 
-fig3 = histogram2d(incidents[incidents .< 250], firsts[incidents .< 250], bins=(150, 150))
+fig3 = histogram2d(cutdata[i,1], cutdata[i,2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
-
-plot!(fitpoints, cut(fitpoints, expfit.param) .+ 1, label="Upper cut")
-hline!([0.5], label="Lower cut")
-savefig("plots/FirstHeatmapCut.svg")
 #display(fig3)
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(cutdata[i,1], bins = 250, color=:black, label="No cut", legend=false, alpha=1, size=(500,300), dpi=1000)
 title!("Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
-
-uppercutindices = firsts .< cut(incidents, expfit.param) .+ 1
-uppercutincidents = incidents[uppercutindices]
-histogram!(uppercutincidents[uppercutincidents .< 250], bins=250, label="Upper cut", color=:red, alpha=0.9)
-
-cutindices = uppercutindices .&& firsts .> 0.5 .&& seconds .> 0.5
-cutincidents = incidents[cutindices]
-histogram!(cutincidents[cutincidents .< 250], bins=250, label="Upper+lower cut", color=:blue, alpha=0.9)
-
-savefig("plots/TotalEnergiesCut.svg")
-#savefig("plots/TotalEnergies.pdf")
 #display(fig2)
 
 
-
-fig5 = histogram(cutdata[:,1], bins=0:1:250)
-savefig("plots/test.svg")
-
-
-function savecut(cutparams)
-	file = open("../cutparams.csv", "w")
-	for n in 1:length(cutparams)
-		if n == length(cutparams)
-			write(file, string(cutparams[n]))
-		else
-			write(file, string(cutparams[n]) * ", ")
-		end
-	end
-	close(file)
-end
-
-#savecut(expfit.param)
 
 
 

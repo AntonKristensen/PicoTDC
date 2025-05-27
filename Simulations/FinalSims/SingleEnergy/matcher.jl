@@ -13,6 +13,9 @@ include("../functions.jl")
 incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6)
 matchwriter(incidentframe)
 
+thirtyuncertainframe = detectorlooping(timeuncertainty=3e-11, minimumenergy=1, addedtime = 1e-6)
+matchwriter(thirtyuncertainframe, file="output/thirtyuncertainmatches.csv")
+
 fiddiuncertainframe = detectorlooping(timeuncertainty=5e-11, minimumenergy=1, addedtime = 1e-6)
 matchwriter(fiddiuncertainframe, file="output/fiddiuncertainmatches.csv")
 

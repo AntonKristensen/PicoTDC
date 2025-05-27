@@ -8,24 +8,24 @@ using Distributions
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
-thirtydata = CSV.read("output/thirtyuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
-
 fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+fiddiincidents = fiddidata[:,1]
 
 hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
-
+hunniincidents = hunnidata[:,1]
 
 
 include("../cutting.jl")
 cutdata = cut(data)
-cutthirtydata = cut(thirtydata)
-cutfiddidata = cut(fiddidata)
-cuthunnidata = cut(hunnidata)
 
 
 ###############
 # Collecting results from all individual pairs into one big list
-
+incidents = data[:,1]
+firsts = data[:,2]
+seconds = data[:,3]
+fronts = data[:,4]
+backs = data[:,5]
 
 
 function statisticing(data)
@@ -51,35 +51,55 @@ function statisticing(data)
     return params(gaussfit)
 end
 
-medi, spread = statisticing(cutdata[:,1])
-thirtymedi, thirtyspread = statisticing(cutthirtydata[:,1])
-fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
-hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
+medi, spread = statisticing(incidents)
+fiddimedi, fiddispread = statisticing(fiddiincidents)
+hunnimedi, hunnispread = statisticing(hunniincidents)
 
-range = 1.1
-i = cutdata[:,1] .< medi*range
 
-fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
-histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:gren, label="30ps", alpha=0.5)
-histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
-histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.5)
+
+fig2 = histogram(incidents[incidents .< 250], bins=0:1:120, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+#histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
+#histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
+
+cutread = CSV.read("../cutparams.csv", DataFrame; header=false, delim=",", ignorerepeated=false)
+cutparams = collect(cutread[1,:])
+
+#cut(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
+cut(E, p) = p[1] .+ p[2] ./ (E .+ p[3])
+cutlee = 0.5 # The cut isn't perfect, so add a bit of extra leeway
+lowert = 0.5 # Set a lower threshold for detection. Usefull for cutting out crosstalk also
+
+cutindices = cutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> 0.
+cutincidents = incidents[cutindices]
+
+extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert .&&  seconds .< cut(incidents, cutparams) .+ cutlee
+extracutincidents = incidents[extracutindices]
+
+histogram!(cutincidents[cutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:red, label="Cut")
+histogram!(extracutincidents[extracutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:blue, label="Extra cut")
+savefig("plots/TotalEnergiesCut.svg")
 display(fig2)
 
 
 
 
-fig3 = histogram2d(cutdata[i,1], cutdata[i,2], bins=(150, 150))
+fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
+
+fitpoints = collect(1:250)
+plot!(fitpoints, cut(fitpoints, cutparams) .+ cutlee, label="Upper cut")
+hline!([lowert], label="Lower cut")
+savefig("plots/FirstHeatmapCut.svg")
 #display(fig3)
 
-fig4 = histogram2d(cutdata[i,1], cutdata[i,3], bins=(150, 150))
+fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2], bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
@@ -94,3 +114,17 @@ end
 write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
 close(resultfile)
 
+
+
+function signalnoise(inci, signalstart, signalstop)
+	indices = inci .> signalstart .&& inci .< signalstop
+	
+	return [sum(indices), sum(.! indices), sum(indices)/ sum(.! indices) ]
+end
+
+
+println("No cut: #",length(incidents),", S,N,S/N: ", signalnoise(incidents, 95,105))
+
+println("Cut: #",length(cutincidents),", S,N,S/N: ", signalnoise(cutincidents, 95,105))
+
+println("Extra cut: #",length(extracutincidents),", S,N,S/N: ", signalnoise(extracutincidents, 95,105))
