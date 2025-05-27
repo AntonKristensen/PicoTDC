@@ -82,7 +82,7 @@ ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.svg")
 
 plot!(fitpoints, cut(fitpoints, expfit.param) .+ 1, label="Upper cut", color=:red, alpha=0.8, linewidth=2)
-hline!([0.5], label="Lower cut", color=:red, alpha=0.8, linewidth=2)
+hline!([0.5], label="Lower cut", color=:blue, alpha=0.8, linewidth=2)
 savefig("plots/FirstHeatmapCut.svg")
 #display(fig3)
 
