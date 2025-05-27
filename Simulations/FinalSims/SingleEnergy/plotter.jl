@@ -3,6 +3,7 @@ using Plots
 using CSV
 using DataFrames
 using Statistics
+using StatsBase
 using Distributions
 
 filepath = "output/matches.csv"
@@ -30,23 +31,22 @@ cuthunnidata = cut(hunnidata)
 
 function statisticing(data)
     # Doing a slight bit of statistics
-    medi = median(data) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
+    medi = median(data[data .> 80 .&& data .< 120]) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
     lower = medi - quantile(data, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
     upper = quantile(data, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
 
-    #print(medi, ", ", lower, ", ", upper, "\n")
+    println("Brute: ", medi, ", ", lower, ", ", upper)
 
     bound = min(lower,upper)
 
     # ML fit, cutting data 2 sigma below and above the calculated mean
     fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
     gaussfit = fit_mle(Normal, fitdata)
-    print(medi, " ", bound, " ", params(gaussfit), "\n")
+    println(medi, " ", bound, " ", params(gaussfit))
 
-    # ML fit, cutting data 1 sigma below and above the calculated mean
-    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
-    gaussfit = fit_mle(Normal, fitdata)
-    print(medi, ", ", lower, ", ", upper, " ", params(gaussfit),"\n")
+   
+
+
 
     return params(gaussfit)
 end
@@ -56,7 +56,7 @@ thirtymedi, thirtyspread = statisticing(cutthirtydata[:,1])
 fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
 hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
 
-range = 1.1
+range = 1.2
 i = cutdata[:,1] .< medi*range
 
 fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)

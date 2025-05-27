@@ -12,7 +12,7 @@ function cut(data, cutparameterfile = "../cutparams.csv")
     #cutfunc(E, p) = p[1] .+ p[2] * exp.(- (E .+ p[3]) ./ p[4])
     cutfunc(E, p) = p[1] .+ p[2] ./ (E .+ p[3])
 	
-    cutlee = 0.1 # The cut isn't perfect, so add a bit of extra leeway
+    cutlee = 1.5 # The cut isn't perfect, so add a bit of extra leeway
     lowert = 0.5 # Set a lower threshold for detection. Usefull for cutting out crosstalk also
 
     incidents = data[:,1]

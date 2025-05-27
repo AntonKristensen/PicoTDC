@@ -123,7 +123,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
         
             # Collecting the results into detector hits instead of separate particles
             first = collector("output/front"*string(i)*".phsp")
-            first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] )          + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
+            first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             sort!(first, [:Column10])
             #first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
             Threads.@threads for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
