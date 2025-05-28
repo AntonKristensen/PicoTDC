@@ -54,7 +54,7 @@ end
 
 
 uncertaintyplot = plot(meaner(medians), 100 * meaner(spreads) ./meaner(medians), yerr=100 * deviater(spreads)./meaner(medians), color=:black, markerstrokecolor=:black,label="Ideal", size=(300,200), dpi=1000)
-plot!(meaner(thirtyedians), 100 * meaner(thirtyspreads)./meaner(thirtymedians), yerr=100 * deviater(thirtyspreads)./meaner(thirtyedians), color=:blue, markerstrokecolor=:blue,label="30ps")
+plot!(meaner(thirtyedians), 100 * meaner(thirtyspreads)./meaner(thirtymedians), yerr=100 * deviater(thirtyspreads)./meaner(thirtyedians), color=:blue, markerstrokecolor=:green,label="30ps")
 plot!(meaner(fiddimedians), 100 * meaner(fiddispreads)./meaner(fiddimedians), yerr=100 * deviater(fiddispreads)./meaner(fiddimedians), color=:blue, markerstrokecolor=:blue,label="50ps")
 plot!(meaner(hunnimedians), 100 * meaner(hunnispreads)./meaner(hunnimedians), yerr=100 * deviater(hunnispreads)./meaner(hunnimedians), color=:red, markerstrokecolor=:red, label="100ps")
 title!("Energy Uncertainties")

@@ -31,7 +31,7 @@ hunnispread=data[:,8]
 
 
 fig1 = plot(energies,100* spread ./ energies, c=:black, label="Ideal")
-plot!(energies,100 * thirtyspread ./ energies, c=:blue, label="30ps")
+plot!(energies,100 * thirtyspread ./ energies, c=:green, label="30ps")
 plot!(energies,100 * fiddispread ./ energies, c=:blue, label="50ps")
 plot!(energies,100 * hunnispread ./ energies, c=:red, label="100ps")
 
