@@ -15,7 +15,7 @@ fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, de
 
 hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
 
-
+include("../statistic.jl")
 
 include("../cutting.jl")
 cutdata = cut(data)
@@ -28,28 +28,6 @@ cuthunnidata = cut(hunnidata)
 # Collecting results from all individual pairs into one big list
 
 
-
-function statisticing(data)
-    # Doing a slight bit of statistics
-    medi = median(data[data .> 80 .&& data .< 120]) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
-    lower = medi - quantile(data, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
-    upper = quantile(data, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
-
-    println("Brute: ", medi, ", ", lower, ", ", upper)
-
-    bound = min(lower,upper)
-
-    # ML fit, cutting data 2 sigma below and above the calculated mean
-    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
-    gaussfit = fit_mle(Normal, fitdata)
-    println(medi, " ", bound, " ", params(gaussfit))
-
-   
-
-
-
-    return params(gaussfit)
-end
 
 medi, spread = statisticing(cutdata[:,1])
 thirtymedi, thirtyspread = statisticing(cutthirtydata[:,1])
@@ -89,8 +67,8 @@ savefig("plots/SecondHeatmap.png")
 # Writing into results file
 resultfile = open("results.csv", "a")
 if filesize("results.csv") == 0 # Checks if the file is empty, and writes a header if it is
-    write(resultfile, "Median, spread, 50ps median, 50ps spread, 100ps median, 100ps spread\n")
+    write(resultfile, "Median, spread, 30ps median, 30ps spread, 50ps median, 50ps spread, 100ps median, 100ps spread\n")
 end
-write(resultfile, string(medi),", ", string(spread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
+write(resultfile, string(medi),", ", string(spread),", ", string(thirtymedi),", ", string(thirtyspread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
 close(resultfile)
 
