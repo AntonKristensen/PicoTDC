@@ -22,11 +22,11 @@ function statisticing(data)
 
     #bound = min(lower,upper) # It works because the right side of the peak is quite nicely gaussian!
 
-    bound = medi * 0.2
+    bound = medi * 0.15
     # ML fit, cutting data 2 sigma below and above the calculated mean
-    fitdata = data[(data .> medi - bound*2) .& (data .< medi + bound*2)] # Cutting a roughly 3sigma region around the peak
+    fitdata = data[(data .> medi - bound) .& (data .< medi + bound)] # Cutting a roughly 3sigma region around the peak
     gaussfit = fit_mle(Normal, fitdata)
-    println("Fit:", params(gaussfit))
+    println("Fit:", params(gaussfit), ", Data between: ", medi-bound, " to ", medi+bound)
 
 
 
