@@ -27,14 +27,13 @@ cuthunnidata = cut(hunnidata)
 ###############
 # Collecting results from all individual pairs into one big list
 
-
-
-medi, spread = statisticing(cutdata[:,1])
-thirtymedi, thirtyspread = statisticing(cutthirtydata[:,1])
-fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
-hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
+med, spread = bootstatisticing(cutdata[:,1], 10000)
+thirtymedi, thirtyspread = bootstatisticing(cutthirtydata[:,1], 10000)
+fiddimedi, fiddispread = bootstatisticing(cutfiddidata[:,1], 10000)
+hunnimedi, hunnispread = bootstatisticing(cuthunnidata[:,1], 10000)
 
 range = 1.2
+medi = med[1]
 i = cutdata[:,1] .< medi*range
 
 fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
@@ -67,8 +66,8 @@ savefig("plots/SecondHeatmap.png")
 # Writing into results file
 resultfile = open("results.csv", "a")
 if filesize("results.csv") == 0 # Checks if the file is empty, and writes a header if it is
-    write(resultfile, "Median, spread, 30ps median, 30ps spread, 50ps median, 50ps spread, 100ps median, 100ps spread\n")
+    write(resultfile, "Median, sigma, spread, sigma, 30ps median, sigma, 30ps spread, sigma, 50ps median, sigma, 50ps spread, sigma, 100ps median, sigma, 100ps spread, sigma\n")
 end
-write(resultfile, string(medi),", ", string(spread),", ", string(thirtymedi),", ", string(thirtyspread),", ", string(fiddimedi),", ", string(fiddispread),", ", string(hunnimedi),", ", string(hunnispread), "\n")
+write(resultfile, string(med[1]),", ", string(med[2]),", ", string(spread[1]),", ", string(spread[2]),", ", string(thirtymedi[1]),", ", string(thirtymedi[2]),", ", string(thirtyspread[1]),", ", string(thirtyspread[2]),", ", string(fiddimedi[1]),", ", string(fiddimedi[2]),", ", string(fiddispread[1]),", ", string(fiddispread[2]),", ", string(hunnimedi[1]),", ", string(hunnimedi[2]),", ", string(hunnispread[1]),", ", string(hunnispread[2]), "\n")
 close(resultfile)
 

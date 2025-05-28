@@ -20,20 +20,29 @@ println(energies)
 
 ##############
 medi=data[:,1]
-spread=data[:,2]
-thirty=data[:,3]
-thirtyspread=data[:,4]
-fiddi=data[:,5]
-fiddispread=data[:,6]
-hunni=data[:,7]
-hunnispread=data[:,8]
+medi2=data[:,2]
+spread=data[:,3]
+spreads=data[:,4]
+thirty=data[:,5]
+thirtys=data[:,6]
+thirtyspread=data[:,7]
+thirtyspreads=data[:,8]
+fiddi=data[:,9]
+fiddis=data[:,10]
+fiddispread=data[:,11]
+fiddispreads=data[:,12]
+hunni=data[:,13]
+hunnis=data[:,14]
+hunnispread=data[:,15]
+hunnispreads=data[:,16]
+
+println(medi)
 
 
-
-fig1 = plot(energies,100* spread ./ energies, c=:black, label="Ideal")
-plot!(energies,100 * thirtyspread ./ energies, c=:green, label="30ps")
-plot!(energies,100 * fiddispread ./ energies, c=:blue, label="50ps")
-plot!(energies,100 * hunnispread ./ energies, c=:red, label="100ps")
+fig1 = plot(energies,100* spread ./ energies, yerr = 100* spreads ./ energies, c=:black, markerstrokecolor=:black, label="Ideal")
+plot!(energies,100 * thirtyspread ./ energies, yerr = 100* thirtyspreads ./ energies, c=:green, markerstrokecolor=:green, label="30ps")
+plot!(energies,100 * fiddispread ./ energies, yerr = 100* fiddispreads ./ energies, c=:blue, markerstrokecolor=:blue, label="50ps")
+plot!(energies,100 * hunnispread ./ energies, yerr = 100* hunnispreads ./ energies, c=:red, markerstrokecolor=:red, label="100ps")
 
 
 title!("Uncertainty of energy calculation")

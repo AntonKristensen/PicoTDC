@@ -33,3 +33,33 @@ function statisticing(data)
     return params(gaussfit)
 end
 
+function resampler(data)
+    newindices = rand(1:length(data), length(data))
+    return data[newindices]
+end
+
+function bootstatisticing(data, bootnumber) # Function for finding mean and spread, but gives uncertainty estimates from bootstrapping
+    # Doing a slight bit of statistics
+    
+    # Putting it into a histogram to find the max value
+    h = fit(Histogram, data, nbins=100) 
+    edges = collect(h.edges[1])
+    maxindex = argmax(h.weights)
+    mode = (edges[maxindex]+ edges[maxindex+1])/2 # Turns out to be decently robust
+
+    bound = mode * 0.15
+    # ML fit, cutting data 2 sigma below and above the calculated mean
+    fitdata = data[(data .> mode - bound) .& (data .< mode + bound)] # Cutting a roughly 3sigma region around the peak
+
+    means = zeros(bootnumber)
+    spreads = zeros(bootnumber)
+    for n in 1:bootnumber
+        gaussfit = fit_mle(Normal, resampler(fitdata))
+        means[n] = params(gaussfit)[1]
+        spreads[n] = params(gaussfit)[2]
+    end
+
+    println("Fit:", mean(means), ", ", mean(spreads), ", Data between: ", mode-bound, " to ", mode+bound)
+
+    return [mean(means), std(means)], [mean(spreads), std(spreads)]
+end
