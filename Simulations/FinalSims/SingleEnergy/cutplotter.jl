@@ -57,9 +57,9 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins=0:1:250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
-#histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
-#histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
+fig2 = histogram(incidents[incidents .< medi + spread*3], bins=0:1: medi + spread*3, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+#histogram!(fiddiincidents[fiddiincidents .<  medi + spread*3], bins = 0:1: medi + spread*3, color=:blue, label="50ps", alpha=0.3)
+#histogram!(hunniincidents[hunniincidents .<  medi + spread*3], bins = 0:1: medi + spread*3, color=:red, label="100ps", alpha=0.3)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
@@ -79,8 +79,8 @@ cutincidents = incidents[cutindices]
 extracutindices = firsts .< cut(incidents, cutparams) .+ cutlee .&& firsts .> lowert .&& seconds .> lowert .&&  seconds .< cut(incidents, cutparams) .+ cutlee
 extracutincidents = incidents[extracutindices]
 
-histogram!(cutincidents[cutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:red, label="Cut")
-histogram!(extracutincidents[extracutincidents .< 250],  bins=0:1:120, alpha=0.9, color=:blue, label="Extra cut")
+histogram!(cutincidents[cutincidents .<  medi + spread*3],  bins=0:1: medi + spread*3, alpha=0.9, color=:red, label="Cut")
+histogram!(extracutincidents[extracutincidents .<  medi + spread*3],  bins=0:1: medi + spread*3, alpha=0.9, color=:blue, label="Extra cut")
 savefig("plots/TotalEnergiesCut.svg")
 display(fig2)
 
