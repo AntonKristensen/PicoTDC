@@ -11,7 +11,7 @@ data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 
 #thirtydata = CSV.read("output/thirtyuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
 
-#fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
+fiddidata = CSV.read("output/fiddiuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
 
 #hunnidata = CSV.read("output/hunniuncertainmatches.csv", DataFrame; header=1, delim=",", ignorerepeated=false)
 
@@ -20,7 +20,7 @@ include("../statistic.jl")
 include("../cutting.jl")
 cutdata = cut(data)
 #cutthirtydata = cut(thirtydata)
-#cutfiddidata = cut(fiddidata)
+cutfiddidata = cut(fiddidata)
 #cuthunnidata = cut(hunnidata)
 
 
@@ -31,17 +31,17 @@ cutdata = cut(data)
 
 media, spread = bootstatisticing(cutdata[:,1])
 #thirtymedi, thirtyspread = statisticing(cutthirtydata[:,1])
-#fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
+fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
 #hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
 medi = media[1]
 range = 1.5
 i = cutdata[:,1] .< medi*range
 
-fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="σ = 20 MeV", legend=false, alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
 #histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.5)
-#histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
+histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
 #histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.5)
-title!("Gaussian Neutron Spectrum")
+title!("σ = 20 MeV Gaussian Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
