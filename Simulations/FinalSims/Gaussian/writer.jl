@@ -30,7 +30,7 @@ write(file,
 "dc:So/Beam/BeamPositionCutoffX      = " *frontmaxx* " m
 dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n\n"*
 "dv:So/Beam/BeamEnergySpectrumValues    = 4 90 91 109 110  MeV \n"*
-"uv:So/Beam/BeamEnergySpectrumWeights   = 4 .01 .49 .49 .01 \n"
+"uv:So/Beam/BeamEnergySpectrumWeights   = 4 0 1 1 0 \n"
 )
 
 
