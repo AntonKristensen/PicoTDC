@@ -43,11 +43,11 @@ sc:So/Beam/Component                = "BeamPosition"
 sc:So/Beam/BeamParticle             = "neutron"
 #dc:So/Beam/BeamEnergy               = 100 MeV
 
-s:So/Beam/BeamEnergySpectrumType       = "Continuous"
+#s:So/Beam/BeamEnergySpectrumType       = "Continuous"
 #dv:So/Beam/BeamEnergySpectrumValues    = 4 90 91 109 110  MeV
 #uv:So/Beam/BeamEnergySpectrumWeights   = 4 .01 .49 .49 .01
 
-uc:So/Beam/BeamEnergySpread         = 0
+#uc:So/Beam/BeamEnergySpread         = 0
 sc:So/Beam/BeamPositionDistribution = "Flat" #"Gaussian"
 sc:So/Beam/BeamPositionCutoffShape  = "Rectangle"
 #dc:So/Beam/BeamPositionCutoffX      = 10. cm

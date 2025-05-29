@@ -39,8 +39,8 @@ Ss = replace(string(collect(E-S*2:1:E+S*2))[2:end-1], "," => " ")
 write(file, 
 "dc:So/Beam/BeamPositionCutoffX      = " *frontmaxx* " m
 dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n"*
-"dv:So/Beam/BeamEnergySpectrumValues    = " * string(len) * " " * Es * " MeV\n" *
-"uv:So/Beam/BeamEnergySpectrumWeights   = "* string(len) * " " * Ss * "\n\n"
+"d:So/Beam/BeamEnergy    = " * energy * " MeV\n" *
+"u:So/Beam/BeamEnergySpread  = " * spread * "\n\n"
 )
 
 

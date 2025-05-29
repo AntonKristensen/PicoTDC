@@ -3,7 +3,7 @@ SHELL := /bin/bash
 
 particles = 10000000
 energy = 100
-spread = 25
+spread = 10
 start = 25
 stop = 250
 interval = 25
