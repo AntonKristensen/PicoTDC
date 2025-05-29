@@ -14,6 +14,8 @@ write(file, "i:Ts/Seed = " * rng * "\n")
 
 particles = ARGS[1]
 energy = ARGS[2]
+spread = ARGS[4]
+
 
 write(file, "ic:So/Beam/NumberOfHistoriesInRun   = " * string(particles)* "\n")
 
@@ -26,11 +28,19 @@ frontmaxx = string(maximum(abs.(geometry[geometry[:,end], 1]) .+ maximum(abs.(ge
 frontmaxy = string(maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
 frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
+E = parse(Float64, energy)
+S = parse(Float64, spread)
+distribut = Normal(E, S)
+len = length(collect(E-S*2:1:E+S*2))
+Es = replace(string(pdf(distribut, E-S*2:1:E+S*2))[2:end-1], "," => " ")
+Ss = replace(string(collect(E-S*2:1:E+S*2))[2:end-1], "," => " ")
+
+
 write(file, 
 "dc:So/Beam/BeamPositionCutoffX      = " *frontmaxx* " m
-dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n\n"*
-"dv:So/Beam/BeamEnergySpectrumValues    = 4 90 91 109 110  MeV \n"*
-"uv:So/Beam/BeamEnergySpectrumWeights   = 4 0 1 1 0 \n"
+dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n"*
+"dv:So/Beam/BeamEnergySpectrumValues    = " * string(len) * " " * Es * " MeV\n" *
+"uv:So/Beam/BeamEnergySpectrumWeights   = "* string(len) * " " * Ss * "\n\n"
 )
 
 
