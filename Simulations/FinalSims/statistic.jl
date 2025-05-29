@@ -38,7 +38,7 @@ function resampler(data)
     return data[newindices]
 end
 
-function bootstatisticing(data, bootnumber) # Function for finding mean and spread, but gives uncertainty estimates from bootstrapping
+function bootstatisticing(data, bootnumber=10000) # Function for finding mean and spread, but gives uncertainty estimates from bootstrapping
     # Doing a slight bit of statistics
     
     # Putting it into a histogram to find the max value
@@ -46,20 +46,26 @@ function bootstatisticing(data, bootnumber) # Function for finding mean and spre
     edges = collect(h.edges[1])
     maxindex = argmax(h.weights)
     mode = (edges[maxindex]+ edges[maxindex+1])/2 # Turns out to be decently robust
+    println("mode: ", mode)
 
-    bound = mode * 0.15
+    boundsfit = fit_mle(Normal, data[(data .> mode * 0.90)]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
+    println(boundsfit)
+    center = params(boundsfit)[1]
+    bound = params(boundsfit)[2]
+
     # ML fit, cutting data 2 sigma below and above the calculated mean
-    fitdata = data[(data .> mode - bound) .& (data .< mode + bound)] # Cutting a roughly 3sigma region around the peak
+    fitdata = data[(data .> center - bound) .& (data .< center + bound)] # Cutting a roughly 3sigma region around the peak
 
     means = zeros(bootnumber)
     spreads = zeros(bootnumber)
+    println("ping")
     for n in 1:bootnumber
         gaussfit = fit_mle(Normal, resampler(fitdata))
         means[n] = params(gaussfit)[1]
         spreads[n] = params(gaussfit)[2]
     end
 
-    println("Fit:", mean(means), ", ", mean(spreads), ", Data between: ", mode-bound, " to ", mode+bound)
+    println("Fit:", mean(means), ", ", mean(spreads), ", Data between: ", center-bound, " to ", center+bound)
 
     return [mean(means), std(means)], [mean(spreads), std(spreads)]
 end
