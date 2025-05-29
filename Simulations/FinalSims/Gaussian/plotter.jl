@@ -34,7 +34,7 @@ media, spread = bootstatisticing(cutdata[:,1])
 #fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
 #hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
 medi = media[1]
-range = (medi + 3* spread[1])/ medi
+range = 1.5
 i = cutdata[:,1] .< medi*range
 
 fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="σ = 20 MeV", legend=false, alpha=1, size=(500,300), dpi=1000)
