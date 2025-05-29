@@ -57,7 +57,7 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins=0:1:120, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+fig2 = histogram(incidents[incidents .< 250], bins=0:1:250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
 #histogram!(fiddiincidents[fiddiincidents .< medi*2], bins = 250, color=:blue, label="50ps", alpha=0.3)
 #histogram!(hunniincidents[hunniincidents .< medi*2], bins = 250, color=:red, label="100ps", alpha=0.3)
 title!("Monoenergetic Neutron Spectrum")
