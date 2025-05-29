@@ -44,8 +44,8 @@ sc:So/Beam/BeamParticle             = "neutron"
 #dc:So/Beam/BeamEnergy               = 100 MeV
 
 s:So/Beam/BeamEnergySpectrumType       = "Continuous"
-dv:So/Beam/BeamEnergySpectrumValues    = 10 0. 25. 50. 75. 100. 125. 150. 175. 200. 225. MeV
-uv:So/Beam/BeamEnergySpectrumWeights   = 10 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1
+dv:So/Beam/BeamEnergySpectrumValues    = 4 85 95 105 115 MeV
+uv:So/Beam/BeamEnergySpectrumWeights   = 4 .25 .25 .25 .25
 
 uc:So/Beam/BeamEnergySpread         = 0
 sc:So/Beam/BeamPositionDistribution = "Flat" #"Gaussian"
@@ -89,7 +89,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 27715817
+i:Ts/Seed = 107610236
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamPositionCutoffX      = 0.023 m
 dc:So/Beam/BeamPositionCutoffY      = 0.023 m
