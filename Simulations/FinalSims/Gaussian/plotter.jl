@@ -36,11 +36,13 @@ fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
 medi = media[1]
 range = 1.5
 i = cutdata[:,1] .< medi*range
+normalarea = length(cutdata[cutdata[:,1] .< 140 .&& cutdata[:,1] .> 60,1])
 
 fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
 #histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.5)
-histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
+#histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
 #histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.5)
+plot!(normalarea * pdf(Normal(100,20), 60:1:140), label="Normal, μ=100MeV, σ=20MeV)", linecolor=:red, linewidth=3)
 title!("σ = 20 MeV Gaussian Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
