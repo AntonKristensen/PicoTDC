@@ -39,9 +39,16 @@ correct = length(incidents[frontevents .== backevents])
 fake =  length(incidents[frontevents .!= backevents])
 neutrons = parse(Float64, ARGS[1]) * parse(Float64, ARGS[2])
 flux = neutrons / (parse(Float64, frontmaxx) * parse(Float64, frontmaxy))
+
+
 matchrate = correct / (flux / 10000)
 println(matchrate, " matches / (neutrons/cm²)")
 
 writingfile = open("geometryresults.txt", "a")
-write(writingfile, string(matchrate) * "\n")
+
+if filesize("geometryresults.txt") == 0 # Checks if the file is empty, and writes a header if it is
+    write(matchfile, "Scintillators, correct, fake, neutrons, flux\n")
+end
+
+write(writingfile, ARGS[3] * ", " * string(correct) * "," * string(fake) * "," * string(neutrons) * "," * string(flux) * "," * "\n")
 close(writingfile)
