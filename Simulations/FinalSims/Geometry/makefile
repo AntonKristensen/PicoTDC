@@ -43,7 +43,6 @@ curve :
 	echo "Scintillators, matchrate (match / (neutron/cm²))" >> geometryresults.txt
 
 	for E in $$(seq $(start) $(interval) $(stop)) ; do \
-		rm -f output/* ; \
 		for i in $$(seq 1 1 $(repeats)) ; do \
 			echo "Scintillators: $$E / $(stop), particles= $(particles), measurement $$i / $(repeats)." ; \
 			julia geometrywriter.jl $$E ; \

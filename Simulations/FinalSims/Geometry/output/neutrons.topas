@@ -89,3 +89,81 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
+i:Ts/Seed = 1319250728
+ic:So/Beam/NumberOfHistoriesInRun   = 10000000
+dc:So/Beam/BeamPositionCutoffX      = 0.013000000000000001 m
+dc:So/Beam/BeamPositionCutoffY      = 0.013000000000000001 m
+
+d:Ge/World/HLX = 0.026000000000000002 m
+d:Ge/World/HLY = 0.026000000000000002 m
+d:Ge/World/HLZ = 0.266 m
+s:Ge/World/Material = "Air"
+
+)
+
+#s:Ge/World/Material = "Vacuum"
+
+s:Ge/front1/Type     = "TsBox"
+s:Ge/front1/Material = "Plastic"
+s:Ge/front1/Parent   = "World"
+d:Ge/front1/HLX      = 0.003 m
+d:Ge/front1/HLY      = 0.003 m
+d:Ge/front1/HLZ      = 0.003 m
+d:Ge/front1/TransX   = 0.01 m
+d:Ge/front1/TransY   = 0.01 m
+d:Ge/front1/TransZ   = 0.25 m
+s:Sc/front1/Quantity                  = "rindom"
+s:Sc/front1/Component                 = "front1"
+s:Sc/front1/OutputType 		     = "ASCII"
+b:Sc/front1/OutputToConsole           = "TRUE"
+s:Sc/front1/OutputFile = "output/front1"
+s:Sc/front1/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/back1/Type     = "TsBox"
+s:Ge/back1/Material = "Plastic"
+s:Ge/back1/Parent   = "World"
+d:Ge/back1/HLX      = 0.003 m
+d:Ge/back1/HLY      = 0.003 m
+d:Ge/back1/HLZ      = 0.003 m
+d:Ge/back1/TransX   = 0.01 m
+d:Ge/back1/TransY   = 0.0 m
+d:Ge/back1/TransZ   = -0.25 m
+s:Sc/back1/Quantity                  = "rindom"
+s:Sc/back1/Component                 = "back1"
+s:Sc/back1/OutputType 		     = "ASCII"
+b:Sc/back1/OutputToConsole           = "TRUE"
+s:Sc/back1/OutputFile = "output/back1"
+s:Sc/back1/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/front2/Type     = "TsBox"
+s:Ge/front2/Material = "Plastic"
+s:Ge/front2/Parent   = "World"
+d:Ge/front2/HLX      = 0.003 m
+d:Ge/front2/HLY      = 0.003 m
+d:Ge/front2/HLZ      = 0.003 m
+d:Ge/front2/TransX   = 0.01 m
+d:Ge/front2/TransY   = -0.01 m
+d:Ge/front2/TransZ   = 0.25 m
+s:Sc/front2/Quantity                  = "rindom"
+s:Sc/front2/Component                 = "front2"
+s:Sc/front2/OutputType 		     = "ASCII"
+b:Sc/front2/OutputToConsole           = "TRUE"
+s:Sc/front2/OutputFile = "output/front2"
+s:Sc/front2/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/back2/Type     = "TsBox"
+s:Ge/back2/Material = "Plastic"
+s:Ge/back2/Parent   = "World"
+d:Ge/back2/HLX      = 0.003 m
+d:Ge/back2/HLY      = 0.003 m
+d:Ge/back2/HLZ      = 0.003 m
+d:Ge/back2/TransX   = 0.0 m
+d:Ge/back2/TransY   = -0.01 m
+d:Ge/back2/TransZ   = -0.25 m
+s:Sc/back2/Quantity                  = "rindom"
+s:Sc/back2/Component                 = "back2"
+s:Sc/back2/OutputType 		     = "ASCII"
+b:Sc/back2/OutputToConsole           = "TRUE"
+s:Sc/back2/OutputFile = "output/back2"
+s:Sc/back2/IfOutputFileAlreadyExists = "Overwrite"
+
