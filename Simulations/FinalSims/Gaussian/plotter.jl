@@ -42,7 +42,7 @@ fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal",
 #histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.5)
 #histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.5)
 #histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.5)
-plot!(60:1:140, normalarea * pdf(Normal(100,20), 60:1:140), label="Normal, μ=100MeV, σ=20MeV)", linecolor=:red, linewidth=3)
+plot!(60:1:140, normalarea * pdf(Normal(100,10), 60:1:140), label="Normal, μ=100MeV, σ=20MeV)", linecolor=:red, linewidth=3)
 title!("Gaussian Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
