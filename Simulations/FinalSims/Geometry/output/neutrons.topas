@@ -89,7 +89,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 1291221634
+i:Ts/Seed = 1653832737
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamPositionCutoffX      = 0.013000000000000001 m
 dc:So/Beam/BeamPositionCutoffY      = 0.013000000000000001 m
