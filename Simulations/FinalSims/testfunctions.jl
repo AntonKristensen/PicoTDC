@@ -152,7 +152,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
 		    secondevents = second[matchings[:,2],3]
 
                     #push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
-                    incidentframe[(i-1)*4 + j, :] = [i,j, incidents, firsts, seconds, firstevents, secondevents]
+                    incidentframe[(i-1)*length(front[:,end]) + j, :] = [i,j, incidents, firsts, seconds, firstevents, secondevents]
                 end
             end
         end

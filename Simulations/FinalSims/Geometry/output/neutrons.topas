@@ -89,7 +89,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 1319250728
+i:Ts/Seed = 1291221634
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamPositionCutoffX      = 0.013000000000000001 m
 dc:So/Beam/BeamPositionCutoffY      = 0.013000000000000001 m
@@ -166,4 +166,36 @@ s:Sc/back2/OutputType 		     = "ASCII"
 b:Sc/back2/OutputToConsole           = "TRUE"
 s:Sc/back2/OutputFile = "output/back2"
 s:Sc/back2/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/front3/Type     = "TsBox"
+s:Ge/front3/Material = "Plastic"
+s:Ge/front3/Parent   = "World"
+d:Ge/front3/HLX      = 0.003 m
+d:Ge/front3/HLY      = 0.003 m
+d:Ge/front3/HLZ      = 0.003 m
+d:Ge/front3/TransX   = -0.01 m
+d:Ge/front3/TransY   = -0.01 m
+d:Ge/front3/TransZ   = 0.25 m
+s:Sc/front3/Quantity                  = "rindom"
+s:Sc/front3/Component                 = "front3"
+s:Sc/front3/OutputType 		     = "ASCII"
+b:Sc/front3/OutputToConsole           = "TRUE"
+s:Sc/front3/OutputFile = "output/front3"
+s:Sc/front3/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Ge/back3/Type     = "TsBox"
+s:Ge/back3/Material = "Plastic"
+s:Ge/back3/Parent   = "World"
+d:Ge/back3/HLX      = 0.003 m
+d:Ge/back3/HLY      = 0.003 m
+d:Ge/back3/HLZ      = 0.003 m
+d:Ge/back3/TransX   = -0.01 m
+d:Ge/back3/TransY   = 0.0 m
+d:Ge/back3/TransZ   = -0.25 m
+s:Sc/back3/Quantity                  = "rindom"
+s:Sc/back3/Component                 = "back3"
+s:Sc/back3/OutputType 		     = "ASCII"
+b:Sc/back3/OutputToConsole           = "TRUE"
+s:Sc/back3/OutputFile = "output/back3"
+s:Sc/back3/IfOutputFileAlreadyExists = "Overwrite"
 
