@@ -53,6 +53,8 @@ curve :
 		done ; \
 		julia -t auto efficienter.jl $(particles) $(repeats) $$E; \
 	done
+
+	julia -t auto geoplotter.jl
 	
 clean :
 	rm -f log.txt

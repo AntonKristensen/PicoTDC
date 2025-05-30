@@ -50,5 +50,5 @@ if filesize("geometryresults.txt") == 0 # Checks if the file is empty, and write
     write(writingfile, "Scintillators, correct, fake, neutrons, flux\n")
 end
 
-write(writingfile, ARGS[3] * ", " * string(correct) * "," * string(fake) * "," * string(neutrons) * "," * string(flux) * "," * "\n")
+write(writingfile, ARGS[3] * ", " * string(correct) * "," * string(fake) * "," * string(neutrons) * "," * string(flux) * "\n")
 close(writingfile)
