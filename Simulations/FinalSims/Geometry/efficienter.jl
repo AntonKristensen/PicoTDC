@@ -20,7 +20,6 @@ backs = data[:,5]
 frontevents = data[:,6]
 backevents = data[:,7]
 
-println(data)
 
 cincidents = incidents[frontevents .== backevents]
 fincidents = incidents[frontevents .!= backevents]
