@@ -69,7 +69,7 @@ println("FWHM = ",round(mean(fwhms),sigdigits=3),"ns ± ", round(std(fwhms) / sq
 
 xlabel!("Time (s)")
 ylabel!("Voltage (V)")
-title!("Fast outpul pulses")
+title!("Fast output pulses")
 xlims!(-0.00000001,0.00000004)
 display(fig)
 savefig(fig, "pulsesplot.svg")
