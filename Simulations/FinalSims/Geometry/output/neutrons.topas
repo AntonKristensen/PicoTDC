@@ -89,7 +89,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 1084717827
+i:Ts/Seed = 242876966
 ic:So/Beam/NumberOfHistoriesInRun   = 10000000
 dc:So/Beam/BeamPositionCutoffX      = 0.013000000000000001 m
 dc:So/Beam/BeamPositionCutoffY      = 0.013000000000000001 m
@@ -198,4 +198,8 @@ s:Sc/back3/OutputType 		     = "ASCII"
 b:Sc/back3/OutputToConsole           = "TRUE"
 s:Sc/back3/OutputFile = "output/back3"
 s:Sc/back3/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Gr/ViewA/Type              = "OpenGL"
+    Ts/UseQt = "True" #This one makes user interface
+    b:Ts/PauseBeforeQuit = "True"
 
