@@ -47,7 +47,7 @@ println(matchrate, " matches / (neutrons/cm²)")
 writingfile = open("geometryresults.txt", "a")
 
 if filesize("geometryresults.txt") == 0 # Checks if the file is empty, and writes a header if it is
-    write(matchfile, "Scintillators, correct, fake, neutrons, flux\n")
+    write(writingfile, "Scintillators, correct, fake, neutrons, flux\n")
 end
 
 write(writingfile, ARGS[3] * ", " * string(correct) * "," * string(fake) * "," * string(neutrons) * "," * string(flux) * "," * "\n")
