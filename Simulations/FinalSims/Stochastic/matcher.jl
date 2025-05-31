@@ -16,8 +16,7 @@ include("../testfunctions.jl")
 println("Tråde: ", Threads.nthreads())
 
 @time incidentframe = detectorlooping(minimumenergy=1, addedtime = stochastictime, threshold=0.25)
-matchwriter(incidentframe)
-
+matchwriter(incidentframe, file = "output/matches.csv")
 
 
 
