@@ -9,7 +9,7 @@ using Glob
 include("../cutting.jl")
 
 open("stochasticresults.csv", "w") do f
-    write(f, "addedtime (ps), correct, fake")
+    write(f, "addedtime (ps), correct, fake, S/N >25MeV")
 end
 
 files = glob("output/matches*")
@@ -50,24 +50,31 @@ for filepath in files
     geometry = CSV.read("geometry.txt", DataFrame; delim=",", ignorerepeated=true, ignoreemptyrows=true)
 
     # Making it so that the neutron beam is wide enough to cover all the front scintillators. 
+    area = 10000 *  maximum(abs.(geometry[geometry[:,end], 1]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))) * maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2)))
+
     frontmaxx = string(maximum(abs.(geometry[geometry[:,end], 1]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
     frontmaxy = string(maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
     frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
+
+    println(area)
+    flux = 1 /( 1.0e-12 * parse(Float64, filepath[15:end-4]) * area)
 
     correct = length(cincidents)
     fake =  length(fincidents)
 
     fig1 = histogram(cincidents, bins=0:1:maximum(cincidents), color=:black, alpha=0.5, label="Correct events")
     histogram!(fincidents, bins=0:1:maximum(cincidents), color=:red, alpha=0.5, label="Stochastic events")
-    title!(filepath[15:end-4])
+    title!(string(round(flux, sigdigits=3)) * " neutrons s⁻¹ cm⁻²")
     xlabel!("Calculated neutron energy (MeV)")
     ylabel!("Counts")
+    display(fig1)
     savefig("plots/" * filepath[15:end-4] * ".svg")
 
 
-    println(filepath, ": Correct: ", correct, ", Fake: ", fake)
+    println(filepath, ": Correct: ", correct, ", Fake: ", fake, ", Fake above 25 MeV: ", sum(fincidents .> 25))
+
 
     open("stochasticresults.csv", "a+") do f
-        write(f, "\n",filepath[15:end-4], ", ", string(correct), ", ", string(fake))
+        write(f, "\n",filepath[15:end-4], ", ", string(correct), ", ", string(fake), ", ", string(sum(cincidents .> 25) / sum(fincidents .> 25)))
     end
 end

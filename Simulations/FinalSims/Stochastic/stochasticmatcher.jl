@@ -11,7 +11,7 @@ using Glob
 
 include("../testfunctions.jl")
 
-times = [100 1000 10000 100000]
+times = [100 333 1000 3333 10000 33333 100000 333333 1000000]
 #times = collect(10000:5000:50000)
 
 for t in times
