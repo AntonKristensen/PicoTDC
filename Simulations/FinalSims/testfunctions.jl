@@ -130,7 +130,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
      
             for n in 1:length(first[:,3])
-                first[n,:Column10] = first[n, :Column10] + addedtime * seedrng(first[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
+                first[n, 10] = first[n, 10] + addedtime * seedrng(first[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
             end
             
             sort!(first, [:Column10])
@@ -154,7 +154,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     #second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
                     for n in 1:length(first[:,3])
-                        second[n,:Column10] = second[n,:Column10] + addedtime * seedrng(second[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
+                        second[n, 10] = second[n, 10] + addedtime * seedrng(second[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
                     end
                     #second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
                     sort!(second, [:Column10])
