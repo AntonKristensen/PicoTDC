@@ -5,9 +5,11 @@ using DataFrames
 using Statistics
 using Distributions
 
-filepath = "output/matches.csv"
-data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
+include("../cutting.jl")
 
+filepath = "output/matches.csv"
+noncutdata = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
+data = cut(noncutdata)
 
 
 ###############
