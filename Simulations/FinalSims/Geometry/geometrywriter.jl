@@ -8,10 +8,10 @@ using Random
 
 # Number of scintillator detectors
 
-detectors =parse(Int, ARGS[1])
+detectors = parse(Int, ARGS[1])
 size = 0.006
 d = 0.01
-zdif = ARGS[2] / 100
+zdif = parse(Float64, ARGS[2]) / 100
 
 number = ceil(sqrt(detectors+1))-1 # "ring" number
 
