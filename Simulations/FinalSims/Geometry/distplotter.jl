@@ -17,10 +17,10 @@ flux = data[:,5]
 
 
 
-fig1 = plot(scintillators, correct / flux) 
+fig1 = plot(scintillators, correct ./ flux, linewidth=3, legend=:false) 
 title!("Efficiency")
 ylabel!("Matches per neutron flux (cm²)")
 xlabel!("Distance between arrays (cm)")
-savefig("plots/geometry.svg")
+savefig("plots/distance.svg")
 display(fig1)
 
