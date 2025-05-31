@@ -7,11 +7,13 @@ using Statistics
 using Distributions
 
 
+stochastictime = parse(Float64, ARGS[1]) / 1e-12 # The added time is put in to the julia program as argument, with units of picoseconds
+
 include("../testfunctions.jl")
 
 println("Tråde: ", Threads.nthreads())
 
-@time incidentframe = detectorlooping(minimumenergy=1, addedtime = 1e-6, threshold=0.25)
+@time incidentframe = detectorlooping(minimumenergy=1, addedtime = stochastictime, threshold=0.25)
 matchwriter(incidentframe)
 
 

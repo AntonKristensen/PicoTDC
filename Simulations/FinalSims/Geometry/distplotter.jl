@@ -17,7 +17,7 @@ flux = data[:,5]
 
 
 
-fig1 = plot(scintillators, correct ./ flux, linewidth=3, legend=:false) 
+fig1 = plot(scintillators * 2, correct ./ flux, linewidth=3, legend=:false) 
 title!("Efficiency")
 ylabel!("Matches per neutron flux (cm²)")
 xlabel!("Distance between arrays (cm)")

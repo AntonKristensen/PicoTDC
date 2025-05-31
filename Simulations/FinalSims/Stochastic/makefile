@@ -10,7 +10,7 @@ repeats = 10
 vis = 0
 z = 25
 dets = 24
-
+time = 1000000
 
 default :
 	@echo "Call something specific, like 'make files particles=50000 energy=200'"
@@ -22,10 +22,11 @@ files :
 
 run :
 	make files
+	julia -t auto geometrywriter.jl $(dets) $(z)
 	topas output/neutrons.topas #>> log.txt
 	touch output/results.csv
-	julia -t auto matcher.jl #>> log.txt
-	julia -t auto efficienter.jl $(particles) 1
+	julia -t auto matcher.jl $(time) #>> log.txt
+	julia -t auto efficienter.jl $(particles) 1 0
 	
 many :
 	make clean
@@ -33,9 +34,9 @@ many :
 		make files ; \
 		echo "run $$i / $(repeats)" ; \
 		topas output/neutrons.topas >> log.txt ; \
-		julia -t auto matcher.jl >> log.txt ; \
+		julia -t auto matcher.jl $(time)  >> log.txt ; \
 	done
-	julia -t auto efficienter.jl $(particles) $(repeats)
+	julia -t auto efficienter.jl $(particles) $(repeats) 0
 
 curve :
 	make clean
@@ -50,7 +51,7 @@ curve :
 			julia geometrywriter.jl $$E $(z) ; \
 			make files energy=$(energy) ; \
 			topas output/neutrons.topas >> log.txt ; \
-			julia -t auto matcher.jl >> log.txt ; \
+			julia -t auto matcher.jl  $(time) >> log.txt ; \
 		done ; \
 		julia -t auto efficienter.jl $(particles) $(repeats) $$E; \
 	done
@@ -70,7 +71,7 @@ distances :
 			julia geometrywriter.jl $(dets) $$E ; \
 			make files energy=$(energy) ; \
 			topas output/neutrons.topas >> log.txt ; \
-			julia -t auto matcher.jl >> log.txt ; \
+			julia -t auto matcher.jl $(time) >> log.txt ; \
 		done ; \
 		julia -t auto efficienter.jl $(particles) $(repeats) $$E; \
 	done
