@@ -8,13 +8,28 @@ using Glob
 
 include("../cutting.jl")
 
+open("stochasticresults.csv", "w") do f
+    write(f, "addedtime (ps), correct, fake")
+end
 
 files = glob("output/matches*")
 for filepath in files
+    firstread = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
+    
+    lines = readlines(filepath)[2:end]
+    # Remove lines if they wrongly contain header
+    deleteat!(lines, firstread[:,1] .== "Incident energy")
+
+    # Write the remaining lines back to the file
+    open(filepath, "w") do f
+        write(f, "Incident energy, first deposit (MeV), second deposit (MeV), front detector, back detector, front event, back event\n")
+        write(f, join(lines, "\n"))
+    end
+    
     noncutdata = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
-    cleaneddata = noncutdata[noncutdata[:,1] .!= "Incident energy", :] # For some reason the matchwriter doesn't see that the file isn't empty, so it writes the header again in the middle of a lot of data :/
-    println(noncutdata)
-    data = cut(cleaneddata)
+
+    #cleaneddata.age = parse.(Int, df.age)
+    data = cut(noncutdata)
 
     ###############
     # Collecting results from all individual pairs into one big list
@@ -31,8 +46,6 @@ for filepath in files
     fincidents = incidents[frontevents .!= backevents]
 
 
-    println("Correct: ", length(incidents[frontevents .== backevents]), ", False: ", length(incidents[frontevents .!= backevents]))
-
 
     geometry = CSV.read("geometry.txt", DataFrame; delim=",", ignorerepeated=true, ignoreemptyrows=true)
 
@@ -45,5 +58,10 @@ for filepath in files
     correct = length(incidents[frontevents .== backevents])
     fake =  length(incidents[frontevents .!= backevents])
 
-    println("Correct: ", correct, ", Fake: ", fake)
+
+    println(filepath, ": Correct: ", correct, ", Fake: ", fake)
+
+    open("stochasticresults.csv", "a+") do f
+        write(f, "\n",filepath[15:end-4], ", ", string(correct), ", ", string(fake))
+    end
 end

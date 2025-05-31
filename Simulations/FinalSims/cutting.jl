@@ -3,7 +3,6 @@ using DataFrames
 
 
 function cut(data, cutparameterfile = "../cutparams.csv")
-    println(cutparameterfile)
     
     cutread = CSV.read(cutparameterfile, DataFrame; header=false, delim=",", ignorerepeated=false)
     cutparams = collect(cutread[1,:])
