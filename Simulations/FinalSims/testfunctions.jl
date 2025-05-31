@@ -5,6 +5,7 @@ using DataFrames
 using Statistics
 using Distributions
 
+
 function reader(filepath)
     return CSV.read(filepath, DataFrame; header=false, delim=" ", ignorerepeated=true)
 end
@@ -99,7 +100,10 @@ function findincidentenergies(matcharray, first, second, distance, angle, sizeco
 end
 
 
-
+function seedrng(seed) # Function for making a random number, but using a specific seed, so I can use G4event number as seed, to make sure that the same amount of random time is added to events in different detectors
+    Random.seed!(seed) # Manually sets the random seed to the input, ensuring determinism in the Reading
+    return randn() # Returns a normally distributed random number
+end
 
 
 function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimumenergy = 1., timeuncertainty = 0., threshold=0) # Function for looping through all the detector outputs and matching events 
@@ -120,10 +124,15 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
 
     Threads.@threads for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
         if filesize("output/front"*string(i)*".phsp") != 0 # Don't do it if the file is empty
-        
             # Collecting the results into detector hits instead of separate particles
             first = collector("output/front"*string(i)*".phsp")
+            #first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
+            
+            for n in 1:length(first[:,3])
+                first[n,"Column10"] = first[n,"Column10"] + addedtime * seedrng(first[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
+            end
+            
             sort!(first, [:Column10])
             #first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
             Threads.@threads for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
@@ -142,7 +151,11 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     ############## Reading the data files and making
                     # Collecting the results into detector hits instead of separate particles
                     second = collector("output/back"*string(j)*".phsp")
+                    #second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
+                    for n in 1:length(first[:,3])
+                        second[n,"Column10"] = second[n,"Column10"] + addedtime * seedrng(second[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
+                    end
                     #second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
                     sort!(second, [:Column10])
                     ############## Doing the time matching and energy calculation

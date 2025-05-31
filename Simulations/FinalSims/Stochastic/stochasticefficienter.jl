@@ -54,9 +54,15 @@ for filepath in files
     frontmaxy = string(maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
     frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
+    correct = length(cincidents)
+    fake =  length(fincidents)
 
-    correct = length(incidents[frontevents .== backevents])
-    fake =  length(incidents[frontevents .!= backevents])
+    fig1 = histogram(cincidents, bins=0:1:maximum(cincidents), color=:black, alpha=0.5, label="Correct events")
+    histogram!(fincidents, bins=0:1:maximum(cincidents), color=:red, alpha=0.5, label="Stochastic events")
+    title!(filepath[15:end-4])
+    xlabel!("Calculated neutron energy (MeV)")
+    ylabel!("Counts")
+    savefig("plots/" * filepath[15:end-4] * ".svg")
 
 
     println(filepath, ": Correct: ", correct, ", Fake: ", fake)
