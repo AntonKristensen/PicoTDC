@@ -13,7 +13,7 @@ end
 # Making a function to collect energy deposit from same event but different particles (such as electron secondaries or inelastic products)
 function collector(filepath)
     # Reading file with data in it
-    print("\nReading: ", filepath, "\n")
+    #print("\nReading: ", filepath, "\n")
     data = CSV.read(filepath, DataFrame; header=false, delim=" ", ignorerepeated=true)
     # Making a list of indeces to be popped, and adding the extra energy deposit from the extra particles (usually electrons)
     # Also needs to make sure that the time stamp is the lowest of all the created particles, because Geant4 does not for some reason spit them out in order
@@ -121,7 +121,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
     for n in 1:numberofpairs
         append!(incidentframe, defaultframe)
     end
-	println("First ping!")
+	
     Threads.@threads for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
         if filesize("output/front"*string(i)*".phsp") != 0 # Don't do it if the file is empty
             # Collecting the results into detector hits instead of separate particles
@@ -153,7 +153,8 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     second = collector("output/back"*string(j)*".phsp")
                     #second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
                     second[!,"Column10"] = second[:,3]*addedtime + second[:,end] + randn(length(second[:,end])) * timeuncertainty  # Adding some time to each event. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
-                    for n in 1:length(first[:,3])
+
+                    for n in 1:length(second[:,3])
                         second[n, 10] = second[n, 10] + addedtime * seedrng(second[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
                     end
                     #second = second[second[:,1] .< threshold ,:] # Sets a lower energy deposition limit
