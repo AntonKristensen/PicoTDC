@@ -35,15 +35,12 @@ frontmaxx = string(maximum(abs.(geometry[geometry[:,end], 1]) .+ maximum(abs.(ge
 frontmaxy = string(maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
 frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
+
 correct = length(incidents[frontevents .== backevents])
 fake =  length(incidents[frontevents .!= backevents])
 neutrons = parse(Float64, ARGS[1]) * parse(Float64, ARGS[2])
-flux = neutrons / (parse(Float64, frontmaxx) * parse(Float64, frontmaxy))
 
-
-matchrate = correct / (flux / 10000)
-println(matchrate, " matches / (neutrons/cm²)")
-
+flux = neutrons / (parse(Float64, frontmaxx) * parse(Float64, frontmaxy)) / 10000 # in neutrons/cm^2
 writingfile = open("geometryresults.txt", "a")
 
 if filesize("geometryresults.txt") == 0 # Checks if the file is empty, and writes a header if it is

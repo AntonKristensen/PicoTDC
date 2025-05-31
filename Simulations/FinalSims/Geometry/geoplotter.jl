@@ -15,11 +15,19 @@ fake = data[:,3]
 neutrons = data[:,4]
 flux = data[:,5]
 
+println(neutrons ./ flux)
 
-fig1 = plot(scintillators, correct .* neutrons ./ (flux .* scintillators))
-title!("Efficiency per scintillator")
-ylabel!("Matches per neutron per scintillator pair")
+
+fig1 = plot(scintillators, correct  ./ flux ./ 1 ) 
+title!("Efficiency")
+ylabel!("Matches per neutron flux (match cm²)")
 xlabel!("Scintillator pairs")
 savefig("plots/geometry.svg")
 display(fig1)
 
+fig2 = plot(scintillators, correct  ./ flux ./ (scintillators * 0.6^2) ) 
+title!("Efficiency per scintillator pair")
+ylabel!("Area normalized matches")
+xlabel!("Scintillator pairs")
+savefig("plots/normalizedgeometry.svg")
+display(fig2)
