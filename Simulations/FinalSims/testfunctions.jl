@@ -4,7 +4,7 @@ using CSV
 using DataFrames
 using Statistics
 using Distributions
-
+using Random
 
 function reader(filepath)
     return CSV.read(filepath, DataFrame; header=false, delim=" ", ignorerepeated=true)
@@ -121,7 +121,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
     for n in 1:numberofpairs
         append!(incidentframe, defaultframe)
     end
-
+	println("First ping!")
     Threads.@threads for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
         if filesize("output/front"*string(i)*".phsp") != 0 # Don't do it if the file is empty
             # Collecting the results into detector hits instead of separate particles
@@ -129,6 +129,8 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
             #first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             
+		println("second ping!")
+		println(first[2,:Column10])
             for n in 1:length(first[:,3])
                 println(first[n, "Column10"], ", ", addedtime * seedrng(first[n, 3]))
                 first[n,"Column10"] = first[n,"Column10"] + addedtime * seedrng(first[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
