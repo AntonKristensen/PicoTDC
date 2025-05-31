@@ -130,6 +130,7 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
             first[!,"Column10"] = (first[:,3]*addedtime + first[:,end] ) + randn(length(first[:,end])) * timeuncertainty # Adding time, some nanoseconds between each beam neutron. Consider making this more sophisticated, so that the times are distributed randomly according to some distribution.
             
             for n in 1:length(first[:,3])
+                println(first[n, "Column10"], ", ", addedtime * seedrng(first[n, 3]))
                 first[n,"Column10"] = first[n,"Column10"] + addedtime * seedrng(first[n, 3]) # Add a random amount of time, but needs to be same for same G4event in different detectors
             end
             
