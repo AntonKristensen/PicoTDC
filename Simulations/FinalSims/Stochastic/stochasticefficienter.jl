@@ -4,11 +4,12 @@ using CSV
 using DataFrames
 using Statistics
 using Distributions
+using Glob
 
 include("../cutting.jl")
 
 
-files = glob("*","output/matches*")
+files = glob("output/matches*")
 for filepath in files
     println(filepath)
 end

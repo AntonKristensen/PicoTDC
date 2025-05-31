@@ -12,7 +12,7 @@ using Glob
 include("../testfunctions.jl")
 
 
-times = [10000:10000:100000]
+times = collect(10000:10000:100000)
 
 for t in times
     @time incidentframe = detectorlooping(minimumenergy=1, addedtime = t * 1.0e-12, threshold=0.25)
