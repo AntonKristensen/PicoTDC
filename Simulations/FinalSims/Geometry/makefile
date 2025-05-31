@@ -8,7 +8,8 @@ stop = 25
 interval = 1
 repeats = 10
 vis = 0
-
+z = 25
+dets = 24
 
 
 default :
@@ -46,7 +47,7 @@ curve :
 		rm -f output/* ; \
 		for i in $$(seq 1 1 $(repeats)) ; do \
 			echo "Scintillators: $$E / $(stop), particles= $(particles), measurement $$i / $(repeats)." ; \
-			julia geometrywriter.jl $$E ; \
+			julia geometrywriter.jl $$E $(z) ; \
 			make files energy=$(energy) ; \
 			topas output/neutrons.topas >> log.txt ; \
 			julia -t auto matcher.jl >> log.txt ; \
@@ -55,6 +56,26 @@ curve :
 	done
 
 	julia -t auto geoplotter.jl
+
+distances :
+	make clean
+	rm -f geometryresults.txt
+	touch geometryresults.txt
+	
+
+	for E in $$(seq $(start) $(interval) $(stop)) ; do \
+		rm -f output/* ; \
+		for i in $$(seq 1 1 $(repeats)) ; do \
+			echo "Scintillators: $$E / $(stop), particles= $(particles), measurement $$i / $(repeats)." ; \
+			julia geometrywriter.jl $(dets) $$E ; \
+			make files energy=$(energy) ; \
+			topas output/neutrons.topas >> log.txt ; \
+			julia -t auto matcher.jl >> log.txt ; \
+		done ; \
+		julia -t auto efficienter.jl $(particles) $(repeats) $$E; \
+	done
+
+	julia -t auto distplotter.jl
 	
 clean :
 	rm -f log.txt

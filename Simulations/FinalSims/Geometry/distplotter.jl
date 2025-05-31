@@ -17,16 +17,10 @@ flux = data[:,5]
 
 
 
-fig1 = plot(scintillators, correct  ./ flux ./ 1, linewidth=3 ) 
+fig1 = plot(scintillators, correct / flux) 
 title!("Efficiency")
 ylabel!("Matches per neutron flux (cm²)")
-xlabel!("Scintillator pairs")
+xlabel!("Distance between arrays (cm)")
 savefig("plots/geometry.svg")
 display(fig1)
 
-fig2 = plot(scintillators, correct  ./ flux ./ (scintillators * 0.6^2) , linewidth=3) 
-title!("Efficiency per scintillator pair")
-ylabel!("Area normalized matches")
-xlabel!("Scintillator pairs")
-savefig("plots/normalizedgeometry.svg")
-display(fig2)

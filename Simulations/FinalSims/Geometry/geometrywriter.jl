@@ -11,8 +11,7 @@ using Random
 detectors =parse(Int, ARGS[1])
 size = 0.006
 d = 0.01
-zdif = 0.25
-
+zdif = ARGS[2] / 100
 
 number = ceil(sqrt(detectors+1))-1 # "ring" number
 
