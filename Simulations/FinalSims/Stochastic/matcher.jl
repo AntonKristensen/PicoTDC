@@ -7,7 +7,9 @@ using Statistics
 using Distributions
 
 
-stochastictime = parse(Float64, ARGS[1]) / 1e-12 # The added time is put in to the julia program as argument, with units of picoseconds
+stochastictime = parse(Float64, ARGS[1]) * 1e-12 # The added time is put in to the julia program as argument, with units of picoseconds
+
+println(stochastictime, " seconds")
 
 include("../testfunctions.jl")
 
