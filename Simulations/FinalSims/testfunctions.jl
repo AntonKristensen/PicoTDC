@@ -175,5 +175,6 @@ function matchwriter(dataframe; file = "output/matches.csv")
             end
         end
     end
+    flush(matchfile) # Ensures that the data is written before moving on, to avoid writing too many headers for example
     close(matchfile)
 end
