@@ -34,7 +34,7 @@ media, spread = bootstatisticing(cutdata[:,1])
 fiddimedi, fiddispread = statisticing(cutfiddidata[:,1])
 #hunnimedi, hunnispread = statisticing(cuthunnidata[:,1])
 medi = media[1]
-range = 1.5
+range = 2#1.5
 i = cutdata[:,1] .< medi*range
 normalarea = length(cutdata[cutdata[:,1] .< 140 .&& cutdata[:,1] .> 60,1])
 
