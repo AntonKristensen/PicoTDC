@@ -93,7 +93,7 @@ xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
 
-fitpoints = collect(25:250)
+fitpoints = collect(25:maximum(incidents[incidents .< medi *2]))
 plot!(fitpoints, cut(fitpoints, cutparams) .+ cutlee, label="Upper cut")
 hline!([lowert], label="Lower cut")
 savefig("plots/FirstHeatmapCut.svg")
