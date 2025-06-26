@@ -116,12 +116,14 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
     # Making a dataframe to store results
     incidentframe = DataFrame(FrontIndex = Vector{Int}(), BackIndex = Vector{Int}(), Incidents = Vector{Vector{Float64}}(), FrontEnergy = Vector{Vector{Float64}}(), BackEnergy = Vector{Vector{Float64}}(), FrontG4Event = FrontEnergy = Vector{Vector{Int}}(), BackG4Event = FrontEnergy = Vector{Vector{Int}}())
     numberofpairs = length(front[:,end]) * length(back[:,end])
+    #println("Number of pairs: ", numberofpairs)
     defaultframe = copy(incidentframe)
     push!(defaultframe, [0, 0, [], [], [], [], []])
     for n in 1:numberofpairs
         append!(incidentframe, defaultframe)
     end
 	
+    #for i in 1:length(front[:,end])
     Threads.@threads for i in 1:length(front[:,end]) # Looping through all detectors in front. Multithreaded
         if filesize("output/front"*string(i)*".phsp") != 0 # Don't do it if the file is empty
             # Collecting the results into detector hits instead of separate particles
@@ -135,6 +137,8 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
             
             sort!(first, [:Column10])
             #first = first[first[:,1] .> threshold ,:] # Sets a lower energy deposition limit
+            
+            #for j in 1:length(back[:,end])
             Threads.@threads for j in 1:length(back[:,end]) # Looping through all detectors in back. Multithreaded
                 if filesize("output/back"*string(j)*".phsp") != 0 # Don't do it if the file is empty   
                 
@@ -163,10 +167,11 @@ function detectorlooping(; geofile = "geometry.txt", addedtime = 1.e-9, minimume
                     matchings = matcher(first, second, minimumtime, maximumtime)
                     incidents, firsts, seconds = findincidentenergies(matchings, first, second, distance, angle, sizecorrection)
                     firstevents = first[matchings[:,1], 3]
-		    secondevents = second[matchings[:,2],3]
+		            secondevents = second[matchings[:,2],3]
 
+                    #println(i, ", ",j, ", index: ",(i-1)*length(back[:,end]) + j)
                     #push!(incidentframe, [i,j, incidents, firsts, seconds]) # Adding the energies into a dataframe
-                    incidentframe[(i-1)*length(front[:,end]) + j, :] = [i,j, incidents, firsts, seconds, firstevents, secondevents]
+                    incidentframe[(i-1)*length(back[:,end]) + j, :] = [i,j, incidents, firsts, seconds, firstevents, secondevents]
                 end
             end
         end
