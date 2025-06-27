@@ -56,9 +56,9 @@ println("Center guess:", centguess)
     boundsfit = fit_mle(Normal, data[data .> mode * 0.90 .&& data .< mode * 1.10]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
     println("Bounds fit: ", boundsfit)
     center = params(boundsfit)[1]
-    bound = params(boundsfit)[2] # For a 1 sigma region
+    bound = params(boundsfit)[2] * 2 # For a 2 sigma region
 
-    # ML fit, cutting data 1 sigma below and above the calculated mean
+    # ML fit, cutting data 2 sigma below and above the calculated mean
     fitdata = data[(data .> center - bound) .& (data .< center + bound)] # Cutting a roughly 3sigma region around the peak
 
     means = zeros(bootnumber)
