@@ -35,8 +35,11 @@ hunnimedi, hunnispread = bootstatisticing(cuthunnidata[:,1], 10000)
 range = 1.2
 medi = med[1]
 i = cutdata[:,1] .< medi*range
+plotpoints = collect(medi * (1 - (range - 1)) : 1 : medi*range)
 
-fig2 = histogram(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000, normalized=true)
+
+fig2 = stephist(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000, normalized=true)
+plot!(plotpoints, pdf(Normal(med[1], spread[1]), plotpoints), label="Ideal fit", linestyle=:dash, color=:black)
 histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.50, normalized=true)
 histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.50, normalized=true)
 histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.50, normalized=true)
