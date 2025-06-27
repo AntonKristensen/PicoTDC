@@ -51,7 +51,7 @@ function bootstatisticing(data, bootnumber=10000) # Function for finding mean an
     boundsfit = fit_mle(Normal, data[(data .> mode * 0.90)]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
     println(boundsfit)
     center = params(boundsfit)[1]
-    bound = params(boundsfit)[2]
+    bound = params(boundsfit)[2] * 2 # For a 2 sigma region
 
     # ML fit, cutting data 2 sigma below and above the calculated mean
     fitdata = data[(data .> center - bound) .& (data .< center + bound)] # Cutting a roughly 3sigma region around the peak
@@ -68,5 +68,5 @@ function bootstatisticing(data, bootnumber=10000) # Function for finding mean an
     println("Fit:", mean(means), ", ", mean(spreads), ", Data between: ", center-bound, " to ", center+bound)
 
     # Returns 4 variables which are all 2-element lists: mean&uncertainty, deviation&uncertainty, fitpoints&notfitpoints, selectionmean&bound
-    return [mean(means), std(means)], [mean(spreads), std(spreads)], [length(fitdata), length(data)-length(fitdata)], [center, bound]
+    return [median(means), std(means)], [median(spreads), std(spreads)], [length(fitdata), length(data)-length(fitdata)], [center, bound]
 end
