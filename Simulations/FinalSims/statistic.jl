@@ -67,5 +67,6 @@ function bootstatisticing(data, bootnumber=10000) # Function for finding mean an
 
     println("Fit:", mean(means), ", ", mean(spreads), ", Data between: ", center-bound, " to ", center+bound)
 
-    return [mean(means), std(means)], [mean(spreads), std(spreads)], [length(fitdata), length(data)-length(fitdata)]
+    # Returns 4 variables which are all 2-element lists: mean&uncertainty, deviation&uncertainty, fitpoints&notfitpoints, selectionmean&bound
+    return [mean(means), std(means)], [mean(spreads), std(spreads)], [length(fitdata), length(data)-length(fitdata)], [center, bound]
 end

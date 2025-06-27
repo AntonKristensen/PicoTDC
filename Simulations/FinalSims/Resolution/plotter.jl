@@ -27,26 +27,26 @@ cuthunnidata = cut(hunnidata)
 ###############
 # Collecting results from all individual pairs into one big list
 
-med, spread, amount = bootstatisticing(cutdata[:,1], 10000)
-thirtymedi, thirtyspread, thirtyamount = bootstatisticing(cutthirtydata[:,1], 10000)
-fiddimedi, fiddispread, fiddiamount = bootstatisticing(cutfiddidata[:,1], 10000)
-hunnimedi, hunnispread, hunniamount = bootstatisticing(cuthunnidata[:,1], 10000)
+med, spread, amount, region = bootstatisticing(cutdata[:,1], 10000)
+thirtymedi, thirtyspread, thirtyamount, thirtyregion = bootstatisticing(cutthirtydata[:,1], 10000)
+fiddimedi, fiddispread, fiddiamount, fiddiregion = bootstatisticing(cutfiddidata[:,1], 10000)
+hunnimedi, hunnispread, hunniamount, hunniregion = bootstatisticing(cuthunnidata[:,1], 10000)
 
 range = 1.2
 medi = med[1]
 i = cutdata[:,1] .< medi*range
-plotpoints = collect(medi * (1 - (range - 1)) : 0.1 : medi*range)
+points = collect(region[1] - region[2]: 0.1 : region[1] + region[2])
 
 println(amount)
 
 fig2 = stephist(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
-plot!(plotpoints, amount[1] *  pdf(Normal(med[1], spread[1]), plotpoints), label="Ideal fit", linestyle=:dash, color=:black)
+plot!(points, amount[1] *  pdf(Normal(med[1], spread[1]), points), label="Ideal fit", color=:black)
 histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.50)
-plot!(plotpoints, thirtyamount[1] *  pdf(Normal(thirtymedi[1], thirtyspread[1]), plotpoints), label="30ps fit", linestyle=:dash, color=:green)
+plot!(points, thirtyamount[1] *  pdf(Normal(thirtymedi[1], thirtyspread[1]), points), label="30ps fit", color=:green)
 histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.50)
-plot!(plotpoints, fiddiamount[1] *  pdf(Normal(fiddimedi[1], fiddispread[1]), plotpoints), label="50ps fit", linestyle=:dash, color=:blue)
+plot!(points, fiddiamount[1] *  pdf(Normal(fiddimedi[1], fiddispread[1]), points), label="50ps fit", color=:blue)
 histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.50)
-plot!(plotpoints, hunniamount[1] *  pdf(Normal(hunnimedi[1], hunnispread[1]), plotpoints), label="100ps fit", linestyle=:dash, color=:red)
+plot!(points, hunniamount[1] *  pdf(Normal(hunnimedi[1], hunnispread[1]), points), label="100ps fit", color=:red)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
