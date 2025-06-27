@@ -36,17 +36,21 @@ range = 1.2
 medi = med[1]
 i = cutdata[:,1] .< medi*range
 points = collect(region[1] - region[2]: 0.1 : region[1] + region[2])
+thirtypoints = collect(thirtyregion[1] - thirtyregion[2]: 0.1 : thirtyregion[1] + thirtyregion[2])
+fiddipoints = collect(fiddiregion[1] - fiddiregion[2]: 0.1 : fiddiregion[1] + fiddiregion[2])
+hunnipoints = collect(hunniregion[1] - hunniregion[2]: 0.1 : hunniregion[1] + hunniregion[2])
+
 
 println(amount)
 
 fig2 = stephist(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
 plot!(points, amount[1] *  pdf(Normal(med[1], spread[1]), points), label="Ideal fit", color=:black)
 histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.50)
-plot!(points, thirtyamount[1] *  pdf(Normal(thirtymedi[1], thirtyspread[1]), points), label="30ps fit", color=:green)
+plot!(thirtypoints, thirtyamount[1] *  pdf(Normal(thirtymedi[1], thirtyspread[1]), thirtypoints), label="30ps fit", color=:green)
 histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.50)
-plot!(points, fiddiamount[1] *  pdf(Normal(fiddimedi[1], fiddispread[1]), points), label="50ps fit", color=:blue)
+plot!(fiddipoints, fiddiamount[1] *  pdf(Normal(fiddimedi[1], fiddispread[1]), fiddipoints), label="50ps fit", color=:blue)
 histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.50)
-plot!(points, hunniamount[1] *  pdf(Normal(hunnimedi[1], hunnispread[1]), points), label="100ps fit", color=:red)
+plot!(hunnipoints, hunniamount[1] *  pdf(Normal(hunnimedi[1], hunnispread[1]), hunnipoints), label="100ps fit", color=:red)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
