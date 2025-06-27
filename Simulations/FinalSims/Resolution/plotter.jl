@@ -58,7 +58,7 @@ savefig("plots/TotalEnergies.svg")
 display(fig2)
 
 fig2zoom = stephist(cutdata[:,1], bins=hunnipoints, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
-plot!(points, 0.1 *  amount[1] *  pdf(Normal(med[1], spread[1]), points), label="Ideal fit", color=:black)
+plot!(points, 0.1 *  amount[1] *  pdf(Normal(med[1], spread[1]), points), label="Ideal fit", color=:black, linewidth=3)
 histogram!(cutthirtydata[:,1], bins=hunnipoints, color=:green, label="30ps", alpha=0.50)
 plot!(thirtypoints,  0.1 * thirtyamount[1] *  pdf(Normal(thirtymedi[1], thirtyspread[1]), thirtypoints), label="30ps fit", color=:green)
 histogram!(cutfiddidata[:,1], bins=hunnipoints, color=:blue, label="50ps", alpha=0.50)
