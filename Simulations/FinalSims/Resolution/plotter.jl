@@ -35,7 +35,7 @@ hunnimedi, hunnispread, hunniamount = bootstatisticing(cuthunnidata[:,1], 10000)
 range = 1.2
 medi = med[1]
 i = cutdata[:,1] .< medi*range
-plotpoints = collect(medi * (1 - (range - 1)) : 1 : medi*range)
+plotpoints = collect(medi * (1 - (range - 1)) : 0.1 : medi*range)
 
 println(amount)
 
