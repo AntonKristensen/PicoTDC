@@ -43,14 +43,13 @@ function bootstatisticing(data, bootnumber=10000) # Function for finding mean an
     # Doing a slight bit of statistics
     
     # Putting it into a histogram to find the max value
-    h = fit(Histogram, data, nbins=100) 
+    h = fit(Histogram, data[data .> 0.5 *  median(data) .&& data .< 2 * median(data)], nbins=100) # Only use data higher than half the median, so that low lying noise doesn't ruin things 
     edges = collect(h.edges[1])
     maxindex = argmax(h.weights)
+println(h.edges[1])
     mode = (edges[maxindex]+ edges[maxindex+1])/2 # Turns out to be decently robust
     println("mode: ", mode)
    
-    centguess = maximum([mode, median(h.weights)])
-println("Center guess:", centguess)
 
 
     boundsfit = fit_mle(Normal, data[data .> mode * 0.90 .&& data .< mode * 1.10]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
