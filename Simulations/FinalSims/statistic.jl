@@ -15,7 +15,8 @@ function statisticing(data)
     mode = (edges[maxindex]+ edges[maxindex+1])/2 # Turns out to be decently robust
 
     #medi = median(data[data .> 80 .&& data .< 120]) # Getting a decent robust guess for the mean of the peak so I can make a un-bad cut when fitting
-    medi = mode
+    medi = maximum([mode, median(h.weights)])  
+println(medi)
     #lower = medi - quantile(data, (1-0.68)/2) # Robust guesses for the standard deviation of the peak
     #upper = quantile(data, 1-(1-0.68)/2)- medi # Robust guesses for the standard deviation of the peak
     #println("Brute: ", medi, ", σ-: ", lower, ", σ+:", upper)
@@ -47,13 +48,17 @@ function bootstatisticing(data, bootnumber=10000) # Function for finding mean an
     maxindex = argmax(h.weights)
     mode = (edges[maxindex]+ edges[maxindex+1])/2 # Turns out to be decently robust
     println("mode: ", mode)
+   
+    centguess = maximum([mode, median(h.weights)])
+println("Center guess:", centguess)
 
-    boundsfit = fit_mle(Normal, data[(data .> mode * 0.90)]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
-    println(boundsfit)
+
+    boundsfit = fit_mle(Normal, data[data .> mode * 0.90 .&& data .< mode * 1.10]) # Fitting a gaussian on only the right side of the data to get a decent idea of where to cut it
+    println("Bounds fit: ", boundsfit)
     center = params(boundsfit)[1]
-    bound = params(boundsfit)[2] * 2 # For a 2 sigma region
+    bound = params(boundsfit)[2] # For a 1 sigma region
 
-    # ML fit, cutting data 2 sigma below and above the calculated mean
+    # ML fit, cutting data 1 sigma below and above the calculated mean
     fitdata = data[(data .> center - bound) .& (data .< center + bound)] # Cutting a roughly 3sigma region around the peak
 
     means = zeros(bootnumber)
