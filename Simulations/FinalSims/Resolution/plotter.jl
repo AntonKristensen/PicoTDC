@@ -27,22 +27,23 @@ cuthunnidata = cut(hunnidata)
 ###############
 # Collecting results from all individual pairs into one big list
 
-med, spread = bootstatisticing(cutdata[:,1], 10000)
-thirtymedi, thirtyspread = bootstatisticing(cutthirtydata[:,1], 10000)
-fiddimedi, fiddispread = bootstatisticing(cutfiddidata[:,1], 10000)
-hunnimedi, hunnispread = bootstatisticing(cuthunnidata[:,1], 10000)
+med, spread, amount = bootstatisticing(cutdata[:,1], 10000)
+thirtymedi, thirtyspread, thirtyamount = bootstatisticing(cutthirtydata[:,1], 10000)
+fiddimedi, fiddispread, fiddyamount = bootstatisticing(cutfiddidata[:,1], 10000)
+hunnimedi, hunnispread, hunniamount = bootstatisticing(cuthunnidata[:,1], 10000)
 
 range = 1.2
 medi = med[1]
 i = cutdata[:,1] .< medi*range
 plotpoints = collect(medi * (1 - (range - 1)) : 1 : medi*range)
 
+println(amount)
 
-fig2 = stephist(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000, normalized=true)
-plot!(plotpoints, pdf(Normal(med[1], spread[1]), plotpoints), label="Ideal fit", linestyle=:dash, color=:black)
-histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.50, normalized=true)
-histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.50, normalized=true)
-histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.50, normalized=true)
+fig2 = stephist(cutdata[:,1], bins=0:1:medi*range, color=:black, label="Ideal", alpha=1, size=(500,300), dpi=1000)
+plot!(plotpoints, amount[1] *  pdf(Normal(med[1], spread[1]), plotpoints), label="Ideal fit", linestyle=:dash, color=:black)
+histogram!(cutthirtydata[:,1], bins=0:1:medi*range, color=:green, label="30ps", alpha=0.50)
+histogram!(cutfiddidata[:,1], bins=0:1:medi*range, color=:blue, label="50ps", alpha=0.50)
+histogram!(cuthunnidata[:,1], bins=0:1:medi*range, color=:red, label="100ps", alpha=0.50)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
