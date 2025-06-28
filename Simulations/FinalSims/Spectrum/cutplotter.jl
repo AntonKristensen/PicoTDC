@@ -88,7 +88,7 @@ savefig("plots/FirstHeatmapCut.svg")
 
 
 
-fig2 = histogram(incidents[incidents .< 250], bins = 250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+fig2 = stephist(incidents[incidents .< 250], bins = 250, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
 title!("Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
