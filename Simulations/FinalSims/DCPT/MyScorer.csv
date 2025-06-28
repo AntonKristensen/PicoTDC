@@ -1,0 +1,7 @@
+# TOPAS Version: 4.0
+# Parameter File: NeutronPerProton.txt
+# Results for scorer: MyScorer
+# Filtered by: OnlyIncludeParticlesNamed = 1 "neutron"
+# Scored in component: WaterPhantom
+# OriginCount : Sum   
+19
