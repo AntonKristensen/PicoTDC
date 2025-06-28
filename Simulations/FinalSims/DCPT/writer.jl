@@ -28,9 +28,14 @@ frontmaxx = string(maximum(abs.(geometry[geometry[:,end], 1]) .+ maximum(abs.(ge
 frontmaxy = string(maximum(abs.(geometry[geometry[:,end], 2]) .+ maximum(abs.(geometry[geometry[:,end], 4]./2))))
 frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
+#write(file, 
+#"dc:So/Beam/BeamPositionCutoffX      = " *frontmaxx* " m
+#dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n\n")
+
+
 write(file, 
-"dc:So/Beam/BeamPositionCutoffX      = " *frontmaxx* " m
-dc:So/Beam/BeamPositionCutoffY      = " *frontmaxy* " m\n\n")
+"dc:So/Beam/BeamPositionCutoffX      = 0.01 m
+dc:So/Beam/BeamPositionCutoffY      = 0.01 m\n\n")
 
 
 # Making it so the world is only slightly larger enough to contain the components

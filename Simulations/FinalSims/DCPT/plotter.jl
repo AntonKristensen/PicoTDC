@@ -34,14 +34,14 @@ display(fig2)
 
 
 
-fig3 = histogram2d(cutdata[i,1], cutdata[i,2], bins=(150, 150))
+fig3 = histogram2d(cutdata, cutdata, bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
 #display(fig3)
 
-fig4 = histogram2d(cutdata[i,1], cutdata[i,3], bins=(150, 150))
+fig4 = histogram2d(cutdata, cutdata, bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
