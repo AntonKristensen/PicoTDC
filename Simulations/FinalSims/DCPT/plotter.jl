@@ -44,6 +44,21 @@ electrons = particles .== 11
 gammas = particles .== 22
 
 
+incidents = cutdata[:,1]
+firsts = cutdata[:,2]
+seconds = cutdata[:,3]
+fronts = cutdata[:,4]
+backs = cutdata[:,5]
+frontevents = cutdata[:,6]
+backevents = cutdata[:,7]
+
+cincidents = incidents[frontevents .== backevents]
+fincidents = incidents[frontevents .!= backevents]
+
+println("Correct: ", length(cincidents), ", Fake: "), length(fincidents)
+
+
+
 fig1 = stephist(energies[neutrons], bins=1:1:250, color=:black, label="Neutrons: "*string(sum(neutrons)))
 stephist!(energies[protons], bins=1:1:250, color=:red, label="Protonss: "*string(sum(protons)))
 stephist!(energies[electrons], bins=1:1:250, color=:blue, label="Electronss: "*string(sum(electrons)))
