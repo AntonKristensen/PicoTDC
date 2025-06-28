@@ -3,7 +3,7 @@ Welcome to TOPAS, Tool for Particle Simulation (Version 4.0)
 Loading parameters starting from: output/neutrons.topas
 
 Geant4 Data directory has been specified by the
-TOPAS_G4_DATA_DIR environment variable as /home/anton/AntonsMaster/programs/GEANT4/G4DATA
+TOPAS_G4_DATA_DIR environment variable as /home/anton/Applications/GEANT4/G4DATA
 
 **************************************************************
  Geant4 version Name: geant4-11-01-patch-03 [MT]   (10-November-2023)
@@ -87,15 +87,15 @@ Duplicate type for ionInelasticFTFP_BIC
 *** This is just a warning message. ***
 -------- WWWW -------- G4Exception-END --------- WWWW -------
 
-/home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7
-@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic
-@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
-NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
-@@@ G4ParticleHPInelasticData instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton
-/home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton
-@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
+/home/anton/Applications/GEANT4/G4DATA/G4NDL4.7
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
+@@@ G4ParticleHPInelasticData instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton
+/home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton
+@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
 Visualization verbosity changed to quiet (0)
 =======================================================================
 ======                 Electromagnetic Physics Parameters      ========
@@ -315,7 +315,7 @@ nuclearStopping:  for proton SubType=8 BuildTable=0
  UseNRESP71Model ?         0
 =======================================================
 
-@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
+@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
 
 msc:  for GenericIon  SubType= 10
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
@@ -461,10 +461,10 @@ CoulombScat:  for mu- XStype:1 SubType=1 BuildTable=1
       ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
   eCoulombScattering : Emin=    0 eV  Emax=  500 MeV
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
-NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
 
 =======================================================
 ======       ParticleHP Physics Parameters     ========
@@ -478,8 +478,8 @@ NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /
  UseNRESP71Model ?         0
 =======================================================
 
-@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
 
 msc:  for pi+  SubType= 10
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
@@ -944,109 +944,10 @@ Store e- internal conversion data                   1
 Correlated gamma emission flag                      0
 Max 2J for sampling of angular correlations         10
 =======================================================================
-G4WT48 > Begin processing for Run: 0, History: 0
-G4WT17 > Begin processing for Run: 0, History: 100000
-G4WT13 > Begin processing for Run: 0, History: 200000
-G4WT46 > Begin processing for Run: 0, History: 300000
-G4WT13 > Begin processing for Run: 0, History: 400000
-G4WT37 > Begin processing for Run: 0, History: 500000
-G4WT7 > Begin processing for Run: 0, History: 600000
-G4WT41 > Begin processing for Run: 0, History: 700000
-G4WT3 > Begin processing for Run: 0, History: 800000
-G4WT3 > Begin processing for Run: 0, History: 900000
-G4WT35 > Begin processing for Run: 0, History: 1000000
-G4WT9 > Begin processing for Run: 0, History: 1100000
-G4WT49 > Begin processing for Run: 0, History: 1200000
-G4WT59 > Begin processing for Run: 0, History: 1300000
-G4WT10 > Begin processing for Run: 0, History: 1400000
-G4WT62 > Begin processing for Run: 0, History: 1500000
-G4WT17 > Begin processing for Run: 0, History: 1600000
-G4WT44 > Begin processing for Run: 0, History: 1700000
-G4WT63 > Begin processing for Run: 0, History: 1800000
-G4WT63 > Begin processing for Run: 0, History: 1900000
-G4WT42 > Begin processing for Run: 0, History: 2000000
-G4WT26 > Begin processing for Run: 0, History: 2100000
-G4WT49 > Begin processing for Run: 0, History: 2200000
-G4WT32 > Begin processing for Run: 0, History: 2300000
-G4WT32 > Begin processing for Run: 0, History: 2400000
-G4WT57 > Begin processing for Run: 0, History: 2500000
-G4WT57 > Begin processing for Run: 0, History: 2600000
-G4WT2 > Begin processing for Run: 0, History: 2700000
-G4WT52 > Begin processing for Run: 0, History: 2800000
-G4WT52 > Begin processing for Run: 0, History: 2900000
-G4WT0 > Begin processing for Run: 0, History: 3000000
-G4WT39 > Begin processing for Run: 0, History: 3100000
-G4WT13 > Begin processing for Run: 0, History: 3200000
-G4WT39 > Begin processing for Run: 0, History: 3300000
-G4WT15 > Begin processing for Run: 0, History: 3400000
-G4WT38 > Begin processing for Run: 0, History: 3500000
-G4WT56 > Begin processing for Run: 0, History: 3600000
-G4WT28 > Begin processing for Run: 0, History: 3700000
-G4WT10 > Begin processing for Run: 0, History: 3800000
-G4WT56 > Begin processing for Run: 0, History: 3900000
-G4WT26 > Begin processing for Run: 0, History: 4000000
-G4WT20 > Begin processing for Run: 0, History: 4100000
-G4WT11 > Begin processing for Run: 0, History: 4200000
-G4WT11 > Begin processing for Run: 0, History: 4300000
-G4WT41 > Begin processing for Run: 0, History: 4400000
-G4WT26 > Begin processing for Run: 0, History: 4500000
-G4WT47 > Begin processing for Run: 0, History: 4600000
-G4WT49 > Begin processing for Run: 0, History: 4700000
-G4WT49 > Begin processing for Run: 0, History: 4800000
-G4WT12 > Begin processing for Run: 0, History: 4900000
-G4WT22 > Begin processing for Run: 0, History: 5000000
-G4WT40 > Begin processing for Run: 0, History: 5100000
-G4WT50 > Begin processing for Run: 0, History: 5200000
-G4WT21 > Begin processing for Run: 0, History: 5300000
-G4WT33 > Begin processing for Run: 0, History: 5400000
-G4WT4 > Begin processing for Run: 0, History: 5500000
-G4WT13 > Begin processing for Run: 0, History: 5600000
-G4WT26 > Begin processing for Run: 0, History: 5700000
-G4WT44 > Begin processing for Run: 0, History: 5800000
-G4WT30 > Begin processing for Run: 0, History: 5900000
-G4WT45 > Begin processing for Run: 0, History: 6000000
-G4WT2 > Begin processing for Run: 0, History: 6100000
-G4WT51 > Begin processing for Run: 0, History: 6200000
-G4WT33 > Begin processing for Run: 0, History: 6300000
-G4WT61 > Begin processing for Run: 0, History: 6400000
-G4WT2 > Begin processing for Run: 0, History: 6500000
-G4WT31 > Begin processing for Run: 0, History: 6600000
-G4WT38 > Begin processing for Run: 0, History: 6700000
-G4WT44 > Begin processing for Run: 0, History: 6800000
-G4WT51 > Begin processing for Run: 0, History: 6900000
-G4WT51 > Begin processing for Run: 0, History: 7000000
-G4WT1 > Begin processing for Run: 0, History: 7100000
-G4WT17 > Begin processing for Run: 0, History: 7200000
-G4WT35 > Begin processing for Run: 0, History: 7300000
-G4WT58 > Begin processing for Run: 0, History: 7400000
-G4WT35 > Begin processing for Run: 0, History: 7500000
-G4WT58 > Begin processing for Run: 0, History: 7600000
-G4WT28 > Begin processing for Run: 0, History: 7700000
-G4WT50 > Begin processing for Run: 0, History: 7800000
-G4WT53 > Begin processing for Run: 0, History: 7900000
-G4WT55 > Begin processing for Run: 0, History: 8000000
-G4WT8 > Begin processing for Run: 0, History: 8100000
-G4WT16 > Begin processing for Run: 0, History: 8200000
-G4WT61 > Begin processing for Run: 0, History: 8300000
-G4WT2 > Begin processing for Run: 0, History: 8400000
-G4WT55 > Begin processing for Run: 0, History: 8500000
-G4WT26 > Begin processing for Run: 0, History: 8600000
-G4WT9 > Begin processing for Run: 0, History: 8700000
-G4WT14 > Begin processing for Run: 0, History: 8800000
-G4WT18 > Begin processing for Run: 0, History: 8900000
-G4WT19 > Begin processing for Run: 0, History: 9000000
-G4WT60 > Begin processing for Run: 0, History: 9100000
-G4WT58 > Begin processing for Run: 0, History: 9200000
-G4WT51 > Begin processing for Run: 0, History: 9300000
-G4WT58 > Begin processing for Run: 0, History: 9400000
-G4WT58 > Begin processing for Run: 0, History: 9500000
-G4WT58 > Begin processing for Run: 0, History: 9600000
-G4WT41 > Begin processing for Run: 0, History: 9700000
-G4WT37 > Begin processing for Run: 0, History: 9800000
-G4WT53 > Begin processing for Run: 0, History: 9900000
+G4WT36 > Begin processing for Run: 0, History: 0
 
 TOPAS run sequence complete.
-Particle source Beam: Total number of histories: 10000000
+Particle source Beam: Total number of histories: 100000
 Particle source Demo: Total number of histories: 0
 rindom-scorer has now written output!
 rindom-scorer has now written output!
@@ -1104,34 +1005,28 @@ Header   has been written to file: output/PhaseSpaces/Phase.header
 Contents has been written to file: output/PhaseSpaces/Phase.phsp
 Scored on surface: PhaseScorer/ZMinusSurface
 
-Number of Original Histories: 10000000
-Number of Original Histories that Reached Phase Space: 1192
-Number of Scored Particles: 1194
+Number of Original Histories: 100000
+Number of Original Histories that Reached Phase Space: 7
+Number of Scored Particles: 7
 
-Number of anti_nu_e: 54
-Number of e-: 5
-Number of nu_e: 405
-Number of gamma: 483
-Number of neutron: 247
+Number of nu_e: 1
+Number of gamma: 3
+Number of neutron: 3
 
-Minimum Kinetic Energy of anti_nu_e: 0.0356726 MeV
-Minimum Kinetic Energy of e-: 2.22214 MeV
-Minimum Kinetic Energy of nu_e: 0.117345 MeV
-Minimum Kinetic Energy of gamma: 0.106255 MeV
-Minimum Kinetic Energy of neutron: 1.19409 MeV
+Minimum Kinetic Energy of nu_e: 0.910617 MeV
+Minimum Kinetic Energy of gamma: 0.510999 MeV
+Minimum Kinetic Energy of neutron: 40.8334 MeV
 
-Maximum Kinetic Energy of anti_nu_e: 10.8678 MeV
-Maximum Kinetic Energy of e-: 4.57322 MeV
-Maximum Kinetic Energy of nu_e: 14.7058 MeV
-Maximum Kinetic Energy of gamma: 32.8272 MeV
-Maximum Kinetic Energy of neutron: 81.9342 MeV
+Maximum Kinetic Energy of nu_e: 0.910617 MeV
+Maximum Kinetic Energy of gamma: 3.72723 MeV
+Maximum Kinetic Energy of neutron: 56.7484 MeV
 
 
 Welcome to TOPAS, Tool for Particle Simulation (Version 4.0)
 Loading parameters starting from: output/neutrons.topas
 
 Geant4 Data directory has been specified by the
-TOPAS_G4_DATA_DIR environment variable as /home/anton/AntonsMaster/programs/GEANT4/G4DATA
+TOPAS_G4_DATA_DIR environment variable as /home/anton/Applications/GEANT4/G4DATA
 
 **************************************************************
  Geant4 version Name: geant4-11-01-patch-03 [MT]   (10-November-2023)
@@ -1215,15 +1110,15 @@ Duplicate type for ionInelasticFTFP_BIC
 *** This is just a warning message. ***
 -------- WWWW -------- G4Exception-END --------- WWWW -------
 
-/home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7
-@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic
-@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
-NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
-@@@ G4ParticleHPInelasticData instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton
-/home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton
-@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
+/home/anton/Applications/GEANT4/G4DATA/G4NDL4.7
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
+@@@ G4ParticleHPInelasticData instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton
+/home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton
+@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
 Visualization verbosity changed to quiet (0)
 =======================================================================
 ======                 Electromagnetic Physics Parameters      ========
@@ -1443,7 +1338,7 @@ nuclearStopping:  for proton SubType=8 BuildTable=0
  UseNRESP71Model ?         0
 =======================================================
 
-@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
+@@@ G4ParticleHPInelastic instantiated for particle proton data directory variable is G4PROTONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4TENDL1.4/Proton/Inelastic
 
 msc:  for GenericIon  SubType= 10
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
@@ -1589,10 +1484,10 @@ CoulombScat:  for mu- XStype:1 SubType=1 BuildTable=1
       ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
   eCoulombScattering : Emin=    0 eV  Emax=  500 MeV
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
-NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
-NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
+NeutronHP: /Inelastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic/CrossSection/6_nat_Carbon
+NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Elastic/CrossSection/6_nat_Carbon
 
 =======================================================
 ======       ParticleHP Physics Parameters     ========
@@ -1606,8 +1501,8 @@ NeutronHP: /Elastic file for Z = 6, A = 12 is not found and NeutronHP will use /
  UseNRESP71Model ?         0
 =======================================================
 
-@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Inelastic
-NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/AntonsMaster/programs/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
+@@@ G4ParticleHPInelastic instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Inelastic
+NeutronHP: /Capture file for Z = 6, A = 12 is not found and NeutronHP will use /home/anton/Applications/GEANT4/G4DATA/G4NDL4.7/Capture/CrossSection/6_nat_Carbon
 
 msc:  for pi+  SubType= 10
       ===== EM models for the G4Region  DefaultRegionForTheWorld ======
@@ -2072,109 +1967,10 @@ Store e- internal conversion data                   1
 Correlated gamma emission flag                      0
 Max 2J for sampling of angular correlations         10
 =======================================================================
-G4WT37 > Begin processing for Run: 0, History: 0
-G4WT62 > Begin processing for Run: 0, History: 100000
-G4WT62 > Begin processing for Run: 0, History: 200000
-G4WT27 > Begin processing for Run: 0, History: 300000
-G4WT32 > Begin processing for Run: 0, History: 400000
-G4WT27 > Begin processing for Run: 0, History: 500000
-G4WT56 > Begin processing for Run: 0, History: 600000
-G4WT4 > Begin processing for Run: 0, History: 700000
-G4WT41 > Begin processing for Run: 0, History: 800000
-G4WT36 > Begin processing for Run: 0, History: 900000
-G4WT26 > Begin processing for Run: 0, History: 1000000
-G4WT36 > Begin processing for Run: 0, History: 1100000
-G4WT11 > Begin processing for Run: 0, History: 1200000
-G4WT52 > Begin processing for Run: 0, History: 1300000
-G4WT36 > Begin processing for Run: 0, History: 1400000
-G4WT8 > Begin processing for Run: 0, History: 1500000
-G4WT46 > Begin processing for Run: 0, History: 1600000
-G4WT18 > Begin processing for Run: 0, History: 1700000
-G4WT39 > Begin processing for Run: 0, History: 1800000
-G4WT14 > Begin processing for Run: 0, History: 1900000
-G4WT33 > Begin processing for Run: 0, History: 2000000
-G4WT54 > Begin processing for Run: 0, History: 2100000
-G4WT3 > Begin processing for Run: 0, History: 2200000
-G4WT51 > Begin processing for Run: 0, History: 2300000
-G4WT59 > Begin processing for Run: 0, History: 2400000
-G4WT51 > Begin processing for Run: 0, History: 2500000
-G4WT59 > Begin processing for Run: 0, History: 2600000
-G4WT45 > Begin processing for Run: 0, History: 2700000
-G4WT57 > Begin processing for Run: 0, History: 2800000
-G4WT50 > Begin processing for Run: 0, History: 2900000
-G4WT47 > Begin processing for Run: 0, History: 3000000
-G4WT0 > Begin processing for Run: 0, History: 3100000
-G4WT47 > Begin processing for Run: 0, History: 3200000
-G4WT50 > Begin processing for Run: 0, History: 3300000
-G4WT55 > Begin processing for Run: 0, History: 3400000
-G4WT2 > Begin processing for Run: 0, History: 3500000
-G4WT55 > Begin processing for Run: 0, History: 3600000
-G4WT47 > Begin processing for Run: 0, History: 3700000
-G4WT55 > Begin processing for Run: 0, History: 3800000
-G4WT38 > Begin processing for Run: 0, History: 3900000
-G4WT28 > Begin processing for Run: 0, History: 4000000
-G4WT38 > Begin processing for Run: 0, History: 4100000
-G4WT41 > Begin processing for Run: 0, History: 4200000
-G4WT26 > Begin processing for Run: 0, History: 4300000
-G4WT6 > Begin processing for Run: 0, History: 4400000
-G4WT39 > Begin processing for Run: 0, History: 4500000
-G4WT52 > Begin processing for Run: 0, History: 4600000
-G4WT31 > Begin processing for Run: 0, History: 4700000
-G4WT26 > Begin processing for Run: 0, History: 4800000
-G4WT16 > Begin processing for Run: 0, History: 4900000
-G4WT62 > Begin processing for Run: 0, History: 5000000
-G4WT28 > Begin processing for Run: 0, History: 5100000
-G4WT20 > Begin processing for Run: 0, History: 5200000
-G4WT24 > Begin processing for Run: 0, History: 5300000
-G4WT50 > Begin processing for Run: 0, History: 5400000
-G4WT16 > Begin processing for Run: 0, History: 5500000
-G4WT56 > Begin processing for Run: 0, History: 5600000
-G4WT56 > Begin processing for Run: 0, History: 5700000
-G4WT47 > Begin processing for Run: 0, History: 5800000
-G4WT18 > Begin processing for Run: 0, History: 5900000
-G4WT42 > Begin processing for Run: 0, History: 6000000
-G4WT63 > Begin processing for Run: 0, History: 6100000
-G4WT63 > Begin processing for Run: 0, History: 6200000
-G4WT59 > Begin processing for Run: 0, History: 6300000
-G4WT10 > Begin processing for Run: 0, History: 6400000
-G4WT42 > Begin processing for Run: 0, History: 6500000
-G4WT28 > Begin processing for Run: 0, History: 6600000
-G4WT59 > Begin processing for Run: 0, History: 6700000
-G4WT31 > Begin processing for Run: 0, History: 6800000
-G4WT49 > Begin processing for Run: 0, History: 6900000
-G4WT42 > Begin processing for Run: 0, History: 7000000
-G4WT34 > Begin processing for Run: 0, History: 7100000
-G4WT42 > Begin processing for Run: 0, History: 7200000
-G4WT42 > Begin processing for Run: 0, History: 7300000
-G4WT24 > Begin processing for Run: 0, History: 7400000
-G4WT41 > Begin processing for Run: 0, History: 7500000
-G4WT6 > Begin processing for Run: 0, History: 7600000
-G4WT42 > Begin processing for Run: 0, History: 7700000
-G4WT4 > Begin processing for Run: 0, History: 7800000
-G4WT16 > Begin processing for Run: 0, History: 7900000
-G4WT34 > Begin processing for Run: 0, History: 8000000
-G4WT31 > Begin processing for Run: 0, History: 8100000
-G4WT57 > Begin processing for Run: 0, History: 8200000
-G4WT23 > Begin processing for Run: 0, History: 8300000
-G4WT9 > Begin processing for Run: 0, History: 8400000
-G4WT0 > Begin processing for Run: 0, History: 8500000
-G4WT46 > Begin processing for Run: 0, History: 8600000
-G4WT56 > Begin processing for Run: 0, History: 8700000
-G4WT63 > Begin processing for Run: 0, History: 8800000
-G4WT7 > Begin processing for Run: 0, History: 8900000
-G4WT2 > Begin processing for Run: 0, History: 9000000
-G4WT4 > Begin processing for Run: 0, History: 9100000
-G4WT25 > Begin processing for Run: 0, History: 9200000
-G4WT16 > Begin processing for Run: 0, History: 9300000
-G4WT23 > Begin processing for Run: 0, History: 9400000
-G4WT52 > Begin processing for Run: 0, History: 9500000
-G4WT56 > Begin processing for Run: 0, History: 9600000
-G4WT61 > Begin processing for Run: 0, History: 9700000
-G4WT22 > Begin processing for Run: 0, History: 9800000
-G4WT10 > Begin processing for Run: 0, History: 9900000
+G4WT16 > Begin processing for Run: 0, History: 0
 
 TOPAS run sequence complete.
-Particle source Beam: Total number of histories: 10000000
+Particle source Beam: Total number of histories: 100000
 Particle source Demo: Total number of histories: 0
 rindom-scorer has now written output!
 rindom-scorer has now written output!
@@ -2232,28 +2028,22 @@ Header   has been written to file: output/PhaseSpaces/Phase_1.header
 Contents has been written to file: output/PhaseSpaces/Phase_1.phsp
 Scored on surface: PhaseScorer/ZMinusSurface
 
-Number of Original Histories: 10000000
-Number of Original Histories that Reached Phase Space: 1192
-Number of Scored Particles: 1197
+Number of Original Histories: 100000
+Number of Original Histories that Reached Phase Space: 19
+Number of Scored Particles: 19
 
-Number of anti_nu_e: 54
-Number of e-: 10
-Number of nu_e: 411
-Number of gamma: 451
-Number of neutron: 270
-Number of proton: 1
+Number of anti_nu_e: 1
+Number of nu_e: 5
+Number of gamma: 12
+Number of neutron: 1
 
-Minimum Kinetic Energy of anti_nu_e: 0.0510633 MeV
-Minimum Kinetic Energy of e-: 0.352902 MeV
-Minimum Kinetic Energy of nu_e: 0.0952896 MeV
-Minimum Kinetic Energy of gamma: 0.0394951 MeV
-Minimum Kinetic Energy of neutron: 0.000767532 MeV
-Minimum Kinetic Energy of proton: 23.8647 MeV
+Minimum Kinetic Energy of anti_nu_e: 0.39522 MeV
+Minimum Kinetic Energy of nu_e: 0.487522 MeV
+Minimum Kinetic Energy of gamma: 0.510999 MeV
+Minimum Kinetic Energy of neutron: 74.5627 MeV
 
-Maximum Kinetic Energy of anti_nu_e: 13.1002 MeV
-Maximum Kinetic Energy of e-: 6.76489 MeV
-Maximum Kinetic Energy of nu_e: 15.3651 MeV
-Maximum Kinetic Energy of gamma: 10.5908 MeV
-Maximum Kinetic Energy of neutron: 80.4274 MeV
-Maximum Kinetic Energy of proton: 23.8647 MeV
+Maximum Kinetic Energy of anti_nu_e: 0.39522 MeV
+Maximum Kinetic Energy of nu_e: 1.24536 MeV
+Maximum Kinetic Energy of gamma: 9.07389 MeV
+Maximum Kinetic Energy of neutron: 74.5627 MeV
 

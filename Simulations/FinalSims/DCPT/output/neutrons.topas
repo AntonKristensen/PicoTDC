@@ -124,8 +124,8 @@ s:Sc/PhaseSpace/IfOutputFileAlreadyExists  = "Increment"
 #sv:Sc/SWMinus_PhaseSpace/OnlyIncludeParticlesNamed = 1 "neutron"
 
 
-i:Ts/Seed = 493574825
-ic:So/Beam/NumberOfHistoriesInRun   = 10000000
+i:Ts/Seed = 506117224
+ic:So/Beam/NumberOfHistoriesInRun   = 100000
 dc:So/Beam/BeamEnergy               = 100 MeV 
  
 dc:So/Beam/BeamPositionCutoffX      = 0.001 m

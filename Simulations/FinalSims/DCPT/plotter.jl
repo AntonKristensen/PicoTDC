@@ -5,6 +5,7 @@ using DataFrames
 using Statistics
 using StatsBase
 using Distributions
+using Glob
 
 filepath = "output/matches.csv"
 data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
@@ -21,6 +22,37 @@ cutdata = cut(data)
 
 
 #medi, spread = statisticing(cutdata[:,1])
+
+
+
+phasefiles = glob("output/PhaseSpaces/*.phsp")
+
+energies = Float64[]
+particles = Int[]
+for file in phasefiles
+    println(file)
+    phasespaces = CSV.read(file, DataFrame; delim=" ", ignorerepeated=true, ignoreemptyrows=true)
+    e = phasespaces[:,6]
+    append!(energies, e)
+    t = phasespaces[:,8]
+    append!(particles, t)
+end
+
+neutrons = particles .== 2112
+protons = particles .== 2212
+electrons = particles .== 11
+gammas = particles .== 22
+
+
+fig1 = stephist(energies[neutrons], bins=1:1:250, color=:black, label="Neutrons")
+stephist!(energies[protons], bins=1:1:250, color=:red, label="Protons")
+stephist!(energies[electrons], bins=1:1:250, color=:blue, label="Electrons")
+stephist!(energies[gammas], bins=1:1:250, color=:green, label="Gammas")
+xlabel!("Energy (MeV)")
+ylabel!("Counts")
+title!("Particles at detector")
+savefig("plots/Energies.svg")
+display(fig1)
 
 
 
@@ -47,4 +79,6 @@ xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
 savefig("plots/SecondHeatmap.png")
 #display(fig4)
+
+
 
