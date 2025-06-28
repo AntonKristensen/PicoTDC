@@ -7,7 +7,8 @@ using Statistics
 using Distributions
 
 
-include("../functions.jl")
+#include("../functions.jl")
+include("../testfunctions.jl")
 
 println("Tråde: ", Threads.nthreads())
 
