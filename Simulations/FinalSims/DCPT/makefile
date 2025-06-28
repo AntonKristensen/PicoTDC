@@ -2,7 +2,7 @@ MAKEFLAGS += --no-print-directory
 SHELL := /bin/bash
 
 particles = 10000000
-energy = 100
+energy = 230
 start = 25
 stop = 250
 interval = 25

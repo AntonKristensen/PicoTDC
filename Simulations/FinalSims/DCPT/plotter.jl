@@ -47,7 +47,7 @@ gammas = particles .== 22
 fig1 = stephist(energies[neutrons], bins=1:1:250, color=:black, label="Neutrons: "*string(sum(neutrons)))
 stephist!(energies[protons], bins=1:1:250, color=:red, label="Protonss: "*string(sum(protons)))
 stephist!(energies[electrons], bins=1:1:250, color=:blue, label="Electronss: "*string(sum(electrons)))
-stephist!(energies[gammas], bins=1:1:250, color=:green, label="Gammass: "*string(sum(gammas)))
+stephist!(energies[gammas], bins=1:1:250, color=:green, label="Gammas: "*string(sum(gammas)))
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 title!("Particles at detector")
