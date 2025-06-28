@@ -78,6 +78,17 @@ d:Ge/WaterPhantom/RotZ			= 0. deg
 d:Ge/WaterPhantom/MaxStepSize 	= 0.5 mm
 s:Ge/WaterPhantom/Color      = "blue"
 
+s:Ge/PhaseScorer/Parent 		= "World"
+s:Ge/PhaseScorer/Type   		= "TsBox"
+s:Ge/PhaseScorer/Material	    = "Vacuum"
+#d:Ge/PhaseScorer/HLX 		    = 15 cm
+#d:Ge/PhaseScorer/HLY 		    = 15 cm
+d:Ge/PhaseScorer/HLZ 		    = 0.01 mm
+d:Ge/PhaseScorer/TransX		    = 0 cm
+d:Ge/PhaseScorer/TransY		    = 0 cm
+
+#d:Ge/PhaseScorer/TransZ		    =  -50  cm
+
 
 
 
@@ -103,5 +114,13 @@ s:Gr/ViewA/Projection       = "Perspective"
 d:Gr/ViewA/PerspectiveAngle = 30 deg
 
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
+
+
+s:Sc/PhaseSpace/Quantity                   = "PhaseSpace"
+s:Sc/PhaseSpace/OutputFile		   = "~/PhaseSpaces/Phase"
+s:Sc/PhaseSpace/Surface                    = "PhaseScorer/ZMinusSurface"
+s:Sc/PhaseSpace/OutputType                 = "ASCII"
+s:Sc/PhaseSpace/IfOutputFileAlreadyExists  = "Increment"
+#sv:Sc/SWMinus_PhaseSpace/OnlyIncludeParticlesNamed = 1 "neutron"
 
 

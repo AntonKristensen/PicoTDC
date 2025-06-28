@@ -40,6 +40,7 @@ many :
 clean :
 	rm -f log.txt
 	rm -f output/*
+	mkdir output/PhaseSpaces
 	rm -f plots/*
 	rm -f results.csv
 

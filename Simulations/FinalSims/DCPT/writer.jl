@@ -50,7 +50,12 @@ d:Ge/World/HLZ = "*maxz*" m
 s:Ge/World/Material = \"Air\"\n\n
 #s:Ge/World/Material = \"Vacuum\"\n\n
 d:Ge/WaterPhantom/TransZ		= " * string(0.2 + parse(Float64, dist) + maximum(geometry[:,3])) * " m
+d:Ge/PhaseScorer/HLX 		    = " * maxx * " m
+d:Ge/PhaseScorer/HLY 		    = " * maxy * " m
+d:Ge/PhaseScorer/TransZ		    =  " * string(maximum(geometry[:,3]) + maximum(geometry[:,4])) * " m
 ")
+
+
 
 frontcount=0
 backcount=0
