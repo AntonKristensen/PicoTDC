@@ -58,7 +58,6 @@ fincidents = incidents[frontevents .!= backevents]
 println("Correct: ", length(cincidents), ", Fake: "), length(fincidents)
 
 
-
 fig1 = stephist(energies[neutrons], bins=1:1:250, color=:black, label="Neutrons: "*string(sum(neutrons)))
 stephist!(energies[protons], bins=1:1:250, color=:red, label="Protonss: "*string(sum(protons)))
 stephist!(energies[electrons], bins=1:1:250, color=:blue, label="Electronss: "*string(sum(electrons)))
