@@ -13,8 +13,8 @@ data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 include("../statistic.jl")
 
 include("../cutting.jl")
-cutdata = cut(data)
-
+#cutdata = cut(data)
+cutdata = data
 
 ###############
 # Collecting results from all individual pairs into one big list
