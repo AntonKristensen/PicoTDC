@@ -2,7 +2,7 @@
 
 #i:Ts/Seed = 1342111 #The random seed
 i:Ts/ShowHistoryCountAtInterval = 100000 #This prints out progress while running
-i:Ts/NumberOfThreads = 4 # Multithreading
+i:Ts/NumberOfThreads = 64 # Multithreading
 
 #d:Ge/World/HLX = 10. cm
 #d:Ge/World/HLY = 10. cm
@@ -105,12 +105,12 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 #b:Gr/ViewA/IncludeStepPoints = "True" #This one shows steps everytime physics happens
 
 
-i:Ts/Seed = 115032585
-ic:So/Beam/NumberOfHistoriesInRun   = 1000
-dc:So/Beam/BeamEnergy               = 230 MeV 
+i:Ts/Seed = 1893476124
+ic:So/Beam/NumberOfHistoriesInRun   = 10000000
+dc:So/Beam/BeamEnergy               = 100 MeV 
  
-dc:So/Beam/BeamPositionCutoffX      = 0.01 m
-dc:So/Beam/BeamPositionCutoffY      = 0.01 m
+dc:So/Beam/BeamPositionCutoffX      = 0.001 m
+dc:So/Beam/BeamPositionCutoffY      = 0.001 m
 
 d:Ge/World/HLX = 0.036000000000000004 m
 d:Ge/World/HLY = 0.036000000000000004 m
@@ -921,8 +921,4 @@ s:Sc/back25/OutputType 		     = "ASCII"
 b:Sc/back25/OutputToConsole           = "TRUE"
 s:Sc/back25/OutputFile = "output/back25"
 s:Sc/back25/IfOutputFileAlreadyExists = "Overwrite"
-
-s:Gr/ViewA/Type              = "OpenGL"
-    Ts/UseQt = "True" #This one makes user interface
-    b:Ts/PauseBeforeQuit = "True"
 

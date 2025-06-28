@@ -34,8 +34,8 @@ frontmaxsize = string(maximum(abs.(geometry[geometry[:,end], 4]./2)))
 
 
 write(file, 
-"dc:So/Beam/BeamPositionCutoffX      = 0.01 m
-dc:So/Beam/BeamPositionCutoffY      = 0.01 m\n\n")
+"dc:So/Beam/BeamPositionCutoffX      = 0.001 m
+dc:So/Beam/BeamPositionCutoffY      = 0.001 m\n\n")
 
 
 # Making it so the world is only slightly larger enough to contain the components
