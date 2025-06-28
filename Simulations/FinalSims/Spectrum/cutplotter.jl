@@ -96,11 +96,11 @@ savefig("plots/TotalEnergies.svg")
 
 uppercutindices = firsts .< cut(incidents, expfit.param) .+ 1
 uppercutincidents = incidents[uppercutindices]
-histogram!(uppercutincidents[uppercutincidents .< 250], bins=250, label="Upper cut", color=:red, alpha=0.9)
+#histogram!(uppercutincidents[uppercutincidents .< 250], bins=250, label="Upper cut", color=:red, alpha=0.9)
 
 cutindices = uppercutindices .&& firsts .> 0.5 .&& seconds .> 0.5
 cutincidents = incidents[cutindices]
-histogram!(cutincidents[cutincidents .< 250], bins=250, label="Upper+lower cut", color=:blue, alpha=0.9)
+histogram!(cutincidents[cutincidents .< 250], bins=250, label="Full cut", color=:blue, alpha=0.9)
 
 savefig("plots/TotalEnergiesCut.svg")
 #savefig("plots/TotalEnergies.pdf")
