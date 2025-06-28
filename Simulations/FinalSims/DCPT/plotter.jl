@@ -13,8 +13,8 @@ data = CSV.read(filepath, DataFrame; header=1, delim=",", ignorerepeated=false)
 include("../statistic.jl")
 
 include("../cutting.jl")
-#cutdata = cut(data)
-cutdata = data
+cutdata = cut(data)
+
 
 ###############
 # Collecting results from all individual pairs into one big list
@@ -56,7 +56,7 @@ display(fig1)
 
 
 
-fig2 = stephist(cutdata[:,1], bins=1:1:250, color=:black, label="Data", alpha=1, size=(500,300), dpi=1000)
+fig2 = stephist(cutdata[:,1], bins=1:1:250, color=:black, label="Matches: "*string(length(cutdata[:,1])), alpha=1, size=(500,300), dpi=1000)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
