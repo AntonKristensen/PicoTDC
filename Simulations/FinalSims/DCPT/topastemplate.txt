@@ -117,7 +117,7 @@ d:Gr/ViewA/PerspectiveAngle = 30 deg
 
 
 s:Sc/PhaseSpace/Quantity                   = "PhaseSpace"
-s:Sc/PhaseSpace/OutputFile		   = "~/PhaseSpaces/Phase"
+s:Sc/PhaseSpace/OutputFile		   = "output/PhaseSpaces/Phase"
 s:Sc/PhaseSpace/Surface                    = "PhaseScorer/ZMinusSurface"
 s:Sc/PhaseSpace/OutputType                 = "ASCII"
 s:Sc/PhaseSpace/IfOutputFileAlreadyExists  = "Increment"
