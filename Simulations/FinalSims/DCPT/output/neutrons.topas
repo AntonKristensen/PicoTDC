@@ -2,7 +2,7 @@
 
 #i:Ts/Seed = 1342111 #The random seed
 i:Ts/ShowHistoryCountAtInterval = 100000 #This prints out progress while running
-i:Ts/NumberOfThreads = 64 # Multithreading
+i:Ts/NumberOfThreads = 4 # Multithreading
 
 #d:Ge/World/HLX = 10. cm
 #d:Ge/World/HLY = 10. cm
@@ -124,8 +124,8 @@ s:Sc/PhaseSpace/IfOutputFileAlreadyExists  = "Increment"
 #sv:Sc/SWMinus_PhaseSpace/OnlyIncludeParticlesNamed = 1 "neutron"
 
 
-i:Ts/Seed = 971383775
-ic:So/Beam/NumberOfHistoriesInRun   = 10000000
+i:Ts/Seed = 1840687229
+ic:So/Beam/NumberOfHistoriesInRun   = 250
 dc:So/Beam/BeamEnergy               = 230 MeV 
  
 dc:So/Beam/BeamPositionCutoffX      = 0.001 m
@@ -943,4 +943,8 @@ s:Sc/back25/OutputType 		     = "ASCII"
 b:Sc/back25/OutputToConsole           = "TRUE"
 s:Sc/back25/OutputFile = "output/back25"
 s:Sc/back25/IfOutputFileAlreadyExists = "Overwrite"
+
+s:Gr/ViewA/Type              = "OpenGL"
+    Ts/UseQt = "True" #This one makes user interface
+    b:Ts/PauseBeforeQuit = "True"
 
