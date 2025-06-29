@@ -19,6 +19,8 @@ include("../cutting.jl")
 cutdata = cut(data)
 
 
+
+
 ###############
 # Collecting results from all individual pairs into one big list
 incidents = data[:,1]
@@ -55,6 +57,13 @@ medi, spread = statisticing(incidents)
 fiddimedi, fiddispread = statisticing(fiddiincidents)
 hunnimedi, hunnispread = statisticing(hunniincidents)
 
+
+
+fig1 = stephist(data[data[:,1] .< medi + spread*2, 1], bins=0:1: medi + spread*2, color=:black, label=:none, alpha=1, size=(500,300), dpi=1000)
+title!("Monoenergetic Neutron Spectrum")
+xlabel!("Energy (MeV)")
+ylabel!("Counts")
+savefig("plots/NoCutEnergies.svg")
 
 
 fig2 = stephist(incidents[incidents .< medi + spread*2], bins=0:1: medi + spread*2, color=:black, label=:none, alpha=1, size=(500,300), dpi=1000)
