@@ -71,7 +71,7 @@ display(fig1)
 
 binning2 = 1:5:250
 
-fig2 = stephist(cincidents, bins=binning2, color=:black, label="Matches: "*string(length(cutdata[:,1])))
+fig2 = stephist(cincidents, bins=binning2, color=:black, label="Matches: "*string(length(cincidents)))
 stephist!(fincidents, bins=binning2, color=:red, label="Stochastic: "*string(length(fincidents)))
 title!("DCPT neutron setup")
 xlabel!("Energy (MeV)")
