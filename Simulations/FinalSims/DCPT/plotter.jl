@@ -70,8 +70,9 @@ display(fig1)
 
 
 
-fig2 = stephist(cutdata[:,1], bins=1:1:250, color=:black, label="Matches: "*string(length(cutdata[:,1])), alpha=1, size=(500,300), dpi=1000)
-title!("Monoenergetic Neutron Spectrum")
+fig2 = stephist(cincidents, bins=1:1:250, color=:black, label="Matches: "*string(length(cutdata[:,1])))
+stephist!(fincidents, bins=1:1:250, color=:red, label="Stochastic: "*string(length(fincidents)))
+title!("DCPT neutron setup")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 savefig("plots/TotalEnergies.svg")
