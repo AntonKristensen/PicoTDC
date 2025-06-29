@@ -59,7 +59,7 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig1 = stephist(data[data[:,1] .< medi + spread*2, 1], bins=0:1: medi + spread*2, color=:black, label=:none, alpha=1, size=(500,300), dpi=1000)
+fig1 = histogram(data[data[:,1] .< medi + spread*2, 1], bins=0:1: medi + spread*2, color=:black, label=:none, alpha=1, size=(500,300), dpi=1000)
 title!("Monoenergetic Neutron Spectrum")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
