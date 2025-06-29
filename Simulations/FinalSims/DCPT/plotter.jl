@@ -57,21 +57,22 @@ fincidents = incidents[frontevents .!= backevents]
 
 println("Correct: ", length(cincidents), ", Fake: ", ", ", length(fincidents))
 
+binning1 = 1:1:250
 
-fig1 = stephist(energies[neutrons], bins=1:1:250, color=:black, label="Neutrons: " * string(sum(neutrons)) )
-stephist!(energies[protons], bins=1:1:250, color=:red, label="Protonss: " * string(sum(protons)) )
-stephist!(energies[electrons], bins=1:1:250, color=:blue, label="Electronss: " * string(sum(electrons)) )
-stephist!(energies[gammas], bins=1:1:250, color=:green, label="Gammas: " * string(sum(gammas)) )
+fig1 = stephist(energies[neutrons], bins=binning1, color=:black, label="Neutrons: " * string(sum(neutrons)) )
+stephist!(energies[protons], bins=binning1, color=:red, label="Protonss: " * string(sum(protons)) )
+stephist!(energies[electrons], bins=binning1, color=:blue, label="Electronss: " * string(sum(electrons)) )
+stephist!(energies[gammas], bins=binning1, color=:green, label="Gammas: " * string(sum(gammas)) )
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 title!("Particles at detector")
 savefig("plots/Energies.svg")
 display(fig1)
 
+binning2 = 1:5:250
 
-
-fig2 = stephist(cincidents, bins=1:1:250, color=:black, label="Matches: "*string(length(cutdata[:,1])))
-stephist!(fincidents, bins=1:1:250, color=:red, label="Stochastic: "*string(length(fincidents)))
+fig2 = stephist(cincidents, bins=binning2, color=:black, label="Matches: "*string(length(cutdata[:,1])))
+stephist!(fincidents, bins=binning2, color=:red, label="Stochastic: "*string(length(fincidents)))
 title!("DCPT neutron setup")
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
@@ -80,15 +81,16 @@ display(fig2)
 
 
 
+indices = cutdata[:,1] .< 250
 
-fig3 = histogram2d(cutdata[:,1], cutdata[:,2], bins=(150, 150))
+fig3 = histogram2d(cutdata[indices,1], cutdata[indices,2], bins=(150, 150))
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
 savefig("plots/FirstHeatmap.png")
 #display(fig3)
 
-fig4 = histogram2d(cutdata[:,1], cutdata[:,3], bins=(150, 150))
+fig4 = histogram2d(cutdata[indices,1], cutdata[indices,3], bins=(150, 150))
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
