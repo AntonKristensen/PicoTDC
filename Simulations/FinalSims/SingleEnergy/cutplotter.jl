@@ -91,7 +91,7 @@ fig3 = histogram2d(incidents[incidents .< medi*2], firsts[incidents .< medi*2], 
 title!("Incident energy and first detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in first detector (MeV)")
-savefig("plots/FirstHeatmap.png")
+savefig("plots/FirstHeatmap.svg")
 
 fitpoints = collect(25:maximum(incidents[incidents .< medi *2]))
 plot!(fitpoints, cut(fitpoints, cutparams) .+ cutlee, label="Upper cut")
@@ -103,7 +103,7 @@ fig4 = histogram2d(incidents[incidents .< medi*2], seconds[incidents .< medi*2],
 title!("Incident energy and second detector")
 xlabel!("Energy of incident neutron (MeV)")
 ylabel!("Energy in second detector (MeV)")
-savefig("plots/SecondHeatmap.png")
+savefig("plots/SecondHeatmap.svg")
 #display(fig4)
 
 # Writing into results file
