@@ -57,7 +57,7 @@ hunnimedi, hunnispread = statisticing(hunniincidents)
 
 
 
-fig2 = stephist(incidents[incidents .< medi + spread*2], bins=0:1: medi + spread*2, color=:black, label="No cut", alpha=1, size=(500,300), dpi=1000)
+fig2 = stephist(incidents[incidents .< medi + spread*2], bins=0:1: medi + spread*2, color=:black, label=:none, alpha=1, size=(500,300), dpi=1000)
 #histogram!(fiddiincidents[fiddiincidents .<  medi + spread*3], bins = 0:1: medi + spread*3, color=:blue, label="50ps", alpha=0.3)
 #histogram!(hunniincidents[hunniincidents .<  medi + spread*3], bins = 0:1: medi + spread*3, color=:red, label="100ps", alpha=0.3)
 title!("Monoenergetic Neutron Spectrum")
