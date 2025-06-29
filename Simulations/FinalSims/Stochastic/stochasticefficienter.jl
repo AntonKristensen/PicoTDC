@@ -62,8 +62,8 @@ for filepath in files
     correct = length(cincidents)
     fake =  length(fincidents)
 
-    fig1 = histogram(cincidents, bins=0:1:maximum(cincidents), color=:black, alpha=0.5, label="Correct events")
-    histogram!(fincidents, bins=0:1:maximum(cincidents), color=:red, alpha=0.5, label="Stochastic events")
+    fig1 = stephist(cincidents, bins=0:1:maximum(cincidents), color=:black, alpha=1, label="Correct events")
+    stephist!(fincidents, bins=0:1:maximum(cincidents), color=:red, alpha=1, label="Stochastic events")
     title!(string(round(flux, sigdigits=3)) * " neutrons s⁻¹ cm⁻²")
     xlabel!("Calculated neutron energy (MeV)")
     ylabel!("Counts")
