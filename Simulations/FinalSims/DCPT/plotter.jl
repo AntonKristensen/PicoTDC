@@ -59,10 +59,10 @@ println("Correct: ", length(cincidents), ", Fake: ", ", ", length(fincidents))
 
 binning1 = 1:1:250
 
-fig1 = stephist(energies[neutrons], bins=binning1, color=:black, label="Neutrons: " * string(sum(neutrons)) )
-stephist!(energies[protons], bins=binning1, color=:red, label="Protonss: " * string(sum(protons)) )
-stephist!(energies[electrons], bins=binning1, color=:blue, label="Electronss: " * string(sum(electrons)) )
-stephist!(energies[gammas], bins=binning1, color=:green, label="Gammas: " * string(sum(gammas)) )
+fig1 = stephist(energies[neutrons], bins=binning1, linewidth=2, color=:black, label="Neutrons: " * string(sum(neutrons)) )
+stephist!(energies[protons], bins=binning1, linewidth=2, color=:red, label="Protons: " * string(sum(protons)) )
+stephist!(energies[electrons], bins=binning1, linewidth=2, color=:blue, label="Electrons: " * string(sum(electrons)) )
+stephist!(energies[gammas], bins=binning1, linewidth=2, color=:green, label="Gammas: " * string(sum(gammas)) )
 xlabel!("Energy (MeV)")
 ylabel!("Counts")
 title!("Particles at detector")
